@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/02 23:35:40 by hben-laz          #+#    #+#             */
+/*   Updated: 2024/11/02 23:35:40 by hben-laz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Phonebook.hpp"
 
 using namespace std;
@@ -10,7 +22,7 @@ int	main(void)
     while (1)
     {
         cout << "Enter a command: ";
-        get_line(cin, cmd);
+        getline(cin, cmd);
         if (cmd == "ADD")
             phonebook.add();
         else if (cmd == "SEARCH")

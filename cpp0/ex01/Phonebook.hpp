@@ -3,8 +3,10 @@
 
 #include <iostream>
 #include <string>
+class	Contact;
 
-using namespace std;
+
+// using namespace std;
 
 class	Phonebook
 {
@@ -34,16 +36,18 @@ class	Contact
 		Contact(void);
 		~Contact(void);
 		/* Getters and setters */
-		string	get_fname(void) const;
-		string	get_lname(void) const;
-		string	get_nick(void) const;
-		string	get_phone_num(void) const;
-		string	get_secret(void) const;
-		void	set_fname(string str);
-		void	set_lname(string str);
-		void	set_nick(string str);
-		void	set_phone_num(string str);
-		void	set_secret(string str);
+		string	get_first_name(void);
+		string	get_last_name(void);
+		string	get_nick_name(void);
+		string	get_phone_num(void);
+		string	get_secret(void);
+		void	set_first_name(string first_name);
+		void	set_last_name(string last_name);
+		void	set_nick_name(string nick_name);
+		void	set_phone_num(string phone_num);
+		void	set_secret(string secret);
+		/* Methods */
+	
 };
 
 
