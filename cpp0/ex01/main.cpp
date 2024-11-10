@@ -12,25 +12,35 @@
 
 #include "Phonebook.hpp"
 
-using namespace std;
-
+#include <iostream>
+#include <string>
+void ff(std::string cmd, Contact &c) {
+    std::getline(std::cin, cmd);
+    if (std::cin.eof())
+        std::exit(1);
+    c.setName(cmd);
+}
 int	main(void)
 {
     Phonebook	phonebook;
-    string		cmd;
+    Contact     c;
+    std::string		cmd;
 
     while (1)
     {
-        cout << "Enter a command: ";
-        getline(cin, cmd);
-        if (cmd == "ADD")
-            phonebook.add();
-        else if (cmd == "SEARCH")
-            phonebook.search();
-        else if (cmd == "EXIT")
+        
+        std::cout << "Enter a command: ";
+        std::getline(std::cin, cmd);
+        if (std::cin.eof())
             break ;
-        else
-            cout << "Invalid command" << endl;
+        std::cout << cmd << std::endl;
+        if (cmd == "EXIT")
+            break ;
+        if (cmd == "ADD")
+        {
+    
+            phonebook.add();
+        }
     }
     return (0);
 }
