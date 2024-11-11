@@ -6,13 +6,13 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRC =  main.cpp 
+SRC =  main.cpp Phonebook.cpp Contact.cpp 
 
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) Phonebook.hpp
+$(NAME): $(OBJ) Phonebook.hpp contact.hpp
 	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 clean:

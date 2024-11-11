@@ -14,33 +14,41 @@
 
 #include <iostream>
 #include <string>
-void ff(std::string cmd, Contact &c) {
-    std::getline(std::cin, cmd);
+
+void my_getline(std::string *cmd) 
+{
+    std::getline(std::cin, *cmd);
     if (std::cin.eof())
         std::exit(1);
-    c.setName(cmd);
 }
+
 int	main(void)
 {
-    Phonebook	phonebook;
+    Phonebook   phonebook;
     Contact     c;
-    std::string		cmd;
+    std::string cmd;
 
     while (1)
     {
         
         std::cout << "Enter a command: ";
-        std::getline(std::cin, cmd);
-        if (std::cin.eof())
-            break ;
-        std::cout << cmd << std::endl;
+        my_getline(&cmd); 
         if (cmd == "EXIT")
-            break ;
-        if (cmd == "ADD")
         {
-    
+            std::cout<<"exit her";
+            break ;
+        }
+        else if (cmd == "ADD")
+        {
+            std::cout<<"add"<<std::endl;
             phonebook.add();
         }
+        else if (cmd == "SEARCH")
+        {
+            phonebook.search();
+        }
+        else
+            std::cout << "this command: "<<cmd<<" not valid !!"<<std::endl;
     }
     return (0);
 }
