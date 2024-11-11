@@ -15,9 +15,9 @@
 #include <iostream>
 #include <string>
 
-void my_getline(std::string *cmd) 
+void my_getline(std::string& cmd) 
 {
-    std::getline(std::cin, *cmd);
+    std::getline(std::cin, cmd);
     if (std::cin.eof())
         std::exit(1);
 }
@@ -27,12 +27,13 @@ int	main(void)
     Phonebook   phonebook;
     Contact     c;
     std::string cmd;
+    int index;
 
     while (1)
     {
         
         std::cout << "Enter a command: ";
-        my_getline(&cmd); 
+        my_getline(cmd); 
         if (cmd == "EXIT")
         {
             std::cout<<"exit her";
@@ -44,9 +45,7 @@ int	main(void)
             phonebook.add();
         }
         else if (cmd == "SEARCH")
-        {
             phonebook.search();
-        }
         else
             std::cout << "this command: "<<cmd<<" not valid !!"<<std::endl;
     }
