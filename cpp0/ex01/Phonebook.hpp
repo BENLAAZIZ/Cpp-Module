@@ -34,8 +34,9 @@ class	Phonebook
 		// method
 		void	add(void);
 		void	search(void);
-		void    desplay_contact(int index);
+		void    desplay_contact();
 };
 void my_getline(std::string *cmd);
+void get_string(std::string s, int end);
 
 #endif
