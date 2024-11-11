@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:35:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/11 01:46:27 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/11 22:53:19 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,38 @@ void Phonebook::add()
 
     //************** afich
 
-     std::cout<<"===================="<<std::endl;
+    //  std::cout<<"===================="<<std::endl;
     
-    std::cout<<"first name : "<<contacts[i].get_first_name()<<std::endl;
-    std::cout<<"last name : "<<contacts[i].get_last_name()<<std::endl;
-    std::cout<<"nike name : "<<contacts[i].get_nick_name()<<std::endl;
-    std::cout<<"phon number : "<<contacts[i].get_phone_num()<<std::endl;
-    std::cout<<"secret dark : "<<contacts[i].get_secret()<<std::endl;
+    // std::cout<<"first name : "<<contacts[i].get_first_name()<<std::endl;
+    // std::cout<<"last name : "<<contacts[i].get_last_name()<<std::endl;
+    // std::cout<<"nike name : "<<contacts[i].get_nick_name()<<std::endl;
+    // std::cout<<"phon number : "<<contacts[i].get_phone_num()<<std::endl;
+    // std::cout<<"secret dark : "<<contacts[i].get_secret()<<std::endl;
 
-     std::cout<<"********************"<<std::endl;
+    //  std::cout<<"********************"<<std::endl;
      
-        std::cout<<std::setw(10)<<i<<"|";
-        std::cout<<std::setw(10)<<contacts[i].get_first_name()<<"|";
-        std::cout<<std::setw(10)<<contacts[i].get_last_name()<<"|";
-        std::cout<<std::setw(10)<<contacts[i].get_nick_name()<<"|";
-        std::cout<<std::setw(10)<<contacts[i].get_secret();
-     std::cout<<"*********************"<<std::endl;
+    //     std::cout<<std::setw(10)<<i<<"|";
+    //     std::cout<<std::setw(10)<<contacts[i].get_first_name()<<"|";
+    //     std::cout<<std::setw(10)<<contacts[i].get_last_name()<<"|";
+    //     std::cout<<std::setw(10)<<contacts[i].get_nick_name()<<"|";
+    //     std::cout<<std::setw(10)<<contacts[i].get_secret();
+    //  std::cout<<"*********************"<<std::endl;
      
      this->i++;
-     std::cout<<" incriment i = "<<i<<std::endl;
+    //  std::cout<<" incriment i = "<<i<<std::endl;
      
     
+}
+
+std::string get_string(std::string s)
+{
+    std::string c;
+     if (s.length() > 10)
+     {
+        c = s.substr(0, 9);
+        return c; 
+     }
+     return s;  
 }
 
 void   Phonebook::desplay_contact(int index)
@@ -88,18 +99,52 @@ void   Phonebook::desplay_contact(int index)
     int i;
 
     i = 0;
+    
     while (i <= index)
     {
-        std::cout << std::setw(10) <<i << "|" <<std::endl;
+        std::cout << std::setw(10) <<i << "|";
+        if (contacts[i].get_first_name().length() > 10)
+            std::cout << std::setw(10) <<contacts[i].get_first_name().substr(0, 9) << ".|";
+        else  
+            std::cout << std::setw(10) <<contacts[i].get_first_name() << "|";
+            
+        if (contacts[i].get_last_name().length() > 10)
+            std::cout << std::setw(10) <<contacts[i].get_last_name().substr(0, 9) << ".|";
+        else  
+            std::cout << std::setw(10) <<contacts[i].get_last_name() << "|";
+            
+        if (contacts[i].get_nick_name().length() > 10)
+            std::cout << std::setw(10) <<contacts[i].get_nick_name().substr(0, 9) << ".|";
+        else  
+            std::cout << std::setw(10) <<contacts[i].get_nick_name() << "|";
+
+        if (contacts[i].get_phone_num().length() > 10)
+            std::cout << std::setw(10) <<contacts[i].get_phone_num().substr(0, 9) << ".|";
+        else  
+            std::cout << std::setw(10) <<contacts[i].get_phone_num() << "|";
+
+
+        if (contacts[i].get_secret().length() > 10)
+            std::cout << std::setw(10) <<contacts[i].get_secret().substr(0, 9);
+        else  
+            std::cout << std::setw(10) <<contacts[i].get_secret() <<std::endl;
+        i++;
     }
 } 
 
 void	Phonebook::search()
 {
-    // if (contacts[0].get_first_name().empty())
-    //     std::cout<<"nothing found !"<<std::endl;
-    desplay_contact(i);
-    // std::cout<<std::setw(10)<<i<<"|";
+    int _index;
+    if (contacts[0].get_first_name().empty())
+        std::cout<<"nothing found !"<<std::endl;
+    else
+    {
+        std::cout<<"enter index : ";
+        std::cin>>_index;
+            desplay_contact(_index);
+        // std::cout<<std::setw(10)<<i<<"|";
+        
+    }
         
     
 }
