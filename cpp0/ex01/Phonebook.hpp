@@ -33,7 +33,7 @@ class	Phonebook
 		// method
 		void	add(void);
 		void	search(void);
-		// void   desplay_contact(int index, Contact contacts[]);
+		void    desplay_contact(int index);
 };
 void my_getline(std::string *cmd);
 

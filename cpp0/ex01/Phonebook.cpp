@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:35:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/11 01:42:34 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/11 01:46:27 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,22 +83,22 @@ void Phonebook::add()
     
 }
 
-// void   Phonebook::desplay_contact(int index, Contact contacts[])
-// {
-//     int i;
+void   Phonebook::desplay_contact(int index)
+{
+    int i;
 
-//     i = 0;
-//     while (i <= index)
-//     {
-//         std::cout<<std::setw(10)<<i<<"|"<<std::endl;
-//     }
-// } 
+    i = 0;
+    while (i <= index)
+    {
+        std::cout << std::setw(10) <<i << "|" <<std::endl;
+    }
+} 
 
 void	Phonebook::search()
 {
     // if (contacts[0].get_first_name().empty())
     //     std::cout<<"nothing found !"<<std::endl;
-    // desplay_contact(i, &contacts);
+    desplay_contact(i);
     // std::cout<<std::setw(10)<<i<<"|";
         
     
