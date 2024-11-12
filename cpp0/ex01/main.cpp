@@ -27,7 +27,6 @@ int	main(void)
     Phonebook   phonebook;
     Contact     c;
     std::string cmd;
-    int index;
 
     while (1)
     {

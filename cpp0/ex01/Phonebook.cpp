@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:35:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/12 00:36:22 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/12 01:04:21 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 Phonebook::Phonebook()
 {
-    this->i = 0;
+    _index = 0;
 }
 
 
 Contact	Phonebook::get_contact()
 {
-    return (contacts[i]);
+    return (contacts[_index]);
 }
 
 void    Phonebook::set_contact(int index, Contact contact)
@@ -30,43 +30,74 @@ void    Phonebook::set_contact(int index, Contact contact)
 
 
 
-
+// int check_(std::string title, int index ,  std::string name)
+// {
+//      std::string cmd;
+//      int i = 0;
+     
+//      std::cout<<title;
+//     my_getline(cmd);
+//     if(cmd.empty())
+//         return ;
+//     while (i < cmd.length())
+//         if (cmd)
+//     contacts[_index].set_first_name(cmd);
+// }
 
 //****************************************************
 
 void Phonebook::add()
 {
     std::string cmd;
-    std::cout<<"i = "<<i<<std::endl;
-    if (this->i >= 8)
-        this->i = this->i % 8;
-    std::cout<<"i = "<<i<<std::endl;
-    std::cout<<"contact : "<<i<<std::endl;
+    std::cout<<"i = "<<_index<<std::endl;
+    if (_index >= 8)
+        _index = this->_index % 8;
+    std::cout<<"i = "<<_index<<std::endl;
+    std::cout<<"contact : "<<_index<<std::endl;
+    
     std::cout<<"first name : ";
     my_getline(cmd);
-    contacts[i].set_first_name(cmd);
-    if(contacts[i].get_first_name().empty())
+    if(cmd.empty())
         return ;
+    contacts[_index].set_first_name(cmd);
+    
     std::cout<<std::endl<<"last name : ";
     my_getline(cmd);
-    contacts[i].set_last_name(cmd);
+    if (cmd.empty())
+        return ;
+    contacts[_index].set_last_name(cmd);
+    
     std::cout<<std::endl<<"nickname : ";
     my_getline(cmd);
-    contacts[i].set_nick_name(cmd);
+    if (cmd.empty())
+        return ;
+    contacts[_index].set_nick_name(cmd);
+    
     std::cout<<std::endl<<"phone number : ";
     my_getline(cmd);
-    contacts[i].set_phone_num(cmd);
+    if (cmd.empty())
+        return ;
+    contacts[_index].set_phone_num(cmd);
+    
      std::cout<<std::endl<<"darkest secret : ";
     my_getline(cmd);
-    contacts[i].set_secret(cmd);
-     this->i++;
+    if (cmd.empty())
+        return ;
+    contacts[_index].set_secret(cmd);
+    
+     _index++;
 }
 
 void get_string(std::string s, int end)
 {
     std::string c;
-    
-
+    int i = 0;
+    while (i < s.length())
+    {
+        if (s[i] == '\t')
+            s[i] = ' ';
+            i++;
+    }
      if (s.length() == 10)
         std::cout << s;
      if (s.length() > 10)
@@ -87,7 +118,7 @@ void   Phonebook::desplay_contact(int flag, int index)
     int i;
 
     i = 0;
-    while (i < this->i)
+    while (i < _index)
     {
         if (i == index && flag) {
             std::cout << "First name  : " << contacts[i].get_first_name() << std::endl;
@@ -110,7 +141,7 @@ void   Phonebook::desplay_contact(int flag, int index)
 void	Phonebook::search()
 {
     std::string cmd;
-    int _index;
+    // int _index_;
     if (contacts[0].get_first_name().empty())
         std::cout<<"nothing found !"<<std::endl;
     else {

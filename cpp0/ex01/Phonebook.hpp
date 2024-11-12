@@ -24,7 +24,7 @@ class	Phonebook
 {
 	private:
 		Contact	contacts[8];
-		int		i;
+		int		_index;
 	public:
 		Phonebook();
 		/* Getters */
