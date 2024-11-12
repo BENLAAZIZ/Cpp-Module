@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:35:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/12 01:49:47 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/12 20:18:05 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,13 @@ void put_string(std::string s, int end)
         std::cout << "|";
 }
 
-void   Phonebook::desplay_contact(int flag, int index)
+void   Phonebook::display_contact(int flag, int index)
 {
     int i;
     int end;
 
     i = 0;
-    if (flag_index)
+    if (flag_index > 0)
         end = flag_index;
     else
         end = _index;
@@ -136,7 +136,7 @@ void   Phonebook::desplay_contact(int flag, int index)
             std::cout << "First name  : " << contacts[i].get_first_name() << std::endl;
             std::cout << "Last name   : " << contacts[i].get_last_name() << std::endl;
             std::cout << "Nick name   : " << contacts[i].get_nick_name() << std::endl;
-            std::cout << "Phonenumber : " << contacts[i].get_phone_num() << std::endl;
+            std::cout << "Phone numbere : " << contacts[i].get_phone_num() << std::endl;
             std::cout << "Dark secret : " << contacts[i].get_secret() << std::endl;
             return ;
         }
@@ -158,19 +158,19 @@ void	Phonebook::search()
         std::cout<<"nothing found !"<<std::endl;
     else {
         int index;
-        desplay_contact(0, -1);
-        std::cout << "print index : ";
+        display_contact(0, -1);
+        std::cout << "enter index : ";
         my_getline(cmd);
         if (cmd.length() > 1 || !std::isdigit(cmd.front()))
             std::cout << "index out of range." << cmd << std::endl;
         else {
             index = cmd.front() - '0';
-            if (index >= 8 || index > _index)
+            if (index >= 8 || index >= _index)
             {
                 std::cout << "contact[" <<index<<"] not exits !!" << std::endl;
                 return ;
             }
-            desplay_contact(1, index);
+            display_contact(1, index);
         }
     }
 }
