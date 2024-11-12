@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:35:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/12 20:18:05 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/12 20:55:43 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ Phonebook::Phonebook()
 {
     _index = 0;
     flag_index = 0;
-    
 }
-
 
 Contact	Phonebook::get_contact()
 {
@@ -30,69 +28,61 @@ void    Phonebook::set_contact(int index, Contact contact)
     contacts[index] = contact;
 }
 
-
-
-// int check_(std::string title, int index ,  std::string name)
-// {
-//      std::string cmd;
-//      int i = 0;
+int Phonebook::check_t(std::string title, int index, int flag)
+{
+     std::string cmd;
+     int i = 0;
+     int alfa = 0;
      
-//      std::cout<<title;
-//     my_getline(cmd);
-//     if(cmd.empty())
-//         return ;
-//     while (i < cmd.length())
-//         if (cmd)
-//     contacts[_index].set_first_name(cmd);
-// }
-
-//****************************************************
+     std::cout<<title;
+    my_getline(cmd);
+    if(cmd.empty())
+        return (1);
+    while (i < cmd.length())
+    {
+        if (std::isalpha(cmd[i]))
+            alfa++;
+        i++;
+    }
+    if (alfa == 0)
+    {
+        std::cout<<"invalid input !"<<std::endl;
+        return (1);
+    }
+    if (flag == 1)
+        contacts[_index].set_first_name(cmd);
+    if (flag == 2)
+        contacts[_index].set_last_name(cmd);
+    if (flag == 3)
+        contacts[_index].set_nick_name(cmd);
+    if (flag == 4)
+        contacts[_index].set_phone_num(cmd);
+    if (flag == 5)
+        contacts[_index].set_secret(cmd);
+    return (0);
+}
 
 void Phonebook::add()
 {
     std::string cmd;
-    std::cout<<"i = "<<_index<<std::endl;
+
     if (_index >= 8)
     {
         _index = _index % 8;
         this->flag_index = 8;
     }
-
-    
-    std::cout<<"i = "<<_index<<std::endl;
-    std::cout<<"contact : "<<_index<<std::endl;
-    
-    std::cout<<"first name : ";
-    my_getline(cmd);
-    if(cmd.empty())
+    std::cout<<"****** contact : "<<_index<<" ******"<<std::endl;
+    if (check_t("first name : ", _index, 1))
         return ;
-    contacts[_index].set_first_name(cmd);
-    
-    std::cout<<"last name : ";
-    my_getline(cmd);
-    if (cmd.empty())
+    if (check_t("last name : ", _index, 2))
         return ;
-    contacts[_index].set_last_name(cmd);
-    
-    std::cout<<"nickname : ";
-    my_getline(cmd);
-    if (cmd.empty())
+    if (check_t("nick name : ", _index, 3))
         return ;
-    contacts[_index].set_nick_name(cmd);
-    
-    std::cout<<"phone number : ";
-    my_getline(cmd);
-    if (cmd.empty())
+    if (check_t("phone number : ", _index, 4))
         return ;
-    contacts[_index].set_phone_num(cmd);
-    
-     std::cout<<"darkest secret : ";
-    my_getline(cmd);
-    if (cmd.empty())
+    if (check_t("darkest secret : ", _index, 5))
         return ;
-    contacts[_index].set_secret(cmd);
-    
-     _index++;
+    _index++;
 }
 
 void put_string(std::string s, int end)
@@ -162,10 +152,15 @@ void	Phonebook::search()
         std::cout << "enter index : ";
         my_getline(cmd);
         if (cmd.length() > 1 || !std::isdigit(cmd.front()))
-            std::cout << "index out of range." << cmd << std::endl;
+            std::cout << "index out of range : " << "0 <= index < 8" << std::endl;
         else {
             index = cmd.front() - '0';
-            if (index >= 8 || index >= _index)
+            if (index >= 8)
+            {
+                std::cout << "index out of range : " << "0 <= index < 8" << std::endl;
+                return ;
+            }
+            if (index >= _index)
             {
                 std::cout << "contact[" <<index<<"] not exits !!" << std::endl;
                 return ;

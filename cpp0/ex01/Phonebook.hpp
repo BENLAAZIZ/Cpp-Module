@@ -37,6 +37,7 @@ class	Phonebook
 		void	search(void);
 		// void    display_contact();
 		void   display_contact(int flag, int index);
+		int check_t(std::string title, int index, int flag);
 };
 void my_getline(std::string& cmd);
 void put_string(std::string s, int end);
