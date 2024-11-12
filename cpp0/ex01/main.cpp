@@ -27,7 +27,7 @@ int	main(void)
     Phonebook   phonebook;
     Contact     c;
     std::string cmd;
-
+    
     while (1)
     {
         
@@ -46,7 +46,7 @@ int	main(void)
         else if (cmd == "SEARCH")
             phonebook.search();
         else
-            std::cout << "this command: "<<cmd<<" not valid !!"<<std::endl;
+            std::cout << "Invalid command !!"<<std::endl;
     }
     return (0);
 }

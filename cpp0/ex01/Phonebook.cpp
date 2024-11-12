@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:35:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/12 20:55:43 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/12 22:07:39 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    Phonebook::set_contact(int index, Contact contact)
     contacts[index] = contact;
 }
 
-int Phonebook::check_t(std::string title, int index, int flag)
+int Phonebook::check_input(std::string title, int index, int flag)
 {
      std::string cmd;
      int i = 0;
@@ -40,7 +40,7 @@ int Phonebook::check_t(std::string title, int index, int flag)
         return (1);
     while (i < cmd.length())
     {
-        if (std::isalpha(cmd[i]))
+        if (cmd[i] != '\t' && cmd[i] != ' ')
             alfa++;
         i++;
     }
@@ -72,15 +72,15 @@ void Phonebook::add()
         this->flag_index = 8;
     }
     std::cout<<"****** contact : "<<_index<<" ******"<<std::endl;
-    if (check_t("first name : ", _index, 1))
+    if (check_input("first name : ", _index, 1))
         return ;
-    if (check_t("last name : ", _index, 2))
+    if (check_input("last name : ", _index, 2))
         return ;
-    if (check_t("nick name : ", _index, 3))
+    if (check_input("nick name : ", _index, 3))
         return ;
-    if (check_t("phone number : ", _index, 4))
+    if (check_input("phone number : ", _index, 4))
         return ;
-    if (check_t("darkest secret : ", _index, 5))
+    if (check_input("darkest secret : ", _index, 5))
         return ;
     _index++;
 }
