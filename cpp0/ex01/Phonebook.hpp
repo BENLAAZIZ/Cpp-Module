@@ -25,6 +25,7 @@ class	Phonebook
 	private:
 		Contact	contacts[8];
 		int		_index;
+		int		flag_index;
 	public:
 		Phonebook();
 		/* Getters */
@@ -38,6 +39,6 @@ class	Phonebook
 		void   desplay_contact(int flag, int index);
 };
 void my_getline(std::string& cmd);
-void get_string(std::string s, int end);
+void put_string(std::string s, int end);
 
 #endif

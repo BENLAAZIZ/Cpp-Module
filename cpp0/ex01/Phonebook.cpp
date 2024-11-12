@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:35:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/12 01:04:21 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/12 01:49:47 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 Phonebook::Phonebook()
 {
     _index = 0;
+    flag_index = 0;
+    
 }
 
 
@@ -51,7 +53,12 @@ void Phonebook::add()
     std::string cmd;
     std::cout<<"i = "<<_index<<std::endl;
     if (_index >= 8)
-        _index = this->_index % 8;
+    {
+        _index = _index % 8;
+        this->flag_index = 8;
+    }
+
+    
     std::cout<<"i = "<<_index<<std::endl;
     std::cout<<"contact : "<<_index<<std::endl;
     
@@ -61,25 +68,25 @@ void Phonebook::add()
         return ;
     contacts[_index].set_first_name(cmd);
     
-    std::cout<<std::endl<<"last name : ";
+    std::cout<<"last name : ";
     my_getline(cmd);
     if (cmd.empty())
         return ;
     contacts[_index].set_last_name(cmd);
     
-    std::cout<<std::endl<<"nickname : ";
+    std::cout<<"nickname : ";
     my_getline(cmd);
     if (cmd.empty())
         return ;
     contacts[_index].set_nick_name(cmd);
     
-    std::cout<<std::endl<<"phone number : ";
+    std::cout<<"phone number : ";
     my_getline(cmd);
     if (cmd.empty())
         return ;
     contacts[_index].set_phone_num(cmd);
     
-     std::cout<<std::endl<<"darkest secret : ";
+     std::cout<<"darkest secret : ";
     my_getline(cmd);
     if (cmd.empty())
         return ;
@@ -88,7 +95,7 @@ void Phonebook::add()
      _index++;
 }
 
-void get_string(std::string s, int end)
+void put_string(std::string s, int end)
 {
     std::string c;
     int i = 0;
@@ -96,7 +103,7 @@ void get_string(std::string s, int end)
     {
         if (s[i] == '\t')
             s[i] = ' ';
-            i++;
+        i++;
     }
      if (s.length() == 10)
         std::cout << s;
@@ -116,9 +123,14 @@ void get_string(std::string s, int end)
 void   Phonebook::desplay_contact(int flag, int index)
 {
     int i;
+    int end;
 
     i = 0;
-    while (i < _index)
+    if (flag_index)
+        end = flag_index;
+    else
+        end = _index;
+    while (i < end)
     {
         if (i == index && flag) {
             std::cout << "First name  : " << contacts[i].get_first_name() << std::endl;
@@ -130,9 +142,9 @@ void   Phonebook::desplay_contact(int flag, int index)
         }
         else if (!flag) {
             std::cout <<std::setw(10)<< i <<"|";
-            get_string(contacts[i].get_first_name(), 0);
-            get_string(contacts[i].get_last_name(), 0);
-            get_string(contacts[i].get_nick_name(), 1);
+            put_string(contacts[i].get_first_name(), 0);
+            put_string(contacts[i].get_last_name(), 0);
+            put_string(contacts[i].get_nick_name(), 1);
         }
         i++;
     }
@@ -141,18 +153,23 @@ void   Phonebook::desplay_contact(int flag, int index)
 void	Phonebook::search()
 {
     std::string cmd;
-    // int _index_;
+
     if (contacts[0].get_first_name().empty())
         std::cout<<"nothing found !"<<std::endl;
     else {
         int index;
         desplay_contact(0, -1);
-        std::cout << "print index: ";
+        std::cout << "print index : ";
         my_getline(cmd);
         if (cmd.length() > 1 || !std::isdigit(cmd.front()))
             std::cout << "index out of range." << cmd << std::endl;
         else {
             index = cmd.front() - '0';
+            if (index >= 8 || index > _index)
+            {
+                std::cout << "contact[" <<index<<"] not exits !!" << std::endl;
+                return ;
+            }
             desplay_contact(1, index);
         }
     }
