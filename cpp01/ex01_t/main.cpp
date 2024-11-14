@@ -5,18 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 22:48:15 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/14 00:10:14 by hben-laz         ###   ########.fr       */
+/*   Created: 2024/11/14 21:15:23 by hben-laz          #+#    #+#             */
+/*   Updated: 2024/11/14 21:43:56 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main() {
-    Zombie* zombie = newZombie("Foo");
-    zombie->announce();
 
-    randomChump("Walkers");
-    delete zombie;
+int main()
+{
+    int N = 6;
+    Zombie *z = zombieHorde( N, "foo");
+
+    for(int i = 0; i < N; i++)
+        z[i].announce();
+    std::cout<<"************************"<<std::endl;
+    delete[] z;
     return 0;
 }
