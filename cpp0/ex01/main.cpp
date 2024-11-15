@@ -12,9 +12,6 @@
 
 #include "Phonebook.hpp"
 
-#include <iostream>
-#include <string>
-
 void my_getline(std::string& cmd) 
 {
     std::getline(std::cin, cmd);
@@ -30,14 +27,10 @@ int	main(void)
     
     while (1)
     {
-        
         std::cout << "Enter a command: ";
         my_getline(cmd); 
         if (cmd == "EXIT")
-        {
-            std::cout<<"exit her";
             break ;
-        }
         else if (cmd == "ADD")
         {
             std::cout<<"add"<<std::endl;

@@ -34,7 +34,6 @@ class	Phonebook
 		// method
 		void	add(void);
 		void	search(void);
-		// void    display_contact();
 		void   display_contact(int flag, int index);
 		int check_input(std::string title, int index, int flag);
 };

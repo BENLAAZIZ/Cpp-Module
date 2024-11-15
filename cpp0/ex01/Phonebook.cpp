@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:35:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/15 22:34:27 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/15 22:48:44 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int Phonebook::check_input(std::string title, int index, int flag)
 {
      std::string cmd;
      int i = 0;
-     int alfa = 0;
+     int alpha = 0;
      
      std::cout<<title;
     my_getline(cmd);
@@ -44,10 +44,10 @@ int Phonebook::check_input(std::string title, int index, int flag)
     while (i < cmd.length())
     {
         if (cmd[i] != '\t' && cmd[i] != ' ')
-            alfa++;
+            alpha++;
         i++;
     }
-    if (alfa == 0)
+    if (alpha == 0)
     {
         std::cout<<"invalid input !"<<std::endl;
         return (1);
@@ -74,14 +74,14 @@ void Phonebook::add()
         _index = _index % 8;
         this->flag_index = 8;
     }
-    std::cout<<"****** contact : "<<_index<<" ******"<<std::endl;
-    if (check_input("first name : ", _index, 1))
+    std::cout<<"****** contact      : "<<_index<<" ******"<<std::endl;
+    if (check_input("first name     : ", _index, 1))
         return ;
-    if (check_input("last name : ", _index, 2))
+    if (check_input("last name      : ", _index, 2))
         return ;
-    if (check_input("nick name : ", _index, 3))
+    if (check_input("nick name      : ", _index, 3))
         return ;
-    if (check_input("phone number : ", _index, 4))
+    if (check_input("phone number   : ", _index, 4))
         return ;
     if (check_input("darkest secret : ", _index, 5))
         return ;
@@ -126,11 +126,11 @@ void   Phonebook::display_contact(int flag, int index)
     while (i < end)
     {
         if (i == index && flag) {
-            std::cout << "First name  : " << contacts[i].get_first_name() << std::endl;
-            std::cout << "Last name   : " << contacts[i].get_last_name() << std::endl;
-            std::cout << "Nick name   : " << contacts[i].get_nick_name() << std::endl;
+            std::cout << "First name    : " << contacts[i].get_first_name() << std::endl;
+            std::cout << "Last name     : " << contacts[i].get_last_name() << std::endl;
+            std::cout << "Nick name     : " << contacts[i].get_nick_name() << std::endl;
             std::cout << "Phone numbere : " << contacts[i].get_phone_num() << std::endl;
-            std::cout << "Dark secret : " << contacts[i].get_secret() << std::endl;
+            std::cout << "Dark secret   : " << contacts[i].get_secret() << std::endl;
             return ;
         }
         else if (!flag) {
