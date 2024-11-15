@@ -18,7 +18,6 @@
 #include "contact.hpp"
 #include <iostream>
 #include <iomanip>
-#include <string>
 
 class	Phonebook
 {

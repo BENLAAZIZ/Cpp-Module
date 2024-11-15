@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:35:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/12 22:07:39 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/15 22:34:27 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int Phonebook::check_input(std::string title, int index, int flag)
      std::cout<<title;
     my_getline(cmd);
     if(cmd.empty())
+    {
+        std::cout<<"invalid input !"<<std::endl;
         return (1);
+    }
     while (i < cmd.length())
     {
         if (cmd[i] != '\t' && cmd[i] != ' ')
