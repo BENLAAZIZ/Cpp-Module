@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 23:08:05 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/16 01:04:58 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/16 21:46:53 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Weapon* HumanB::get_name()
     return w;
 }
 
-void HumanB::setWeapon(Weapon _w)
+void HumanB::setWeapon(Weapon& _w)
 {
     w = &_w;
 }
