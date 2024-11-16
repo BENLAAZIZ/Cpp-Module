@@ -6,12 +6,12 @@
 #    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/15 22:22:00 by hben-laz          #+#    #+#              #
-#    Updated: 2024/11/16 00:57:14 by hben-laz         ###   ########.fr        #
+#    Updated: 2024/11/17 00:16:30 by hben-laz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = ex03
+NAME = ex04
 
 CC = c++
 
@@ -19,11 +19,10 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRC =  main.cpp HumanA.cpp HumanB.cpp Weapon.cpp 
+SRC =  main.cpp
 
 
 OBJ = $(SRC:.cpp=.o)
-
 
 all: $(NAME)
 
