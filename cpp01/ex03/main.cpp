@@ -6,13 +6,14 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 23:01:32 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/16 00:01:13 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/16 01:00:51 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
+
 
 int main()
 {
