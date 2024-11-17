@@ -6,14 +6,14 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 23:01:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/16 00:32:49 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/17 00:24:11 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_H
-#define WEAPON_H
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-#include <iostream>
+# include <iostream>
 
 class Weapon
 {
@@ -25,9 +25,5 @@ class Weapon
             std::string getType();
             void setType(std::string _type);
 };
-
-
-
-
 
 #endif

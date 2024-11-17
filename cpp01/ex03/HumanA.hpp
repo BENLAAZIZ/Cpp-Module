@@ -6,15 +6,15 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 23:03:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/16 00:41:37 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/17 00:24:59 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_H
-# define HUMANA_H
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-#include <iostream>
-#include "Weapon.hpp"
+# include <iostream>
+# include "Weapon.hpp"
 
 class HumanA
 {

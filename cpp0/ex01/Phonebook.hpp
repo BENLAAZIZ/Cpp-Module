@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 
-#include "contact.hpp"
-#include <iostream>
-#include <iomanip>
+# include "contact.hpp"
+# include <iostream>
+# include <iomanip>
 
 class	Phonebook
 {
@@ -27,11 +27,8 @@ class	Phonebook
 		int		flag_index;
 	public:
 		Phonebook();
-		/* Getters */
 		Contact	get_contact();
-        /* Setters */
         void	set_contact(int index, Contact contact);
-		// method
 		void	add(void);
 		void	search(void);
 		void   display_contact(int flag, int index);
