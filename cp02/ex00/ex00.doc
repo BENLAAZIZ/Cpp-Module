@@ -1,0 +1,47 @@
+                                    'Master Orthodox Canonical Form'
+                                    --------------------------------
+
+1 - Copy constructor.
+  
+     A Copy Constructor is a special constructor that creates a new object as a copy of an existing object. 
+        Its primary purpose is to create a new object by initializing it with an existing object of the same class.
+
+    ClassName(const ClassName& other) {
+    // Copy construction logic
+}
+
+
+    1.1 : Key Points about Copy Constructors:
+
+           1 *  Automatically called when:
+
+                Initializing a new object with an existing object
+                Passing object by value
+                Returning object by value
+                Handling object copying
+
+
+            2 * Two types of copying:
+
+                Shallow Copy: Default behavior, copies member values directly
+                Deep Copy: Manually creates new memory for pointer members
+
+
+            3 * Best Practices:
+
+                Always implement as pass-by-const-reference
+                Handle dynamic memory allocation carefully
+                Consider using Rule of Three/Five for memory management
+
+
+
+        Compiler-Generated Copy Constructor:
+
+            If you don't define a copy constructor, C++ provides a default one
+            Default copy constructor performs shallow copying
+
+        When to Implement Custom Copy Constructor:
+
+                Class has pointer members
+                Need deep copying of resources
+                Managing dynamic memory allocation
