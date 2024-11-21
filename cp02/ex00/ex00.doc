@@ -45,3 +45,18 @@
                 Class has pointer members
                 Need deep copying of resources
                 Managing dynamic memory allocation
+        ************************************************************************
+
+
+        <<     Shno hiya Orthodox Canonical Form?    >>
+        ------------------------------------------------
+    OCF hiya wahd structure standard li khas kol class fih:
+
+ *** Destructor (li kayna9i w kaymas7).
+ *** Default Constructor (bash takhdem class bla parameters).
+ *** Copy Constructor (bash takhl9 object jdida b copie mn chi object akhor).
+ *** Copy Assignment Operator (bash tn9ol data mn object l object akhor li deja kayn).
+
+ Hadiya ma3rofa b Rule of Three. O ila zedna modern C++, kayn l Rule of Five li katzid:
+5. Move Constructor (bach t7arek resources bla ta3awd copier).
+6. Move Assignment Operator (bach t7arek data f assignment).
