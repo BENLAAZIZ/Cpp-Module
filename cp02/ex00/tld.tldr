@@ -363,9 +363,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -234.46264755086185,
-			"y": 3308.1384204486963,
-			"lastActivityTimestamp": 1732148079102,
+			"x": -114.44842976532115,
+			"y": 3495.097688723129,
+			"lastActivityTimestamp": 1732148150888,
 			"meta": {}
 		},
 		{
@@ -381,7 +381,7 @@
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "move",
+				"type": "default",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -420,12 +420,12 @@
 			"typeName": "instance"
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:1bgC-mkuzP1kgCfAxotI4",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:e9oYqFm7hccJfkcNyIDqf"
+				"shape:1bgC-mkuzP1kgCfAxotI4"
 			],
-			"hoveredShapeId": null,
+			"hoveredShapeId": "shape:1bgC-mkuzP1kgCfAxotI4",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -5645,8 +5645,8 @@
 			"props": {
 				"color": "grey",
 				"size": "s",
-				"w": 936.6387272745545,
-				"text": "Hadiya ma3rofa b Rule of Three. O ila zedna modern C++, kayn l Rule of Five li katzid:\n5. Move Constructor (bach t7arek resources bla ta3awd copier).\n6. Move Assignment Operator (bach t7arek data f assignment).",
+				"w": 947.5149590192375,
+				"text": "Hadiya  ma3rofa b Rule of Three. O ila zedna modern C++, kayn l Rule of Five li katzid:\n5. Move Constructor (bach t7arek resources bla ta3awd copier).\n6. Move Assignment Operator (bach t7arek data f assignment).",
 				"font": "mono",
 				"textAlign": "start",
 				"autoSize": true,
