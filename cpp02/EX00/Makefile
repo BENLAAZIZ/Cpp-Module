@@ -6,7 +6,7 @@
 #    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/17 00:19:59 by hben-laz          #+#    #+#              #
-#    Updated: 2024/11/18 01:37:58 by hben-laz         ###   ########.fr        #
+#    Updated: 2024/11/24 02:04:07 by hben-laz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRC =  main.cpp 
+SRC =  main.cpp Fixed.cpp
 
 
 OBJ = $(SRC:.cpp=.o)
