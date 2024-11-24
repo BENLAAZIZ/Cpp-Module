@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 01:39:30 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/24 02:53:31 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/24 17:45:10 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,21 @@ int const Fixed::fractional = 8;
 Fixed::Fixed()
 { 
     std::cout<<"Default constructor called"<<std::endl;
+    this->rawBits = 1234.43;
 }
 
 
 Fixed::Fixed(const int  a)
 { 
     std::cout<<"Int constructor called"<<std::endl;
-    this->rawBits = a << 8;
+    this->rawBits = a << fractional;
 }
 
 Fixed::Fixed(const float a)
 {
     std::cout<<"Float constructor called"<<std::endl;
     
-    this->rawBits = a * (1 << 8);
+    this->rawBits = a * (1 << fractional);
 }
 
 
@@ -57,13 +58,15 @@ Fixed::~Fixed()
     std::cout<<"Destructor called"<<std::endl;
 }
 
-int Fixed::getRawBits( void ) const
+int Fixed::toInt( void ) const
 {
-    std::cout<<"getRawBits member function called"<<std::endl;
+    // std::cout<<"getRawBits member function called"<<std::endl;
     return (this->rawBits);
 }
 
-void Fixed::setRawBits( int const raw )
+
+float Fixed::toFloat( void ) const
 {
-    this->rawBits = raw;
+    // std::cout<<"getRawBits member function called"<<std::endl;
+    return (this->rawBits);
 }

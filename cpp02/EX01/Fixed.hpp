@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 01:38:21 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/24 02:54:58 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/24 17:43:07 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Fixed
 {
     private :
-            int rawBits;
+            float rawBits;
             static int const fractional;
     public :
             Fixed();
@@ -27,8 +27,9 @@ class Fixed
             Fixed(const Fixed& copy);
             Fixed& operator= (const Fixed& copy);
             ~Fixed();
-            int getRawBits( void ) const;
-            void setRawBits( int const raw );
+            int toInt( void ) const;
+            float toFloat( void ) const;
+        //     void setRawBits( int const raw );
 };
 
 
