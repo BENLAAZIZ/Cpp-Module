@@ -1,0 +1,62 @@
+                                    'Master Orthodox Canonical Form'
+                                    --------------------------------
+
+1 - Copy constructor.
+  
+     A Copy Constructor is a special constructor that creates a new object as a copy of an existing object. 
+        Its primary purpose is to create a new object by initializing it with an existing object of the same class.
+
+    ClassName(const ClassName& other) {
+    // Copy construction logic
+}
+
+
+    1.1 : Key Points about Copy Constructors:
+
+           1 *  Automatically called when:
+
+                Initializing a new object with an existing object
+                Passing object by value
+                Returning object by value
+                Handling object copying
+
+
+            2 * Two types of copying:
+
+                Shallow Copy: Default behavior, copies member values directly
+                Deep Copy: Manually creates new memory for pointer members
+
+
+            3 * Best Practices:
+
+                Always implement as pass-by-const-reference
+                Handle dynamic memory allocation carefully
+                Consider using Rule of Three/Five for memory management
+
+
+
+        Compiler-Generated Copy Constructor:
+
+            If you don't define a copy constructor, C++ provides a default one
+            Default copy constructor performs shallow copying
+
+        When to Implement Custom Copy Constructor:
+
+                Class has pointer members
+                Need deep copying of resources
+                Managing dynamic memory allocation
+        ************************************************************************
+
+
+        <<     Shno hiya Orthodox Canonical Form?    >>
+        ------------------------------------------------
+    OCF hiya wahd structure standard li khas kol class fih:
+
+ *** Destructor (li kayna9i w kaymas7).
+ *** Default Constructor (bash takhdem class bla parameters).
+ *** Copy Constructor (bash takhl9 object jdida b copie mn chi object akhor).
+ *** Copy Assignment Operator (bash tn9ol data mn object l object akhor li deja kayn).
+
+ Hadiya ma3rofa b Rule of Three. O ila zedna modern C++, kayn l Rule of Five li katzid:
+5. Move Constructor (bach t7arek resources bla ta3awd copier).
+6. Move Assignment Operator (bach t7arek data f assignment).
