@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 01:39:30 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/24 17:45:10 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:22:16 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,20 @@ Fixed::~Fixed()
 int Fixed::toInt( void ) const
 {
     // std::cout<<"getRawBits member function called"<<std::endl;
-    return (this->rawBits);
+    return (this->rawBits / (1 << 8));
 }
 
 
 float Fixed::toFloat( void ) const
 {
     // std::cout<<"getRawBits member function called"<<std::endl;
-    return (this->rawBits);
+    return (this->rawBits / (1 << 8));
+}
+
+
+std::ostream& operator<<(std::ostream& out, const Fixed& obj)
+{
+    // std::cout<<obj.toFloat();
+    out << obj.toFloat();
+    return out;
 }
