@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:54:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/28 00:56:06 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/28 02:41:48 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,71 @@ Fixed Fixed::operator/(const Fixed& obj) const
     res->fixed = this->fixed / obj.fixed;
     return *res;
 }
+
+
+// ---------------------- ++ -- ---------------------
+
+Fixed& Fixed::operator++()
+{
+    this->fixed += 1;
+    return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+    Fixed old = *this;
+
+    operator++();
+    return old;
+    
+}
+
+Fixed& Fixed::operator--()
+{
+    this->fixed -= 1;
+    return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+    Fixed old = *this;
+
+    operator--();
+    return old;
+    
+}
+
+// ---------------------- min max -----------------------
+
+Fixed& Fixed::min(Fixed& obj1, Fixed& obj2)
+{
+    if (obj1.fixed < obj2.fixed)
+        return obj1;
+    return obj2;
+}
+
+const Fixed& Fixed::min(const Fixed& obj1, const Fixed& obj2)
+{
+    if (obj1.fixed < obj2.fixed)
+        return obj1;
+    return obj2;
+}
+
+
+Fixed& Fixed::max(Fixed& obj1, Fixed& obj2)
+{
+    if (obj1.fixed > obj2.fixed)
+        return obj1;
+    return obj2;
+}
+
+const Fixed& Fixed::max(const Fixed& obj1, const Fixed& obj2)
+{
+    if (obj1.fixed > obj2.fixed)
+        return obj1;
+    return obj2;
+}
+
+
 
             
