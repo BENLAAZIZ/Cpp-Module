@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:54:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/28 02:45:09 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/28 02:47:01 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int const Fixed::fractional = 8;
 Fixed::Fixed()
 {
     // std::cout<<"Default constructor called"<<std::endl;
-    this->fixed = 1234.43;
+    this->fixed = 0;
 }
 
 Fixed::Fixed(const int i)
