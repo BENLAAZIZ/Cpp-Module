@@ -6,44 +6,60 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:33:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/28 18:23:00 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/29 00:30:31 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-class Dog{//base class
+class Base{//base class
 
-    public :
-        Dog(){}
+    protected :
+        Base(){
+            std::cout<<"Base constructor!"<<std::endl;
+        }
             
-        void Brak(){
-            std::cout<<"Brak!"<<std::endl;
-        }
-        
-        void Walk()
-        {
-            x+= 1;
-            y+= 1;
+        ~Base(){
+            std::cout<<"Base Destructor!"<<std::endl;
         }
 
-        float x,y;
-        
+        protected :
+                int my_public;
+         protected :
+                int my_protected;
+         protected :
+                int my_private;
 };
 
 
-
-
-class Golden : public Dog{
+class Derived : protected Base{
     
-    
+    public :
+        Derived(){
+            std::cout<<"Derived constructor!"<<std::endl;
+                my_public = 123;
+                my_protected = 1;
+              //   my_private = 11111;
+        }
+
+        void sum()
+        {
+            std::cout<<"sum = "<<my_protected + my_public<<std::endl;
+        }
+            
+        ~Derived(){
+            std::cout<<"Derived Destructor!"<<std::endl;
+        }
+        
 };
 
 int main()
 {
 
-    Golden dog1;
-    dog1.Brak();
+    Derived d;
+
+    d.sum();
+// std::cout<<"Dmy_protected = "<< d.my_pr<<  std::endl;
 
 
     return 0;
