@@ -6,7 +6,7 @@
 #    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/29 19:37:08 by hben-laz          #+#    #+#              #
-#    Updated: 2024/11/30 15:42:10 by hben-laz         ###   ########.fr        #
+#    Updated: 2024/11/30 16:47:36 by hben-laz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 rm = rm -f
 
-SRC = main.cpp ClapTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp 
 
 OBJ = $(SRC:.cpp=.o)
 

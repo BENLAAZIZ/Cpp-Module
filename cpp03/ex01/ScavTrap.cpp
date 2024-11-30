@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 15:43:30 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/30 16:42:32 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:22:12 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,37 @@
 
 ScavTrap::ScavTrap()
 {
-    std::cout<<" Default Constructor Called ."<<std::endl;
+    std::cout<<"Constructor" << this->Name << "Called ."<<std::endl;
     this->Name = "Default";
     this->hit_points = 100;
     this->energy_points = 50 ;
     this->attack_damage = 20;
 }
 
-ScavTrap::ScavTrap(std::string _name)
+ScavTrap::ScavTrap(const std::string& _name) : ClapTrap(_name)
 {
-    std::cout<<" Default Constructor Called ."<<std::endl;
-    this->Name = _name;
+    std::cout<<"Constructor " << this->Name << " Called ."<<std::endl;
     this->hit_points = 100;
     this->energy_points = 50 ;
     this->attack_damage = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& obj)
+ScavTrap::ScavTrap(const ScavTrap& obj) : ClapTrap(obj)
 {
-    std::cout<<" Copy Constructor Called ."<<std::endl;
-    this->Name = obj.Name;
-    this->hit_points = obj.hit_points;
-    this->energy_points = obj.energy_points;
-    this->attack_damage = obj.attack_damage;
+    std::cout<<"Copy ScavTrap Constructor "<< this->Name <<" Called ."<<std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& obj)
 {
      std::cout<<"Copy Assignation operator called"<<std::endl;
-         if (this != &obj)
-    {
-        this->Name = obj.Name;
-        this->hit_points = obj.hit_points;
-        this->energy_points = obj.energy_points;
-        this->attack_damage = obj.attack_damage;
-    }
+    if (this != &obj)
+        ClapTrap::operator=(obj);
     return *this;
 }
 
 ScavTrap::~ScavTrap()
 {
-    std::cout<<" Destructor Constructor Called ."<<std::endl;
+    std::cout<<"ScavTrap Destructor " << this->Name << " Called ."<<std::endl;
 }
 
 
