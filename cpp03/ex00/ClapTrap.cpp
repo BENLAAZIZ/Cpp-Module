@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:29 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/29 02:25:20 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/30 14:06:24 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,44 @@
 
 ClapTrap::ClapTrap()
 {
-    
+    this->Name = "Default";
+    this->hit_points = 10;
+    this->energy_points = 10 ;
+    this->attack_damage = 0;
+    std::cout<<"Default Constuctor Called"<<std::endl;
 }
 
 
 
 ClapTrap::ClapTrap(std::string _name)
 {
-    Name = _name;
-    hit_points = 10;
-    energy_points = 10 ;
-    attack_damage = 0;
+    this->Name = _name;
+    this->hit_points = 10;
+    this->energy_points = 10 ;
+    this->attack_damage = 0;
+    std::cout<<"Constuctor Called with param"<<std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& obj)
 {
+    std::cout<<"Copy Constuctor Called"<<std::endl;
     this->Name = obj.Name;
     this->hit_points = obj.hit_points;
     this->energy_points = obj.energy_points;
     this->attack_damage = obj.attack_damage;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
+{
+    std::cout<<"Copy Assignation operator called"<<std::endl;
+    if (this != &obj)
+    {
+        this->Name = obj.Name;
+        this->hit_points = obj.hit_points;
+        this->energy_points = obj.energy_points;
+        this->attack_damage = obj.attack_damage;
+    }
+    return *this;
 }
 
 ClapTrap::~ClapTrap()
@@ -42,59 +61,63 @@ ClapTrap::~ClapTrap()
 
 void    ClapTrap::attack(const std::string& target)
 {
-    if (hit_points == 0 || energy_points == 0)
+    if (this->hit_points == 0 || energy_points == 0)
     {
         std::cout<< this->Name << "cannot attack"<<std::endl;
         return ;
     }
     std::cout << "ClapTrap " << this->Name << " attacks " << target << ", causing ";
-            std::cout << attack_damage << " points of damage!" << std::endl;
+            std::cout << this->attack_damage << " points of damage!" << std::endl;
     this->energy_points--;
 }
 
 void    ClapTrap::takeDamage(unsigned int amount)
 {
-    if (hit_points == 0) {
-        std::cout << Name << " has no hit points left!" << std::endl;
+    if (this->hit_points == 0) {
+        std::cout << this->Name << " has no hit points left!" << std::endl;
         return;
     }
-    if (amount >= hit_points) {
-        hit_points = 0;
-        std::cout << Name << " took " << amount << " points of damage and is now out of hit points!" << std::endl;
+    if (amount >= this->hit_points) {
+        this->hit_points = 0;
+        std::cout << this->Name << " took " 
+                    << amount << " points of damage and is now out of hit points!" 
+                    << std::endl;
     }
     else {
-        hit_points -= amount;
-        std::cout << Name << " took " << amount << " points of damage and now has " << hit_points << " hit points left." << std::endl;
-    }
+        this->hit_points -= amount;
+        std::cout << this->Name << " took " 
+                  << amount << " points of damage and now has " 
+                  << this->hit_points << " hit points left." << std::endl;
+        }
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)
 {
-    if (energy_points == 0) {
-        std::cout << Name << " has no energy left to repair!" << std::endl;
+    if (this->energy_points == 0) {
+        std::cout << this->Name << " has no energy left to repair!" << std::endl;
         return;
     }
-    energy_points--;
-    hit_points += amount;
-    std::cout << Name << " repaired itself for " << amount ;
-    std::cout<< " hit points and now has " << hit_points << " hit points." << std::endl;
+    this->energy_points--;
+    this->hit_points += amount;
+    std::cout << this->Name << " repaired itself for " << amount ;
+    std::cout<< " hit points and now has " << this->hit_points << " hit points." << std::endl;
 }
 
 //-------------------------------------------------------------
 
 std::string ClapTrap::getName() const
 {
-    return Name;
+    return this->Name;
 }
 
 unsigned int ClapTrap::getHitPoints() const
 {
-    return hit_points;
+    return this->hit_points;
 }
 
 unsigned int ClapTrap::getEnergyPoints() const
 {
-    return energy_points;
+    return this->energy_points;
 }
 
 unsigned int ClapTrap::getAttackDamage() const

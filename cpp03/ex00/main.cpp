@@ -6,16 +6,23 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:33:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/29 01:42:45 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/30 14:08:28 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "ClapTrap.hpp"
 
 
 int main()
 {
+    ClapTrap a("Player");
 
+    a.attack("target1");
 
+    a.takeDamage(5);
+    
+    a.beRepaired(5);
+    
+    
     return 0;
 }

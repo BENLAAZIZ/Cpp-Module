@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:42 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/29 01:56:11 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/11/30 14:06:16 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class ClapTrap
         ClapTrap();
         ClapTrap(std::string _name);
         ClapTrap(const ClapTrap& obj);
+        ClapTrap& operator=(const ClapTrap& obj);
         ~ClapTrap();
 
         void attack(const std::string& target);
