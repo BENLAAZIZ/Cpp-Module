@@ -32,10 +32,7 @@ int	main(void)
         if (cmd == "EXIT")
             break ;
         else if (cmd == "ADD")
-        {
-            std::cout<<"add"<<std::endl;
             phonebook.add();
-        }
         else if (cmd == "SEARCH")
             phonebook.search();
         else

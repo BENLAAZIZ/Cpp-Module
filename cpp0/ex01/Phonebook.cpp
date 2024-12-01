@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 23:35:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/15 22:48:44 by hben-laz         ###   ########.fr       */
+/*   Created: 2024/12/01 02:03:57 by hben-laz          #+#    #+#             */
+/*   Updated: 2024/12/01 02:37:32 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void    Phonebook::set_contact(int index, Contact contact)
 
 int Phonebook::check_input(std::string title, int index, int flag)
 {
-     std::string cmd;
-     int i = 0;
-     int alpha = 0;
+     std::string	cmd;
+     int			i = 0;
+     int			alpha = 0;
      
-     std::cout<<title;
+    std::cout<<title;
     my_getline(cmd);
     if(cmd.empty())
     {
@@ -65,7 +65,7 @@ int Phonebook::check_input(std::string title, int index, int flag)
     return (0);
 }
 
-void Phonebook::add()
+void    Phonebook::add()
 {
     std::string cmd;
 
@@ -74,7 +74,7 @@ void Phonebook::add()
         _index = _index % 8;
         this->flag_index = 8;
     }
-    std::cout<<"****** contact      : "<<_index<<" ******"<<std::endl;
+    std::cout<<"****** contact : "<<_index<<" ******"<<std::endl;
     if (check_input("first name     : ", _index, 1))
         return ;
     if (check_input("last name      : ", _index, 2))
@@ -119,10 +119,10 @@ void   Phonebook::display_contact(int flag, int index)
     int end;
 
     i = 0;
-    if (flag_index > 0)
-        end = flag_index;
+    if (this->flag_index > 0)
+        end = this->flag_index;
     else
-        end = _index;
+        end = this->_index;
     while (i < end)
     {
         if (i == index && flag) {
@@ -145,25 +145,27 @@ void   Phonebook::display_contact(int flag, int index)
 
 void	Phonebook::search()
 {
-    std::string cmd;
+	std::string	cmd;
+	int			index;
 
     if (contacts[0].get_first_name().empty())
         std::cout<<"nothing found !"<<std::endl;
-    else {
-        int index;
+    else 
+	{
         display_contact(0, -1);
         std::cout << "enter index : ";
         my_getline(cmd);
         if (cmd.length() > 1 || !std::isdigit(cmd.front()))
             std::cout << "index out of range : " << "0 <= index < 8" << std::endl;
-        else {
+        else 
+		{
             index = cmd.front() - '0';
             if (index >= 8)
             {
                 std::cout << "index out of range : " << "0 <= index < 8" << std::endl;
                 return ;
             }
-            if (index >= _index)
+            if (index > this->_index && index > this->flag_index)
             {
                 std::cout << "contact[" <<index<<"] not exits !!" << std::endl;
                 return ;
