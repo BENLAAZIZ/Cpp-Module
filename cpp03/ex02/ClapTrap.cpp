@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:29 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/30 17:26:26 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:42:19 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ ClapTrap::ClapTrap()
     this->attack_damage = 0;
     std::cout<<"ClapTrap Constuctor "<< this->Name<<" Called"<<std::endl;
 }
-
 
 
 ClapTrap::ClapTrap(std::string _name)
