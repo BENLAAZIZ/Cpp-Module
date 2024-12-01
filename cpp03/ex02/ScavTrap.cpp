@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 15:43:30 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/30 17:36:45 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:10:02 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ScavTrap::ScavTrap()
 {
-    std::cout<<"Constructor" << this->Name << "Called ."<<std::endl;
+    std::cout<<"Constructor " << this->Name << " Called ."<<std::endl;
     this->Name = "Default";
     this->hit_points = 100;
     this->energy_points = 50 ;
