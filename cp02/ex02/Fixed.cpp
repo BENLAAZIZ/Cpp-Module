@@ -13,11 +13,10 @@
 #include "Fixed.hpp"
 
 
-int const Fixed::fractional = 8;
+const int Fixed::fractional = 8;
 
 Fixed::Fixed()
 {
-    // std::cout<<"Default constructor called"<<std::endl;
     this->fixed = 0;
 }
 
@@ -33,11 +32,9 @@ Fixed::Fixed(const float f)
     this->fixed = f * (1 << fractional);
 }
 
-Fixed::Fixed(const Fixed& obj)
-{
-    // std::cout<<"Copy constructor called"<<std::endl;
-    if (this != &obj)
-        this->fixed = obj.fixed;
+Fixed::Fixed(const Fixed& obj) { 
+    // this->fixed = obj.fixed;
+    *this = obj;
 }
 
 Fixed& Fixed::operator=(const Fixed& obj)
@@ -50,7 +47,6 @@ Fixed& Fixed::operator=(const Fixed& obj)
 
 Fixed::~Fixed()
 {
-    // std::cout<<"Destructor called"<<std::endl;
 }
 
 
@@ -61,7 +57,7 @@ int Fixed::toInt( void ) const
 
 float Fixed::toFloat( void ) const
 {
-    return (this->fixed / (1 << 8));
+    return (this->fixed / (1 << fractional));
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj)
@@ -123,19 +119,19 @@ bool Fixed::operator!=(const Fixed& obj) const
 
 Fixed Fixed::operator+(const Fixed& obj) const
 {
-    Fixed *res = new Fixed();
+    Fixed res;
 
-    res->fixed = this->fixed + obj.fixed;
-    return *res;
+    res.fixed = this->fixed + obj.fixed;
+    return res;
 }
 
 
 Fixed Fixed::operator-(const Fixed& obj) const
 {
-     Fixed *res = new Fixed();
+     Fixed res;
     
-    res->fixed = this->fixed - obj.fixed;
-    return *res;
+    res.fixed = (this->fixed - obj.fixed);
+    return res;
 }
 
 Fixed Fixed::operator*(const Fixed& obj) const
@@ -148,10 +144,10 @@ Fixed Fixed::operator*(const Fixed& obj) const
 
 Fixed Fixed::operator/(const Fixed& obj) const
 {
-     Fixed *res = new Fixed();
+     Fixed res;
     
-    res->fixed = this->fixed / obj.fixed;
-    return *res;
+    res.fixed = this->fixed / obj.fixed;
+    return res;
 }
 
 
