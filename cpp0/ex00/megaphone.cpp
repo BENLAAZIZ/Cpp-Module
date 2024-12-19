@@ -15,7 +15,6 @@
 int	main(int ac, char **av)
 {
 	int		i;
-	char	c;
 	std::string str;
 
 	i = 1;
@@ -24,7 +23,7 @@ int	main(int ac, char **av)
 		while (av[i])
 		{
 			str = av[i];
-			for (int i = 0; i < str.size(); i++)
+			for (int i = 0; i < (int)str.size(); i++)
 				std::cout << (char)toupper(str[i]);
 			if (av[i + 1])
 				std::cout << " ";
