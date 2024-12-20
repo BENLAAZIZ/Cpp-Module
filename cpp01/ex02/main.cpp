@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 22:22:37 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/15 22:30:49 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/20 01:20:14 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int main()
 {
     std::string str = "HI THIS IS BRAIN";
-    std::string &stringREF = str;
     std::string *stringPTR;
+    std::string &stringREF = str;
     
     stringPTR = &str;
 
