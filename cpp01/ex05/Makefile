@@ -6,11 +6,11 @@
 #    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/17 00:19:59 by hben-laz          #+#    #+#              #
-#    Updated: 2024/11/17 01:52:52 by hben-laz         ###   ########.fr        #
+#    Updated: 2024/12/21 01:35:13 by hben-laz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex05
+NAME = harlFilter
 
 CC = c++
 
@@ -27,6 +27,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.cpp Harl.hpp
+		 $(CC) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)

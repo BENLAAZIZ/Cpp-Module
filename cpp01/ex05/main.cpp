@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 00:20:41 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/18 00:44:48 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/20 23:45:29 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
     
     std::getline(std::cin, str);
     if (std::cin.eof())
-        return 1;
+        return 0;
     if (str != "DEBUG" && str != "INFO" && str != "WARNING" && str != "ERROR")
         std::cout<<"invalid input !!"<<std::endl;
     else

@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 00:21:54 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/18 01:34:21 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/21 01:06:17 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,17 @@ void Harl::complain( std::string level )
     {
         if (level == l[i])
             break ;
-            // (this->*ptr[i])();
     }
-        switch (i)
-        {
+    switch (i)
+    {
         case 0: (this->*ptr[0])();
         case 1: (this->*ptr[1])();
         case 2: (this->*ptr[2])();
         case 3: (this->*ptr[3])();
             break;
-       default:
+        default:
             std::cout<<"I am not sure how tired I am today..."<<std::endl;
-            break;
-        }
+        break;
+    }
     
 }
