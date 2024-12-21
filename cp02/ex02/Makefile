@@ -1,8 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/12/21 17:14:38 by hben-laz          #+#    #+#              #
+#    Updated: 2024/12/21 17:14:39 by hben-laz         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = ex02
 
 CC = c++ 
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
@@ -13,15 +25,16 @@ OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) 
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp Fixed.hpp
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
 
 fclean: clean
+		$(RM) $(NAME)
 
 re: fclean all
 

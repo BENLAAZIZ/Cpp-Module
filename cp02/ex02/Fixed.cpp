@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:54:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/21 02:48:04 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:38:36 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ const int Fixed::fractional = 8;
 
 Fixed::Fixed()
 {
+    // std::cout<<"Default constructor called"<<std::endl;
     this->fixed = 0;
 }
 
@@ -33,7 +34,6 @@ Fixed::Fixed(const float f)
 }
 
 Fixed::Fixed(const Fixed& obj) { 
-    // this->fixed = obj.fixed;
     *this = obj;
 }
 
@@ -47,6 +47,7 @@ Fixed& Fixed::operator=(const Fixed& obj)
 
 Fixed::~Fixed()
 {
+    // std::cout<<"Destructor called"<<std::endl;
 }
 
 
