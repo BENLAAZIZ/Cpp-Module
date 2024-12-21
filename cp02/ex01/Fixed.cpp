@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:54:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/21 02:32:09 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:35:50 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,20 @@ Fixed::Fixed()
 
 Fixed::Fixed(const int i)
 {
-    std::cout<<"Int constructor called"<<std::endl;
+    std::cout << "Int constructor called" << std::endl;
     this->fixed = i << fractional;
 }
 
 Fixed::Fixed(const float f)
 {
     std::cout<<"Float constructor called"<<std::endl;
-    this->fixed = f * (1 << fractional);
+    this->fixed = roundf(f * (1 << fractional));
 }
 
 Fixed::Fixed(const Fixed& obj)
 {
     std::cout<<"Copy constructor called"<<std::endl;
-    if (this != &obj)
-        this->fixed = obj.fixed;
+    *this = obj;
 }
 
 Fixed& Fixed::operator=(const Fixed& obj)
@@ -56,7 +55,7 @@ Fixed::~Fixed()
 
 int Fixed::toInt( void ) const
 {
-    return (fixed / (1 << fractional));
+    return (this->fixed / (1 << fractional));
 }
 
 float Fixed::toFloat( void ) const
@@ -70,6 +69,17 @@ std::ostream& operator<<(std::ostream& os, const Fixed& obj)
     return os;
 }
 
+float Fixed::getRawBits( void ) const
+{
+    std::cout << "getRawBits member function called" << std::endl;
+    return this->fixed;
+}
+
+void Fixed::setRawBits(const float raw )
+{
+    std::cout<<"setRawBits member function called"<<std::endl;
+    this->fixed = raw;
+}
 
     
             
