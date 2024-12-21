@@ -6,17 +6,15 @@
 #    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/29 19:37:08 by hben-laz          #+#    #+#              #
-#    Updated: 2024/11/29 19:39:03 by hben-laz         ###   ########.fr        #
+#    Updated: 2024/12/21 19:39:54 by hben-laz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-
 NAME = ex00
 
-CC = g++ -std=c++98
+CC = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 rm = rm -f
 
@@ -27,15 +25,16 @@ OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp ClapTrap.hpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	$(rm) $(OBJ)
 
 fclean: clean
+	$(rm) $(NAME)
 
 re: fclean all
 

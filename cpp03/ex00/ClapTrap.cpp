@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:29 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/30 14:06:24 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/21 19:49:49 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ ClapTrap::ClapTrap()
     this->hit_points = 10;
     this->energy_points = 10 ;
     this->attack_damage = 0;
-    std::cout<<"Default Constuctor Called"<<std::endl;
 }
-
-
 
 ClapTrap::ClapTrap(std::string _name)
 {
@@ -29,21 +26,15 @@ ClapTrap::ClapTrap(std::string _name)
     this->hit_points = 10;
     this->energy_points = 10 ;
     this->attack_damage = 0;
-    std::cout<<"Constuctor Called with param"<<std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& obj)
 {
-    std::cout<<"Copy Constuctor Called"<<std::endl;
-    this->Name = obj.Name;
-    this->hit_points = obj.hit_points;
-    this->energy_points = obj.energy_points;
-    this->attack_damage = obj.attack_damage;
+    *this = obj;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
 {
-    std::cout<<"Copy Assignation operator called"<<std::endl;
     if (this != &obj)
     {
         this->Name = obj.Name;
@@ -56,7 +47,6 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
 
 ClapTrap::~ClapTrap()
 {
-    std::cout<<"Destroy Called"<<std::endl;
 }
 
 void    ClapTrap::attack(const std::string& target)
@@ -103,7 +93,6 @@ void    ClapTrap::beRepaired(unsigned int amount)
     std::cout<< " hit points and now has " << this->hit_points << " hit points." << std::endl;
 }
 
-//-------------------------------------------------------------
 
 std::string ClapTrap::getName() const
 {

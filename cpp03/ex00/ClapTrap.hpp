@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:42 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/30 14:06:16 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/21 19:40:26 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # include <iostream>
 
-
-
-
 class ClapTrap
 {
     private :
@@ -25,8 +22,6 @@ class ClapTrap
             unsigned int hit_points;
             unsigned int energy_points;
             unsigned int attack_damage;
-    
-
     public :
         ClapTrap();
         ClapTrap(std::string _name);
@@ -42,7 +37,6 @@ class ClapTrap
         unsigned int getHitPoints() const;
         unsigned int getEnergyPoints() const;
         unsigned int getAttackDamage() const;
-    
 };
 
 
