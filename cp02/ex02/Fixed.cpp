@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:54:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/28 02:47:01 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/21 02:48:04 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Fixed::Fixed(const int i)
 Fixed::Fixed(const float f)
 {
     // std::cout<<"Float constructor called"<<std::endl;
-    this->fixed = f * (1 << fractional);
+    this->fixed = roundf(f * (1 << fractional));
 }
 
 Fixed::Fixed(const Fixed& obj) { 
@@ -57,7 +57,7 @@ int Fixed::toInt( void ) const
 
 float Fixed::toFloat( void ) const
 {
-    return (this->fixed / (1 << fractional));
+    return ((float)this->fixed / (1 << fractional));
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj)
@@ -138,7 +138,7 @@ Fixed Fixed::operator*(const Fixed& obj) const
 {
      Fixed res;
     
-    res.fixed = (this->fixed  * obj.fixed);
+    res.fixed = ((this->fixed  * obj.fixed) / (1 << fractional));
     return res;
 }
 
@@ -155,8 +155,10 @@ Fixed Fixed::operator/(const Fixed& obj) const
 
 Fixed& Fixed::operator++()
 {
-    this->fixed += 1;
-    return *this;
+    // ++this->fixed;
+    Fixed& d = *this;
+    d.fixed++;
+    return d;
 }
 
 Fixed Fixed::operator++(int)

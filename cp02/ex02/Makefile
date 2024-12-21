@@ -1,8 +1,8 @@
 NAME = ex02
 
-CC = g++ -std=c++98
+CC = c++ 
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
@@ -12,10 +12,10 @@ OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) Fixed.hpp
+$(NAME): $(OBJ) 
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp %.hpp
+%.o: %.cpp Fixed.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
@@ -24,6 +24,5 @@ clean:
 fclean: clean
 
 re: fclean all
-
 
 .PHONY: all clean fclean re
