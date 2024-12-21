@@ -1,8 +1,20 @@
-NAME = a.out
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/12/21 16:06:07 by hben-laz          #+#    #+#              #
+#    Updated: 2024/12/21 16:06:08 by hben-laz         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = ex00
 
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
@@ -13,10 +25,10 @@ OBJ = $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp Fixed.hpp
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
