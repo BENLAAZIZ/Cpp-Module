@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:29 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/30 17:26:26 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/21 23:29:40 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ ClapTrap::ClapTrap()
     this->hit_points = 10;
     this->energy_points = 10 ;
     this->attack_damage = 0;
-    std::cout<<"ClapTrap Constuctor "<< this->Name<<" Called"<<std::endl;
+    std::cout<<"ClapTrap Default Constuctor Called ."<<std::endl;
 }
-
-
 
 ClapTrap::ClapTrap(std::string _name)
 {
@@ -29,16 +27,13 @@ ClapTrap::ClapTrap(std::string _name)
     this->hit_points = 10;
     this->energy_points = 10 ;
     this->attack_damage = 0;
-    std::cout<<"ClapTrap Constuctor " << this->Name << " Called ."<<std::endl;
+    std::cout<<"ClapTrap Constuctor Called ."<<std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& obj)
 {
-    std::cout<<"Copy Constuctor " << this->Name << " Called"<<std::endl;
-    this->Name = obj.Name;
-    this->hit_points = obj.hit_points;
-    this->energy_points = obj.energy_points;
-    this->attack_damage = obj.attack_damage;
+    std::cout<<"Copy Constuctor called"<<std::endl;
+    *this = obj;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
@@ -56,14 +51,14 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
 
 ClapTrap::~ClapTrap()
 {
-    std::cout<<"ClapTrap Destroy " << this->Name << " Called"<<std::endl;
+    std::cout<<"ClapTrap Destructor Called ."<<std::endl;
 }
 
 void    ClapTrap::attack(const std::string& target)
 {
     if (this->hit_points == 0 || energy_points == 0)
     {
-        std::cout<< this->Name << "cannot attack"<<std::endl;
+        std::cout<< this->Name << " cannot attack"<<std::endl;
         return ;
     }
     std::cout << "ClapTrap " << this->Name << " attacks " << target << ", causing ";
@@ -102,8 +97,6 @@ void    ClapTrap::beRepaired(unsigned int amount)
     std::cout << this->Name << " repaired itself for " << amount ;
     std::cout<< " hit points and now has " << this->hit_points << " hit points." << std::endl;
 }
-
-//-------------------------------------------------------------
 
 std::string ClapTrap::getName() const
 {
