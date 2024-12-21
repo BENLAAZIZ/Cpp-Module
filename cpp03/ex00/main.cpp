@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:33:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/21 19:39:58 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/21 22:38:13 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main()
     ClapTrap a("Player");
 
     a.attack("target1");
-
+    
     a.takeDamage(5);
     
     a.beRepaired(5);

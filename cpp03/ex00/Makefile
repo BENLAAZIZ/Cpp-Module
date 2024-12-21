@@ -6,7 +6,7 @@
 #    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/29 19:37:08 by hben-laz          #+#    #+#              #
-#    Updated: 2024/12/21 19:39:54 by hben-laz         ###   ########.fr        #
+#    Updated: 2024/12/21 22:48:16 by hben-laz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,5 +39,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-	

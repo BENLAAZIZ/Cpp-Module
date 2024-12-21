@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:29 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/21 19:49:49 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/21 22:49:43 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 ClapTrap::ClapTrap()
 {
+    std::cout << "ClapTrap Default constructor called" << std::endl;
     this->Name = "Default";
     this->hit_points = 10;
     this->energy_points = 10 ;
@@ -22,19 +23,22 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string _name)
 {
+    std::cout << "ClapTrap constructor called" << std::endl;
     this->Name = _name;
-    this->hit_points = 10;
-    this->energy_points = 10 ;
+    this->hit_points = 5;
+    this->energy_points = 5 ;
     this->attack_damage = 0;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& obj)
 {
+    std::cout << "ClapTrap copy constructor called" << std::endl;
     *this = obj;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
 {
+    std::cout << "ClapTrap Assignation operator called" << std::endl;
     if (this != &obj)
     {
         this->Name = obj.Name;
@@ -47,13 +51,14 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
 
 ClapTrap::~ClapTrap()
 {
+    std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
-void    ClapTrap::attack(const std::string& target)
+void	ClapTrap::attack(const std::string& target)
 {
     if (this->hit_points == 0 || energy_points == 0)
     {
-        std::cout<< this->Name << "cannot attack"<<std::endl;
+        std::cout<< this->Name << " cannot attack"<<std::endl;
         return ;
     }
     std::cout << "ClapTrap " << this->Name << " attacks " << target << ", causing ";
@@ -94,23 +99,23 @@ void    ClapTrap::beRepaired(unsigned int amount)
 }
 
 
-std::string ClapTrap::getName() const
-{
-    return this->Name;
-}
+// std::string ClapTrap::getName() const
+// {
+//     return this->Name;
+// }
 
-unsigned int ClapTrap::getHitPoints() const
-{
-    return this->hit_points;
-}
+// unsigned int ClapTrap::getHitPoints() const
+// {
+//     return this->hit_points;
+// }
 
-unsigned int ClapTrap::getEnergyPoints() const
-{
-    return this->energy_points;
-}
+// unsigned int ClapTrap::getEnergyPoints() const
+// {
+//     return this->energy_points;
+// }
 
-unsigned int ClapTrap::getAttackDamage() const
-{
-    return attack_damage;
-}
+// unsigned int ClapTrap::getAttackDamage() const
+// {
+//     return attack_damage;
+// }
 
