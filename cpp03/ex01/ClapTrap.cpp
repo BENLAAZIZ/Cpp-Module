@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:29 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/21 23:29:40 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/22 00:08:55 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ ClapTrap::ClapTrap(std::string _name)
 
 ClapTrap::ClapTrap(const ClapTrap& obj)
 {
-    std::cout<<"Copy Constuctor called"<<std::endl;
+    std::cout<<"ClapTrap Copy Constuctor called"<<std::endl;
     *this = obj;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
 {
-    std::cout<<"Copy Assignation operator called"<<std::endl;
+    std::cout<<"ClapTrap Copy Assignation operator called"<<std::endl;
     if (this != &obj)
     {
         this->Name = obj.Name;

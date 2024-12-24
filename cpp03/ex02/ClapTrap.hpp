@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:42 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/01 01:37:03 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/21 23:19:26 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define CLAPTRAP_HPP
 
 # include <iostream>
-
-
-
 
 class ClapTrap
 {

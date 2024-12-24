@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:29 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/21 22:49:43 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/22 00:38:34 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,15 @@ ClapTrap::ClapTrap()
     std::cout << "ClapTrap Default constructor called" << std::endl;
     this->Name = "Default";
     this->hit_points = 10;
-    this->energy_points = 10 ;
+    this->energy_points = 10;
     this->attack_damage = 0;
 }
 
-ClapTrap::ClapTrap(std::string _name)
+ClapTrap::ClapTrap(std::string _name) : Name(_name)
 {
     std::cout << "ClapTrap constructor called" << std::endl;
-    this->Name = _name;
-    this->hit_points = 5;
-    this->energy_points = 5 ;
+    this->hit_points = 10;
+    this->energy_points = 10;
     this->attack_damage = 0;
 }
 
@@ -83,7 +82,7 @@ void    ClapTrap::takeDamage(unsigned int amount)
         std::cout << this->Name << " took " 
                   << amount << " points of damage and now has " 
                   << this->hit_points << " hit points left." << std::endl;
-        }
+    }
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)
@@ -99,23 +98,23 @@ void    ClapTrap::beRepaired(unsigned int amount)
 }
 
 
-// std::string ClapTrap::getName() const
-// {
-//     return this->Name;
-// }
+std::string ClapTrap::getName() const
+{
+    return this->Name;
+}
 
-// unsigned int ClapTrap::getHitPoints() const
-// {
-//     return this->hit_points;
-// }
+unsigned int ClapTrap::getHitPoints() const
+{
+    return this->hit_points;
+}
 
-// unsigned int ClapTrap::getEnergyPoints() const
-// {
-//     return this->energy_points;
-// }
+unsigned int ClapTrap::getEnergyPoints() const
+{
+    return this->energy_points;
+}
 
-// unsigned int ClapTrap::getAttackDamage() const
-// {
-//     return attack_damage;
-// }
+unsigned int ClapTrap::getAttackDamage() const
+{
+    return attack_damage;
+}
 

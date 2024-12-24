@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:33:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/30 17:18:21 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/22 00:17:54 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,17 @@ int main()
     std::cout << "\n--- Creating ScavTrap ---\n";
     ScavTrap scav("Scavvy");
 
-    std::cout <<"\n************* Creating Copy constructor\n";
+    std::cout <<"\n************* Creating Copy constructor ClapTrap\n";
 
     ClapTrap h(clap);
     h.attack("vectim");
 
+std::cout <<"\n************* Creating Copy constructor ScavTrap\n";
     ScavTrap t(scav);
-
-    std::cout << "\n--- Testing ClapTrap ---\n";
+    t.attack("vectim2");
+    t.guardGate();
+std::cout <<"\n**************************************\n";
+    // std::cout << "\n--- Testing ClapTrap ---\n";
     // clap.attack("Enemy");
     // clap.takeDamage(5);
     // clap.beRepaired(3);

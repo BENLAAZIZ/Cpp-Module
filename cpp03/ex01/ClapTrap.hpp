@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:34:42 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/21 23:20:27 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/22 00:33:21 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 class ClapTrap
 {
     protected :
-            std::string Name;
-            unsigned int hit_points;
-            unsigned int energy_points;
-            unsigned int attack_damage;
+        std::string Name;
+        unsigned int hit_points;
+        unsigned int energy_points;
+        unsigned int attack_damage;
     public :
         ClapTrap();
         ClapTrap(std::string _name);
