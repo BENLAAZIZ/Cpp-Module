@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   file.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 00:20:41 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/24 23:09:24 by hben-laz         ###   ########.fr       */
+/*   Created: 2024/12/24 23:04:48 by hben-laz          #+#    #+#             */
+/*   Updated: 2024/12/24 23:06:01 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef FILE_HPP
+# define FILE_HPP
 
-int main()
-{
+# include <iostream>
+# include <fstream>
 
-    Harl harl;
-    std::string str;
-    std::cout<<"enter one of : < DEBUG, INFO, WARNING, ERROR > :";
-    
-    std::getline(std::cin, str);
-    if (std::cin.eof())
-        return 1;
-    if (str != "DEBUG" && str != "INFO" && str != "WARNING" && str != "ERROR")
-        std::cout<<"invalid input !!"<<std::endl;
-    else
-        harl.complain(str);
-    return 0;
-}   
+int handel_file(std::string filename, std::ifstream &inf, std::ofstream &outf);
+
+void put_change(std::string line, std::string s1, std::string s2, std::ifstream &inf, std::ofstream &outf);
+
+#endif
