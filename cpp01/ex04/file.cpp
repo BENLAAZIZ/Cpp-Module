@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 23:04:34 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/24 23:07:49 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:58:37 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void put_change(std::string line, std::string s1, std::string s2, std::ifstream 
         }
         while ((pos = line.find(s1, pos)) != std::string::npos)
         {
+            if (s1.length() == 0) {
+                break ;
+            }
             line.erase(pos, s1.length());
             if (!s2.empty())
                 line.insert(pos, s2);

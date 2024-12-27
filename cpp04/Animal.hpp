@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 23:31:25 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/24 23:47:38 by hben-laz         ###   ########.fr       */
+/*   Created: 2024/12/27 01:56:32 by hben-laz          #+#    #+#             */
+/*   Updated: 2024/12/27 02:07:25 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ class  Animal
         ~Animal();
         Animal(const Animal& obj);
         Animal& operator=(const Animal& obj);
+        virtual void makeSound();
+        std::string getType() const;
+        void setType(std::string type);
 };
 
 #endif

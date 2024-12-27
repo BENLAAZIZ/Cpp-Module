@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 01:56:26 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/27 02:15:36 by hben-laz         ###   ########.fr       */
+/*   Created: 2024/12/24 23:34:54 by hben-laz          #+#    #+#             */
+/*   Updated: 2024/12/25 00:19:21 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 Animal::Animal()
 {
-    this->type = "Animal";
-    // std::cout << "Default Constructor is caled " << std::endl;
+    this->type = "default";
+    std::cout << "Default Constructor is caled " << std::endl;
 }
 
 Animal::~Animal()
 {
-    // std::cout << "Destructor is caled " << std::endl;
+    std::cout << "Destructor is caled " << std::endl;
 }
 
 Animal::Animal(const Animal& obj)
 {
     *this = obj;
-    // std::cout << " Copy Constructor is caled " << std::endl;
+    std::cout << " Copy Constructor is caled " << std::endl;
 }
 
 Animal& Animal::operator=(const Animal& obj)
 {
     if (this != &obj)
         this->type = obj.type;
-    // std::cout << " Copy Assignment Operator is caled " << std::endl;
+    std::cout << " Copy Assignment Operator is caled " << std::endl;
 }
 
 std::string Animal::getType() const
@@ -46,7 +46,7 @@ void Animal::setType(std::string type)
     this->type = type;
 }
 
-void Animal::makeSound()
+void Animal::makeSound() const
 {
-    std::cout << "Animals make different sounds." << std::endl;
+    std::cout << "Animal Sound" << std::endl;
 }
