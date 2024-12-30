@@ -6,13 +6,14 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 22:48:15 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/11/14 00:10:14 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:49:36 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main() {
+int main()
+{
     Zombie* zombie = newZombie("Foo");
     zombie->announce();
 

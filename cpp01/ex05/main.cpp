@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 00:20:41 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/20 23:45:29 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/26 17:20:39 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int main()
 {
-
     Harl harl;
     std::string str;
     std::cout<<"enter one of : < DEBUG, INFO, WARNING, ERROR > :";
@@ -23,7 +22,7 @@ int main()
     if (std::cin.eof())
         return 0;
     if (str != "DEBUG" && str != "INFO" && str != "WARNING" && str != "ERROR")
-        std::cout<<"invalid input !!"<<std::endl;
+        std::cout << "invalid input !!" << std::endl;
     else
         harl.complain(str);
     return 0;

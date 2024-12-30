@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 01:10:18 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/26 19:58:28 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/24 23:09:00 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(int ac, char **av)
     
     if (handel_file(filename, inf, outf))
         return 1;
-    put_change(line, NULL, s2, inf, outf);
+    put_change(line, s1, s2, inf, outf);
     inf.close();
     outf.close();
     return 0;
