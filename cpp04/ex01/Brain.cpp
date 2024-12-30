@@ -1,34 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/25 00:13:55 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/30 02:53:09 by hben-laz         ###   ########.fr       */
+/*   Created: 2024/12/30 02:41:21 by hben-laz          #+#    #+#             */
+/*   Updated: 2024/12/30 02:41:22 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Dog_HPP
-#define Dog_HPP
-
-# include <iostream>
-# include "Animal.hpp"
-# include "Brain.hpp"
-
-class  Dog : public Animal, public Brain{
-	private:
-		std::string type;
-		Brain* attribute;
-	public:
-		Dog();
-		~Dog();
-		Dog(const Dog& obj);
-		Dog& operator=(const Dog& obj);
-		void makeSound() const;
-		std::string getType() const;
-		void setType(std::string type);
-};
-
-#endif
