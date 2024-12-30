@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 01:38:21 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/20 17:47:39 by hben-laz         ###   ########.fr       */
+/*   Created: 2024/12/28 13:23:05 by hben-laz          #+#    #+#             */
+/*   Updated: 2024/12/28 23:07:30 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,51 @@
 # define FIXED_HPP
 
 # include <iostream>
+# include <cmath>
 
-class Fixed
+class Fixed 
 {
-    private :
-            int rawBits;
-            static int const fractional;
-    public :
-            Fixed();
-            Fixed(const int a);
-            Fixed(const float a);
-            Fixed(const Fixed& copy);
-            Fixed& operator= (const Fixed& copy);
-            ~Fixed();
-            int toInt( void ) const;
-            float toFloat( void ) const;
-            void setInt(int nbr);
+	private :
+		int fixed;
+		static const int fractional;
+	public :
+		Fixed();
+		Fixed(const int i);
+		Fixed(const float f);
+		Fixed(const Fixed& obj);
+		Fixed& operator=(const Fixed& obj);
+		~Fixed();
+		float getRawBits( void ) const;
+		void setRawBits(const float raw);
+
+		float toFloat( void ) const;
+		int toInt( void ) const;
+
+
+		bool operator>(const Fixed& obj) const;
+		bool operator<(const Fixed& obj) const;
+		bool operator>=(const Fixed& obj) const;
+		bool operator<=(const Fixed& obj) const;
+		bool operator==(const Fixed& obj) const;
+		bool operator!=(const Fixed& obj) const;
+
+		Fixed operator+(const Fixed& obj) const;
+		Fixed operator-(const Fixed& obj) const;
+		Fixed operator*(const Fixed& obj) const;
+		Fixed operator/(const Fixed& obj) const; 
+
+		Fixed& operator++();
+		Fixed operator++(int);
+
+		Fixed& operator--();
+		Fixed operator--(int);
+
+		static Fixed& min(Fixed& obj1, Fixed& obj2);
+		static const Fixed& min(const Fixed& obj1, const Fixed& obj2);
+
+		static Fixed& max(Fixed& obj1, Fixed& obj2);
+		static const Fixed& max(const Fixed& obj1, const Fixed& obj2);
 };
 
-
-std::ostream& operator<<(std::ostream& out, const Fixed& obj);
-
-        bool operator<(const Fixed& obj, const Fixed& obj2);
-
-
-        bool operator>(const Fixed& obj, const Fixed& obj2);
-
-
-        bool operator<=(const Fixed& obj, const Fixed& obj2);
-
-
-        bool operator>=(const Fixed& obj, const Fixed& obj2);
-
+std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 #endif

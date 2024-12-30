@@ -5,52 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 01:39:30 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/20 17:39:11 by hben-laz         ###   ########.fr       */
+/*   Created: 2024/12/28 13:23:51 by hben-laz          #+#    #+#             */
+/*   Updated: 2024/12/29 00:45:39 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Fixed.hpp"
 
-
-int const Fixed::fractional = 8;
-
+const int Fixed::fractional = 8;
 
 Fixed::Fixed()
 {
-    std::cout<<"Default constructor called"<<std::endl;
-    this->rawBits = 0;
+	this->fixed = 0;
+	std::cout << "Default constructor called" << std::endl;
 }
 
-
-Fixed::Fixed(const Fixed& copy) 
+Fixed::Fixed(const Fixed& obj)
 {
-    std::cout<<"Copy constructor called"<<std::endl;
-        this->rawBits = copy.rawBits;
+	std::cout << "Copy constructor called" << std::endl;
+	*this = obj;
 }
 
-
-Fixed& Fixed::operator=(const Fixed& copy)
+Fixed&	Fixed::operator=(const Fixed& obj)
 {
-    std::cout<<"Copy assignment operator called"<<std::endl;
-    if (this != &copy)
-        this->rawBits = copy.rawBits;
-    return (*this);
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &obj)
+		this->fixed = obj.getRawBits();
+	return *this;
 }
 
 Fixed::~Fixed()
 {
-    std::cout<<"Destructor called"<<std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
-int Fixed::getRawBits( void ) const
+int	Fixed::getRawBits( void ) const
 {
-    std::cout<<"getRawBits member function called"<<std::endl;
-    return (this->rawBits);
+	std::cout << "getRawBits member function called" << std::endl;
+	return this->fixed;
 }
 
-void Fixed::setRawBits( int const raw )
+void	Fixed::setRawBits( int const raw )
 {
-    this->rawBits = raw;
+	this->fixed = raw;
 }

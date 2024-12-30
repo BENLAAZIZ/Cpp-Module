@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/17 00:19:59 by hben-laz          #+#    #+#              #
-#    Updated: 2024/11/24 02:04:07 by hben-laz         ###   ########.fr        #
+#    Created: 2024/12/21 16:06:07 by hben-laz          #+#    #+#              #
+#    Updated: 2024/12/28 09:58:47 by hben-laz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,11 @@ NAME = ex00
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRC =  main.cpp Fixed.cpp
-
+SRC = main.cpp Fixed.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -28,12 +27,15 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
+%.o: %.cpp Fixed.hpp
+	$(CC) $(CPPFLAGS) -c $< -o $@
+
 clean:
 	$(RM) $(OBJ)
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
 .PHONY: all clean fclean re
