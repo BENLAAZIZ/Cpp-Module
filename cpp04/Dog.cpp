@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 00:13:46 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/27 02:20:54 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/30 02:07:49 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ Dog& Dog::operator=(const Dog& obj)
     if (this != &obj)
         this->type = obj.type;
     // std::cout << " Copy Assignment Operator is caled " << std::endl;
+    return *this;
 }
 
 std::string Dog::getType() const
@@ -47,7 +48,7 @@ void Dog::setType(std::string type)
 }
 
 
-void Dog::makeSound()
+void Dog::makeSound() const
 {
     std::cout << "The dog's voice is hoo hoo." << std::endl;
 }

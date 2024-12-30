@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 01:56:26 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/30 02:13:59 by hben-laz         ###   ########.fr       */
+/*   Created: 2024/12/30 02:22:04 by hben-laz          #+#    #+#             */
+/*   Updated: 2024/12/30 02:24:32 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongCat.hpp"
 
-Animal::Animal()
+WrongCat::WrongCat()
 {
-    this->type = "Animal";
-    // std::cout << "Default Animal Constructor is caled " << std::endl;
+    this->type = "WrongCat";
+    // std::cout << "Default WrongCat Constructor is caled " << std::endl;
 }
 
-Animal::~Animal()
+WrongCat::~WrongCat()
 {
-    // std::cout << "Destructor Animal is caled " << std::endl;
+    // std::cout << "Destructor WrongCat is caled " << std::endl;
 }
 
-Animal::Animal(const Animal& obj)
+WrongCat::WrongCat(const WrongCat& obj) : WrongAnimal(obj)
 {
-    *this = obj;
     // std::cout << " Copy Constructor is caled " << std::endl;
+    *this = obj;
 }
 
-Animal& Animal::operator=(const Animal& obj)
+WrongCat& WrongCat::operator=(const WrongCat& obj)
 {
     if (this != &obj)
         this->type = obj.type;
@@ -37,17 +37,17 @@ Animal& Animal::operator=(const Animal& obj)
     return *this;
 }
 
-std::string Animal::getType() const
+std::string WrongCat::getType() const
 {
     return this->type;
 }
 
-void Animal::setType(std::string type)
+void WrongCat::setType(std::string type)
 {
     this->type = type;
 }
 
-void Animal::makeSound() const
+void WrongCat::makeSound() const
 {
-    std::cout << "Animals make different sounds." << std::endl;
+    std::cout << "The Wrongcat's voice is meow." << std::endl;
 }

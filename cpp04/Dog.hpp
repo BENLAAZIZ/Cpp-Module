@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 00:13:55 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/27 02:30:48 by hben-laz         ###   ########.fr       */
+/*   Updated: 2024/12/30 02:04:55 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class  Dog : public Animal
         ~Dog();
         Dog(const Dog& obj);
         Dog& operator=(const Dog& obj);
-        void makeSound();
+        void makeSound() const;
         std::string getType() const;
         void setType(std::string type);
 };
