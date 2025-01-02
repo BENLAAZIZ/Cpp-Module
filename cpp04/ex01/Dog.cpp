@@ -6,51 +6,48 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 00:13:46 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/30 02:07:49 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/03 00:05:18 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog()
+Dog::Dog() : Animal("Dog")
 {
-    this->type = "Dog";
-    // std::cout << "Default Constructor is caled " << std::endl;
+	attribute = new Brain();
+	std::cout << "Dog default constructor called." << std::endl;
 }
 
 Dog::~Dog()
 {
-    // std::cout << "Destructor is caled " << std::endl;
+	delete attribute;
+	std::cout << "Dog destructor called." << std::endl;
 }
 
 Dog::Dog(const Dog& obj) : Animal(obj)
 {
-    *this = obj;
-    // std::cout << " Copy Constructor is caled " << std::endl;
+	attribute = new Brain(*obj.attribute);
+	std::cout << "Dog copy constructor called." << std::endl;
 }
 
 Dog& Dog::operator=(const Dog& obj)
 {
-    if (this != &obj)
-        this->type = obj.type;
-    // std::cout << " Copy Assignment Operator is caled " << std::endl;
-    return *this;
+	if (this != &obj)
+	{
+		Animal::operator=(obj);
+		delete attribute;
+		attribute = new Brain(*obj.attribute);
+	}
+	std::cout << "Dog copy assignment operator called." << std::endl;
+	return *this;
 }
-
-std::string Dog::getType() const
-{
-    return this->type;
-}
-
-void Dog::setType(std::string type)
-{
-    this->type = type;
-}
-
 
 void Dog::makeSound() const
 {
-    std::cout << "The dog's voice is hoo hoo." << std::endl;
+	std::cout << "The Dog's voice is how how !" << std::endl;
 }
 
-
+Brain* Dog::getBrain() const
+{
+	return attribute;
+}

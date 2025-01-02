@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 01:54:01 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/30 02:20:20 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/03 00:07:38 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& obj)
         this->type = obj.type;
     // std::cout << " Copy Assignment Operator is caled " << std::endl;
     return *this;
-}
-
-std::string WrongAnimal::getType() const
-{
-    return this->type;
-}
-
-void WrongAnimal::setType(std::string type)
-{
-    this->type = type;
 }
 
 void WrongAnimal::makeSound() const

@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 02:41:29 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/30 02:43:15 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/03 00:24:45 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ class  Brain
         ~Brain();
         Brain(const Brain& obj);
         Brain& operator=(const Brain& obj);
-        void makeSound() const;
-        std::string getType() const;
-        void setType(std::string type);
+        std::string get_idea(int index) const;
+        void set_idea(int index, const std::string& idea);
 };
 
 #endif

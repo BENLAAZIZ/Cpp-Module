@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 01:38:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/30 02:44:02 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/02 23:34:04 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 
 # include <iostream>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class  Cat : public Animal
 {
     private:
-        std::string type;
-        Brain* attribute
+        Brain* attribute;
     public:
         Cat();
         ~Cat();
         Cat(const Cat& obj);
         Cat& operator=(const Cat& obj);
         void makeSound() const;
-        std::string getType() const;
-        void setType(std::string type);
+        Brain* getBrain() const;
 };
 
 #endif

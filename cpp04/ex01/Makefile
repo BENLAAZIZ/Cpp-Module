@@ -6,29 +6,29 @@
 #    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/27 02:24:59 by hben-laz          #+#    #+#              #
-#    Updated: 2024/12/30 02:26:53 by hben-laz         ###   ########.fr        #
+#    Updated: 2025/01/02 23:13:24 by hben-laz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = ex01
 
-CC = c++ 
+CPP = c++ 
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 rm = rm -f
 
-SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CPP) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp Animal.hpp Dog.hpp Cat.hpp
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.cpp Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
+	$(CPP) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(rm) $(OBJ)
@@ -38,4 +38,4 @@ fclean: clean
 	
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: clean
