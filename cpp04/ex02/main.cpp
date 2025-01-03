@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 02:28:13 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/03 19:48:26 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/03 19:57:47 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ int main()
 	const Animal* j = new Dog();
 	std::cout << i->getType() << " " << std::endl;
 	std::cout << j->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
+	i->makeSound();
 	j->makeSound();
-
-
 
 	delete j;
 	delete i;
