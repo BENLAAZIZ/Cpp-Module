@@ -6,7 +6,7 @@
 #    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/27 02:24:59 by hben-laz          #+#    #+#              #
-#    Updated: 2025/01/02 23:13:24 by hben-laz         ###   ########.fr        #
+#    Updated: 2025/01/03 02:17:33 by hben-laz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 rm = rm -f
 
-SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp  Brain.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

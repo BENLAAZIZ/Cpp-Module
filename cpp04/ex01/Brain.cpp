@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 02:41:21 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/03 00:24:28 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/03 02:28:20 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ Brain& Brain::operator=(const Brain& obj)
 		for(int i=0; i < 100; i++)
 			this->ideas[i] = obj.ideas[i];
 	}
+	std::cout << "Brain copy assignment operator called." << std::endl;
 	return *this;
 }
 
@@ -48,7 +49,6 @@ std::string Brain::get_idea(int index) const
     return "Invalid index";
 }
 
-// Set a specific idea
 void Brain::set_idea(int index, const std::string& idea)
 {
     if (index >= 0 && index < 100)
