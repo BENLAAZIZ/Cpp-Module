@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 01:54:05 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/30 02:21:37 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/02 02:30:53 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class  WrongAnimal
         WrongAnimal& operator=(const WrongAnimal& obj);
         void makeSound() const;
         std::string getType() const;
-        void setType(std::string type);
 };
 
 #endif

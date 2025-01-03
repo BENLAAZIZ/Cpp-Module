@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 01:56:32 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/30 02:18:06 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/02 02:29:08 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 
 class  Animal
 {
-    protected:
-        std::string type;
-    public:
-        Animal();
-        virtual ~Animal();
-        Animal(const Animal& obj);
-        Animal& operator=(const Animal& obj);
-        virtual void makeSound() const;
-        virtual std::string getType() const;
-        void setType(std::string type);
+	protected:
+		std::string type;
+	public:
+		Animal();
+		Animal(std::string type);
+		virtual ~Animal();
+		Animal(const Animal& obj);
+		Animal& operator=(const Animal& obj);
+		virtual void makeSound() const;
+		std::string getType() const;
 };
 
 #endif

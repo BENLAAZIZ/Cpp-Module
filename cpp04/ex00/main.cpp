@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 02:28:13 by hben-laz          #+#    #+#             */
-/*   Updated: 2024/12/30 02:31:10 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/02 02:29:44 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,53 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-int main() {
-  const Animal* meta = new Animal();
-const Animal* j = new Dog();
-const Animal* i = new Cat();
-std::cout << j->getType() << " " << std::endl;
-std::cout << i->getType() << " " << std::endl;
-i->makeSound();
-j->makeSound();
-meta->makeSound();
+void  f()
+{
+	system("leaks ex00");
+}
 
-std::cout << " ----------------------------------- " << std::endl;
+int main()
+{
+		// atexit(f);
+		const Animal* meta = new Animal();
+		const Animal* j = new Dog();
+		const Animal* i = new Cat();
+		// Cat cat;
 
-const WrongAnimal* wrong = new WrongAnimal();
-const WrongAnimal* wrongCat = new WrongCat();
+		// Cat cat2;
 
-std::cout << wrongCat->getType() << " " << std::endl;
-wrongCat->makeSound();
-wrong->makeSound();
+		// cat2 = cat;
 
-    return 0;
+		// std::cout << " +++++++++++++++++++++++++++ " << std::endl;
+		// 	std::cout << cat.getType() << " " << std::endl;
+		// 	std::cout << cat2.getType() << " " << std::endl;
+		// 	cat.makeSound();
+		// 	cat2.makeSound();
+		// std::cout << " +++++++++++++++++++++++++++ " << std::endl;
+
+		std::cout << j->getType() << " " << std::endl;
+
+		std::cout << i->getType() << " " << std::endl;
+
+
+		i->makeSound();
+		j->makeSound();
+		meta->makeSound();
+
+		// std::cout << " ----------------------------------- " << std::endl;
+
+		// const WrongAnimal* wrong = new WrongAnimal();
+		// const WrongAnimal* wrongCat = new WrongCat();
+
+		// std::cout << wrongCat->getType() << " " << std::endl;
+		// wrongCat->makeSound();
+		// wrong->makeSound();
+
+		delete meta;
+		delete j;
+		delete i;
+		// delete wrong;
+		// delete wrongCat;
+
+		return 0;
 }
