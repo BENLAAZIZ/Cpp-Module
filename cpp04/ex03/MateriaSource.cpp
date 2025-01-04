@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 01:38:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/03 16:59:27 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/01/04 01:08:16 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/01/04 01:12:48 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#include "MateriaSource.hpp"
 
-# include <iostream>
-# include "Animal.hpp"
-# include "Brain.hpp"
- 
-class  Cat : public Animal
+MateriaSource::MateriaSource()
 {
-    private:
-        Brain* attribute;
-    public:
-        Cat();
-        ~Cat();
-        Cat(const Cat& obj);
-        Cat& operator=(const Cat& obj);
-        void makeSound() const;
-        Brain* getBrain() const;
-};
+}
 
-#endif
+MateriaSource::MateriaSource(MateriaSource const & other)
+{
+    *this = other;
+}
+
+MateriaSource & MateriaSource::operator=(MateriaSource const & other)
+{
+    if (this != &other)
+    {
+    }
+    return *this;
+}
+
+MateriaSource::~MateriaSource()
+{
+}
+
+

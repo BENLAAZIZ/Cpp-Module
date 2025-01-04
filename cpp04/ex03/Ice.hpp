@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 01:38:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/03 16:59:27 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/01/04 00:25:10 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/01/04 00:42:34 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
-# include <iostream>
-# include "Animal.hpp"
-# include "Brain.hpp"
- 
-class  Cat : public Animal
+
+
+#include <iostream>
+#include "AMateria.hpp"
+
+
+class Ice : public AMateria
 {
-    private:
-        Brain* attribute;
     public:
-        Cat();
-        ~Cat();
-        Cat(const Cat& obj);
-        Cat& operator=(const Cat& obj);
-        void makeSound() const;
-        Brain* getBrain() const;
+        Ice();
+        Ice(std::string const& type);
+        virtual ~Ice();
+        Ice(Ice const& other);
+        Ice& operator=(Ice const& other);
+        std::string const& getType() const;
+        virtual Ice* clone() const = 0;
+        virtual void use(ICharacter& target);
 };
 
 #endif

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 01:38:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/03 16:59:27 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/01/04 01:08:26 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/01/04 01:11:03 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-# include <iostream>
-# include "Animal.hpp"
-# include "Brain.hpp"
- 
-class  Cat : public Animal
+#include <iostream>
+
+#include "AMateria.hpp"
+
+
+
+class MateriaSource
 {
-    private:
-        Brain* attribute;
     public:
-        Cat();
-        ~Cat();
-        Cat(const Cat& obj);
-        Cat& operator=(const Cat& obj);
-        void makeSound() const;
-        Brain* getBrain() const;
+        MateriaSource();
+        MateriaSource(MateriaSource const & other);
+        MateriaSource & operator=(MateriaSource const & other);
+        virtual ~MateriaSource();
+        virtual void learnMateria(AMateria*) = 0;
+        virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
 #endif
