@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 02:28:13 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/03 19:57:47 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/04 17:57:38 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,20 @@ int main()
 {
 	atexit(f);
 
-	const Animal* i = new Cat();
-	const Animal* j = new Dog();
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
+	// const Animal* i = new Cat();
+	// const Animal* j = new Dog();
+	// std::cout << i->getType() << " " << std::endl;
+	// std::cout << j->getType() << " " << std::endl;
+	// i->makeSound();
+	// j->makeSound();
 
-	delete j;
-	delete i;
+	// delete j;
+	// delete i;
+	
+	Dog a;
+
+	std::cout << a.getType() << std::endl;
+	
 
 	// Cat c1;
 
