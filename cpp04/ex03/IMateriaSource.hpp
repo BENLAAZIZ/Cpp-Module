@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 23:12:37 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/05 01:56:42 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/01/05 02:21:30 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/01/05 02:21:48 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
-
-
+#ifndef IMATERIASOURCE_HPP
+# define IMATERIASOURCE_HPP
 
 # include "AMateria.hpp"
 
-class Ice : public AMateria
+class IMateriaSource
 {
     public:
-        Ice();
-        virtual ~Ice();
-        Ice( Ice const& src );
-        Ice & operator=( Ice const& rhs );
-        AMateria* clone() const;
-        void use(ICharacter& target);
+        virtual ~IMateriaSource() {}
+        virtual void learnMateria(AMateria*) = 0;
+        virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
 #endif

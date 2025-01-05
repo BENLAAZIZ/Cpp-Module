@@ -5,29 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 01:08:26 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/04 01:11:03 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/01/05 02:20:25 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/01/05 02:22:25 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATERIASOURCE_HPP
 # define MATERIASOURCE_HPP
 
-#include <iostream>
+# include "IMateriaSource.hpp"
 
-#include "AMateria.hpp"
-
-
-
-class MateriaSource
+class MateriaSource : public IMateriaSource
 {
+    private:
+        AMateria *materia[4];
     public:
         MateriaSource();
-        MateriaSource(MateriaSource const & other);
-        MateriaSource & operator=(MateriaSource const & other);
+        MateriaSource( MateriaSource const & src );
         virtual ~MateriaSource();
-        virtual void learnMateria(AMateria*) = 0;
-        virtual AMateria* createMateria(std::string const & type) = 0;
+        MateriaSource & operator=( MateriaSource const & rhs );
+        void learnMateria(AMateria*);
+        AMateria* createMateria(std::string const & type);
 };
 
 #endif
