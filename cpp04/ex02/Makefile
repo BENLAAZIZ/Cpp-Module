@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/27 02:24:59 by hben-laz          #+#    #+#              #
-#    Updated: 2025/01/03 16:18:24 by hben-laz         ###   ########.fr        #
+#    Created: 2025/01/07 01:47:17 by hben-laz          #+#    #+#              #
+#    Updated: 2025/01/07 01:47:19 by hben-laz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CPP) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
+%.o: %.cpp Animal.hpp Dog.hpp Cat.hpp Brain.hpp
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 clean:

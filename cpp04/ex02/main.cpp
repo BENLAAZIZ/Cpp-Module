@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 02:28:13 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/04 17:57:38 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/01/07 01:47:09 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/01/07 01:47:11 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "Animal.hpp"
 #include "Cat.hpp"
@@ -23,21 +22,22 @@ void  f()
 
 int main()
 {
-	atexit(f);
+	// atexit(f);
 
-	// const Animal* i = new Cat();
-	// const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	const Animal* j = new Dog();
 	// std::cout << i->getType() << " " << std::endl;
 	// std::cout << j->getType() << " " << std::endl;
 	// i->makeSound();
 	// j->makeSound();
-
-	// delete j;
-	// delete i;
+	std::cout << "-------------------" << std::endl;
+	delete j;
+	delete i;
+	std::cout << "-------------------" << std::endl;
 	
-	Dog a;
+	// Dog a;
 
-	std::cout << a.getType() << std::endl;
+	// std::cout << a.getType() << std::endl;
 	
 
 	// Cat c1;

@@ -6,14 +6,13 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 00:13:55 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/02 23:58:32 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/07 01:19:58 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef Dog_HPP
 #define Dog_HPP
 
-# include <iostream>
 # include "Animal.hpp"
 # include "Brain.hpp"
 

@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 01:56:32 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/02 02:29:08 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/07 06:07:04 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <iostream>
 
-class  Animal
+class	Animal
 {
 	protected:
 		std::string type;
@@ -27,6 +27,7 @@ class  Animal
 		Animal& operator=(const Animal& obj);
 		virtual void makeSound() const;
 		std::string getType() const;
+		void setType(std::string type);
 };
 
 #endif

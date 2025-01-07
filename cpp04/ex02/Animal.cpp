@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 01:56:26 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/04 17:54:32 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/01/07 01:44:34 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/01/07 01:44:36 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ Animal::Animal()
 Animal::Animal(std::string type)
 {
     this->type = type;
+    std::cout << "Animal " << this->type << " constructor called." << std::endl;
 }
-
 
 Animal::~Animal()
 {
-    std::cout << "Animal destructor called." << std::endl;
+    std::cout << "Animal " << this->type << " destructor called." << std::endl;
 }
 
 Animal::Animal(const Animal& obj)
 {
-    *this = obj;
     std::cout << "Animal copy constructor called." << std::endl;
+    *this = obj;
 }
 
 Animal& Animal::operator=(const Animal& obj)
@@ -46,11 +46,3 @@ std::string Animal::getType() const
 {
     return this->type;
 }
-
-
-// void Animal::makeSound() const
-// {
-//     std::cout << "Animals make different sounds." << std::endl;
-// }
-
-// Animal::makeSound() = 0; // pure virtual function

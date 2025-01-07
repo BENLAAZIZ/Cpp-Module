@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 02:21:30 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/05 02:21:48 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/07 04:56:23 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class IMateriaSource
 {
     public:
-        virtual ~IMateriaSource() {}
+        virtual ~IMateriaSource();
         virtual void learnMateria(AMateria*) = 0;
         virtual AMateria* createMateria(std::string const & type) = 0;
 };
