@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:14:09 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/07 06:00:30 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/07 05:08:53 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Cure& Cure::operator=(const Cure& cure)
 	if (this == &cure)
 		return *this;
 	// std::cout << "Cure : assignment operator called" << std::endl;
-	this->type = cure.type;
+	this->_type = cure._type;
 	return *this;
 }
 

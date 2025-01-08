@@ -6,22 +6,20 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:08:44 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/07 06:04:02 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/07 05:03:00 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-AMateria::AMateria() : type("default") 
+AMateria::AMateria() : _type("default") 
 {
     // std::cout << "AMateria " << this->getType() << " constructor called" << std::endl;
 }
 
-AMateria::AMateria(std::string const& type)
+AMateria::AMateria(std::string const& type) : _type(type) 
 {
-    // this->type = type;
-    setType(type);
     // std::cout << "AMateria " << this->getType() << " constructor called" << std::endl; 
 }
 
@@ -34,7 +32,7 @@ AMateria::AMateria(const AMateria& amateria)
 AMateria& AMateria::operator=(const AMateria& amateria) {
     if (this == &amateria)
         return *this;
-    this->type = amateria.type;
+    this->_type = amateria._type;
     // std::cout << "AMateria " << this->getType() << " assignment operator called" << std::endl;
     return *this;
 }
@@ -46,12 +44,7 @@ AMateria::~AMateria()
 
 std::string const& AMateria::getType() const
 {
-    return this->type;
-}
-
-void AMateria::setType(std::string const& type)
-{
-    this->type = type;
+    return this->_type;
 }
 
 void AMateria::use(ICharacter& target)

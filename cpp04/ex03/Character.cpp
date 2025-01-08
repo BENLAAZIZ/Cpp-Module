@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 01:51:05 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/07 05:46:50 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/08 05:26:42 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 Character::Character() : _name("default")
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++) {
 		materia[i] = NULL;
+		gr[i] = NULL;
+	}
 }
 
 Character::Character(std::string const& name) : _name(name)
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++) {
 		materia[i] = NULL;
+		gr[i] = NULL;
+	}
 }
 
 Character::Character(const Character& character)
@@ -47,8 +51,8 @@ Character::~Character()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (materia[i])
-			delete materia[i];
+		if (gr[i])
+			delete gr[i];
 	}
 }
 
@@ -63,6 +67,7 @@ void	Character::equip(AMateria* m) {
 		if (!materia[i])
 		{
 			materia[i] = m;
+			gr[i] = m;
 			break;
 		}
 	}

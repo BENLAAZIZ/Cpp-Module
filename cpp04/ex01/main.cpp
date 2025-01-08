@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 02:28:13 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/07 01:24:20 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/07 01:17:25 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,28 @@ void  f()
 
 int main()
 {
-	atexit(f);
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	// atexit(f);
+	// const Animal* meta = new Animal();
+	// const Animal* j = new Dog();
+	// const Animal* i = new Cat();
+	// std::cout << j->getType() << " " << std::endl;
+	// std::cout << i->getType() << " " << std::endl;
+	// i->makeSound(); //will output the cat sound!
+	// j->makeSound();
+	// meta->makeSound();
 
-	delete meta;
-	delete j;
-	delete i;
+	// delete meta;
+	// delete j;
+	// delete i;
 
 	Cat c1;
 
 	c1.getBrain()->set_idea(8, "I am a cat");
-	c1.getBrain()->set_idea(1, "I am a cat");
-	c1.getBrain()->set_idea(2, "I am a cat");
-	c1.getBrain()->set_idea(3, "I am a cat");
-	c1.getBrain()->set_idea(4, "I am a cat");
-	c1.getBrain()->set_idea(5, "I am a cat");
+	// c1.getBrain()->set_idea(1, "I am a cat");
+	// c1.getBrain()->set_idea(2, "I am a cat");
+	// c1.getBrain()->set_idea(3, "I am a cat");
+	// c1.getBrain()->set_idea(4, "I am a cat");
+	// c1.getBrain()->set_idea(5, "I am a cat");
 
 	// std::cout << "Cat's ideas:  " << c1.getBrain()->get_idea(8) << std::endl;
 

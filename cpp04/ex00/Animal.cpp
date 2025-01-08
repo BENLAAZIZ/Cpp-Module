@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 01:56:26 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/07 06:07:46 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/07 00:04:23 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Animal::Animal()
 
 Animal::Animal(std::string type)
 {
-	setType(type);
+	this->type = type;
 	std::cout << "Animal " << this->type << " constructor called" << std::endl;
 }
 
@@ -46,11 +46,6 @@ Animal& Animal::operator=(const Animal& obj)
 std::string Animal::getType() const
 {
 	return this->type;
-}
-
-void Animal::setType(std::string type)
-{
-	this->type = type;
 }
 
 
