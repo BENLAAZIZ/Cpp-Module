@@ -6,14 +6,13 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 03:27:14 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/07 04:36:51 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/09 09:14:28 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
-# include <iostream>
 # include "AMateria.hpp"
 
 class ICharacter

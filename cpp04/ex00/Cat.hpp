@@ -6,14 +6,13 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 01:38:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/06 23:57:00 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/09 08:22:03 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 #define CAT_HPP
 
-# include <iostream>
 # include "Animal.hpp"
 
 class Cat : public Animal

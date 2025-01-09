@@ -6,14 +6,13 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 01:51:15 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/07 03:57:45 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/09 09:23:31 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 
-// # include <iostream>
 # include "ICharacter.hpp"
 
 class Character : public ICharacter
@@ -21,6 +20,7 @@ class Character : public ICharacter
 	private:
 		std::string _name;
 		AMateria *materia[4];
+		AMateria *gr[4];
 	public:
 		Character();
 		Character( std::string const & name );
