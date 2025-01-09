@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 01:54:01 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/07 00:30:00 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/07 06:10:10 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ WrongAnimal::WrongAnimal()
 
 WrongAnimal::WrongAnimal(std::string type)
 {
-    this->type = type;
-    std::cout << "WrongAnimal " << this->getType() << " Constructor is caled " << std::endl;
+    setType(type);
+    std::cout << "WrongAnimal : " << this->getType() << " Constructor is caled " << std::endl;
 }
 
 WrongAnimal::~WrongAnimal()
 {
-    std::cout << "WrongAnimal " << this->getType() << " Destructor is caled " << std::endl;
+    std::cout << "WrongAnimal : " << this->getType() << " Destructor is caled " << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& obj)
@@ -46,6 +46,11 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& obj)
 std::string WrongAnimal::getType() const
 {
     return this->type;
+}
+
+void WrongAnimal::setType(std::string type)
+{
+    this->type = type;
 }
 
 void WrongAnimal::makeSound() const

@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:12:27 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/07 05:08:59 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/07 06:00:41 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Ice& Ice::operator=(const Ice& ice)
     if (this == &ice)
         return *this;
     // std::cout << "Ice : assignment operator called" << std::endl;
-    this->_type = ice._type;
+    this->type = ice.type;
     return *this;
 }
 
