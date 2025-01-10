@@ -1,0 +1,41 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/12/21 16:09:49 by hben-laz          #+#    #+#              #
+#    Updated: 2024/12/21 16:49:44 by hben-laz         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = ex01
+
+CC = c++
+
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+
+RM = rm -f
+
+SRC = main.cpp Fixed.cpp
+
+OBJ = $(SRC:.cpp=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.cpp Fixed.hpp
+	$(CC) $(CPPFLAGS) -c $< -o $@
+
+clean:
+	$(RM) $(OBJ)
+
+fclean: clean
+		$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
