@@ -1,5 +1,0 @@
-cd ~/.ssh
-----------------
-ssh-keygen    --> for generate a new ssh key
-----------------
-.ssh cat id_rsa.pub   --> for show public key
