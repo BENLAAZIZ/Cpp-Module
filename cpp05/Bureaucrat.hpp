@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 04:03:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/17 16:21:30 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:52:01 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ class  Bureaucrat {
         void decrement();
         
         class GradeTooHighException : public std::exception {
-            const char* what() const throw();
-            
+            const char* what() const throw(); 
         };
         
         class GradeTooLowException : public std::exception {
