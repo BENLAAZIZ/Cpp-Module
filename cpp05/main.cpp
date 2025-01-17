@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 04:00:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/11 09:18:27 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:22:26 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,36 +76,35 @@ public:
 
 int main(int ac, char **av)
 {
-    // int h = 0;
-    // cexception obj;
+    int h = 0;
+    cexception obj;
   
 
-    // try
-    // {
-    //     std::cout << "Choise The elements : ";
-    //     std::cin >> h;
+    try
+    {
+        std::cout << "Choise The elements : ";
+        std::cin >> h;
 
-    //     std::cout << "The element is : " << obj.getElement(h) << std::endl;
+        std::cout << "The element is : " << obj.getElement(h) << std::endl;
         
-    // }
-    // catch (cexception::xBig b)
-    // {
-
-    //    b.big(h);
-    // }
-    
-    // catch (cexception::xSmall s)
-    // {
-    //     s.small(h);
-    // }
-   try {
-        if (ac != 2)
-            throw std::runtime_error("Invalid number of arguments. Please provide a filename."); 
     }
-    catch (std::exception& e) {
-        std::cout << "An exception occurred. Exception Nr. " ;
-        e.what();
-   }
+    catch (cexception::xBig b)
+    {
+
+       b.big(h);
+    }
     
+    catch (cexception::xSmall s)
+    {
+        s.small(h);
+    }
+//    try {
+//         if (ac != 2)
+//             throw std::runtime_error("Invalid number of arguments. Please provide a filename."); 
+//     }
+//     catch (std::exception& e) {
+//         std::cout << "An exception occurred. Exception Nr. " ;
+//         e.what();
+//    }
     return 0;
 }
