@@ -12,23 +12,22 @@
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string _name, int _grad) : name(_name), grad(_grad)
+Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name), grade(_grade)
 {
-	if (grad < 1)
+	if (grade < 1)
 		throw  GradeTooHighException();
-	else if (grad > 150)
+	else if (grade > 150)
 		throw  GradeTooLowException();
-	
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.name), grad(obj.grad)
+Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.name), grade(obj.grade)
 {	
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
 {
 	if (this != &obj)
-		this->grad = obj.grad;
+		this->grade = obj.grade;
 	return *this;
 }
 
@@ -44,22 +43,22 @@ std::string Bureaucrat::getName() const
 
 int Bureaucrat::getGrade() const
 {
-	return this->grad;
+	return this->grade;
 }
 
 
 void Bureaucrat::increment()
 {
-	if (getGrade() >= 150)
+	if ((getGrade() - 1) < 1)
 		throw  GradeTooLowException();
-	this->grad++;
+	this->grade--;
 }
 
 void Bureaucrat::decrement()
 {
-	if (getGrade() <= 1)
+	if ((getGrade() + 1) > 150)
 		throw  GradeTooHighException();
-	this->grad--;
+	this->grade++;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
