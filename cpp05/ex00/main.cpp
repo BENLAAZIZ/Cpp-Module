@@ -15,44 +15,11 @@
 
 
 int main() {
-	// try {
-	// 	Bureaucrat john("John", 2);
-	// 	std::cout << john << std::endl;
-
-	// 	john.increment();
-	// 	std::cout << john << std::endl;
-
-	// 	john.increment();
-	// } catch (const std::exception& e) {
-	// 	std::cerr << "Exception found: " << e.what() << std::endl;
-	// }
-
-	// try {
-	// 	Bureaucrat jane("Jane", 149);
-	// 	std::cout << jane << std::endl;
-
-	// 	jane.decrement();
-	// 	std::cout << jane << std::endl;
-
-	// 	jane.increment();
-	// 	jane.increment();
-	// 	jane.increment();
-
-	// 	jane.decrement();
-	// 	jane.decrement();
-	// 	jane.decrement();
-	// 	jane.decrement();
-
-	// 	std::cout << jane << std::endl;
-	// } catch (const std::exception& e) {
-	// 	std::cerr << "Exception found: " << e.what() << std::endl;
-	// }
-
 	try {
 		std::cout << "****************" << std::endl;
-		Bureaucrat invalid("Invalid", -5);
+		Bureaucrat hamza("hamza", 5);
 		std::cout << "++++++++++++++++" << std::endl;
-		std::cout << invalid << std::endl;
+		std::cout << hamza << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << "Exception found: " << e.what() << std::endl;
 	}
