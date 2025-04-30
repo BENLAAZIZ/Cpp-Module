@@ -11,21 +11,28 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+
 
 int main() {
+	Bureaucrat b1("Alice", 1);
+	ShrubberyCreationForm f1("home");
+
 	try {
-		Bureaucrat b("Alice", 50);
-		Form f("TopSecretForm", 40, 30);
-
-		std::cout << f << std::endl;
-		b.signForm(f);  // grade too low to sign
-
-		Bureaucrat boss("Boss", 10);
-		boss.signForm(f);  // should work
-		std::cout << f << std::endl;
-
-	} catch (std::exception& e) {
-		std::cerr << "Exception: " << e.what() << std::endl;
+		b1.signForm(f1);
+		b1.executeForm(f1);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << "-----------------" << std::endl;
+	RobotomyRequestForm f2("Bob");
+	try {
+		b1.signForm(f2);
+		b1.executeForm(f2);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
 	}
 }

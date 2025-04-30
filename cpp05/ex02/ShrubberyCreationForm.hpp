@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 17:00:32 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/04/30 18:46:58 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/04/30 20:19:42 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@
 
 class Bureaucrat;
 
-class ShrubberyCreationForm : public Aform
+class ShrubberyCreationForm : public AForm
 {
-    private:
-        std::string _target;
-        ShrubberyCreationForm();
+
     public:
         ShrubberyCreationForm(std::string target);
         ShrubberyCreationForm(const ShrubberyCreationForm &src);
@@ -32,10 +30,7 @@ class ShrubberyCreationForm : public Aform
         ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rhs);
 
         void execute(Bureaucrat const &executor) const;
-        std::string getTarget() const;
-        void setTarget(std::string target);
 };
-std::ostream &operator<<(std::ostream &o, ShrubberyCreationForm const &i);
 
 
 

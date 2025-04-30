@@ -14,12 +14,12 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form; // Forward declaration to avoid circular dependency
+class AForm; // Forward declaration to avoid circular dependency
 
 class  Bureaucrat {
-	protected:
+	private:
 		const std::string name;
 		int grade;
 	public:
@@ -34,7 +34,9 @@ class  Bureaucrat {
 		void		increment();
 		void		decrement();
 
-		void		signForm(Form& form);
+		void		signForm(AForm& form);
+
+		void		executeForm(AForm const & form);
 		
 		class GradeTooHighException : public std::exception {
 			const char* what() const throw(); 

@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:01:56 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/04/30 18:51:55 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/04/30 20:05:24 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ class AForm
 		const int _grade_to_sign;
 		const int _grade_to_exec;
 		std::string _target;
-		AForm();
+	protected:
+		AForm(const std::string &name, int grade_to_sign, int grade_to_exec, const std::string &target);
 	public:
 		AForm(std::string target);
 		AForm(const AForm &src);
@@ -60,11 +61,11 @@ class AForm
 				const char *what() const throw();
 		};
 		
-		// class FileOpenException : public std::exception
-		// {
-		//     public:
-		//         const char *what() const throw();
-		// };
+		class FileOpenException : public std::exception
+		{
+		    public:
+		        const char *what() const throw();
+		};
 
 
 };

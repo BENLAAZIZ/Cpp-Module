@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 
 CPP = c++
 
@@ -18,7 +18,8 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -28,7 +29,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CPP) $(FLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp Form.hpp Bureaucrat.hpp
+%.o: %.cpp AForm.hpp Bureaucrat.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 	$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
