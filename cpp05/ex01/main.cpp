@@ -11,19 +11,21 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-// #include <stdexcept>
-
+#include "Form.hpp"
 
 int main() {
 	try {
-		std::cout << "****************" << std::endl;
-		Bureaucrat hamza("hamza", 5);
-		std::cout << "++++++++++++++++" << std::endl;
-		std::cout << hamza << std::endl;
-	} catch (const std::exception& e) {
-		std::cerr << "Exception found: " << e.what() << std::endl;
-	}
+		Bureaucrat b("Alice", 50);
+		Form f("TopSecretForm", 40, 30);
 
-	return 0;
+		std::cout << f << std::endl;
+		b.signForm(f);  // grade too low to sign
+
+		Bureaucrat boss("Boss", 10);
+		boss.signForm(f);  // should work
+		std::cout << f << std::endl;
+
+	} catch (std::exception& e) {
+		std::cerr << "Exception: " << e.what() << std::endl;
+	}
 }
-	

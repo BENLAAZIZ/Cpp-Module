@@ -16,6 +16,8 @@
 #include <iostream>
 #include "Form.hpp"
 
+class Form; // Forward declaration to avoid circular dependency
+
 class  Bureaucrat {
 	protected:
 		const std::string name;
@@ -32,7 +34,7 @@ class  Bureaucrat {
 		void		increment();
 		void		decrement();
 
-		void signForm(Form& form);
+		void		signForm(Form& form);
 		
 		class GradeTooHighException : public std::exception {
 			const char* what() const throw(); 
