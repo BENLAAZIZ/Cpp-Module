@@ -28,7 +28,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CPP) $(FLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
+%.o: %.cpp Bureaucrat.hpp
 	$(CPP) $(FLAGS) -c $< -o $@
 
 clean:

@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Aform.cpp                                          :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:19:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/04/30 20:06:55 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/01 16:06:51 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "AForm.hpp"
 
-AForm::AForm(const std::string &name, int grade_to_sign, int grade_to_exec, const std::string &target): _name(name)
-																										, _is_signed(false)
-																										, _grade_to_sign(grade_to_sign)
-																										, _grade_to_exec(grade_to_exec)
-																										, _target(target)
+AForm::AForm(const std::string &name, int grade_to_sign, int grade_to_exec, const std::string &target)
+		: _name(name), _is_signed(false), _grade_to_sign(grade_to_sign), _grade_to_exec(grade_to_exec), _target(target)
 {
 	if (_grade_to_sign < 1 || _grade_to_exec < 1)
 		throw GradeTooHighException();
