@@ -11,15 +11,13 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-// #include <stdexcept>
-
 
 int main() {
 	try {
 		std::cout << "****************" << std::endl;
-		Bureaucrat hamza("hamza", 5);
-		std::cout << "++++++++++++++++" << std::endl;
+		Bureaucrat hamza("hamza", 150);
 		std::cout << hamza << std::endl;
+		std::cout << "----------------" << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << "Exception found: " << e.what() << std::endl;
 	}

@@ -13,11 +13,7 @@
 #include "Intern.hpp"
 #include "Bureaucrat.hpp"
 
-void t()
-{system("leaks ex03");}
-
 int main() {
-    atexit(t);
     Intern someRandomIntern;
     AForm* form1 = someRandomIntern.makeForm("robotomy request", "Bender");
     AForm* form2 = someRandomIntern.makeForm("shrubbery creation", "Home");
