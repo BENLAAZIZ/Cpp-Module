@@ -5,38 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 19:31:18 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/01 20:17:31 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/05/03 11:39:20 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/05/03 11:41:11 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERN_HPP
-#define INTERN_HPP
+# define INTERN_HPP
 
+# include <string>
+#include <iostream>
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-class Intern
-{
-    public:
-        Intern();
-        Intern(const Intern& obj);
-        Intern& operator=(const Intern& obj);
-        ~Intern();
-        
-    private:
-        static AForm *makeShrubbery(const std::string &target);
-        static AForm *makeRobotomy(const std::string &target);
-        static AForm *makePresidential(const std::string &target);
+class Intern {
+	public:
+		Intern();
+		Intern(const Intern& other);
+		Intern& operator=(const Intern& other);
+		~Intern();
 
-        typedef AForm *(*FormCreator)(const std::string &target);
+		AForm* makeForm(const std::string& formName, const std::string& target) const;
 
-        struct FormType {
-            std::string name;
-            FormCreator creator;
-        };
+	private:
+		typedef AForm* (*FormCreator)(const std::string& target);
+
+		static AForm* createShrubbery(const std::string& target);
+		static AForm* createRobotomy(const std::string& target);
+		static AForm* createPresidential(const std::string& target);
 };
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:01:56 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/01 20:07:21 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/03 11:28:17 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,5 @@ class AForm
 };
 
 std::ostream &operator<<(std::ostream &o, AForm const &i);
-
-
-
 
 #endif

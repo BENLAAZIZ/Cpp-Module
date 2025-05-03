@@ -10,42 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "Intern.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
 
-
-// test main
-
+void t()
+{system("leaks ex03");}
 
 int main() {
+    atexit(t);
     Intern someRandomIntern;
-
     AForm* form1 = someRandomIntern.makeForm("robotomy request", "Bender");
-    AForm* form2 = someRandomIntern.makeForm("shrubbery creation", "Garden");
-    AForm* form3 = someRandomIntern.makeForm("presidential pardon", "Arthur Dent");
-    AForm* form4 = someRandomIntern.makeForm("invalid form", "Nobody");
+    AForm* form2 = someRandomIntern.makeForm("shrubbery creation", "Home");
+    AForm* form3 = someRandomIntern.makeForm("presidential pardon", "Zaphod");
+    AForm* form4 = someRandomIntern.makeForm("invalid form", "Test");
 
-    Bureaucrat b1("Zaphod", 1);
-    if (form1) {
-        b1.signForm(*form1);
-        b1.executeForm(*form1);
-    }
-
-    if (form2) {
-        b1.signForm(*form2);
-        b1.executeForm(*form2);
-    }
-
-    if (form3) {
-        b1.signForm(*form3);
-        b1.executeForm(*form3);
-    }
-
-    // clean up
     delete form1;
     delete form2;
     delete form3;
