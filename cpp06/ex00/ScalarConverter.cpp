@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 12:56:52 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/05 13:28:39 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:30:55 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,28 @@ static bool check_is_Double(const std::string& str) {
 
 void ScalarConverter::convert(const std::string& literal) {
     double value;
-    // bool is_float_literal = false;
 
-    if (check_is_Char(literal)) {
+    if (check_is_Char(literal)) 
+    {
         char c = literal[0];
         value = static_cast<double>(c);
-    } else if (check_is_Int(literal)) {
+    } 
+    else if (check_is_Int(literal))
         value = static_cast<double>(std::atoi(literal.c_str()));
-    } else if (check_is_Float(literal)) {
-        // is_float_literal = true;
+    else if (check_is_Float(literal))
         value = static_cast<double>(std::atof(literal.c_str()));
-    } else if (check_is_Double(literal)) {
+    else if (check_is_Double(literal))
         value = std::atof(literal.c_str());
-    } else {
+    else
+    {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         std::cout << "float: impossible" << std::endl;
         std::cout << "double: impossible" << std::endl;
         return;
     }
+    
 
-    // CHAR
     std::cout << "char: ";
     if (value < 0 || value > 127 || std::isnan(value))
         std::cout << "impossible" << std::endl;
@@ -84,18 +85,15 @@ void ScalarConverter::convert(const std::string& literal) {
     else
         std::cout << "'" << static_cast<char>(value) << "'" << std::endl;
 
-    // INT
     std::cout << "int: ";
     if (value < INT_MIN || value > INT_MAX || std::isnan(value))
         std::cout << "impossible" << std::endl;
     else
         std::cout << static_cast<int>(value) << std::endl;
 
-    // FLOAT
     std::cout << "float: " << std::fixed << std::setprecision(1)
               << static_cast<float>(value) << "f" << std::endl;
 
-    // DOUBLE
     std::cout << "double: " << std::fixed << std::setprecision(1)
               << value << std::endl;
 }
