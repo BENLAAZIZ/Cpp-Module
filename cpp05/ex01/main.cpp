@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 04:00:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/17 18:00:06 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/05/06 17:45:20 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/05/06 17:45:20 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ int main() {
 		Form f("TopSecretForm", 40, 30);
 
 		std::cout << f << std::endl;
-		b.signForm(f);  // grade too low to sign
+		b.signForm(f);
 
 		Bureaucrat boss("Boss", 10);
-		boss.signForm(f);  // should work
+		boss.signForm(f);
 		std::cout << f << std::endl;
-
 	} catch (std::exception& e) {
 		std::cerr << "Exception: " << e.what() << std::endl;
 	}

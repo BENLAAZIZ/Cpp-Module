@@ -20,8 +20,9 @@ class AForm; // Forward declaration to avoid circular dependency
 
 class  Bureaucrat {
 	private:
-		const std::string name;
-		int grade;
+		const std::string	name;
+		int 				grade;
+
 	public:
 		Bureaucrat(const std::string _name, int _grade);
 		Bureaucrat(const Bureaucrat& obj);
@@ -49,6 +50,5 @@ class  Bureaucrat {
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
-
 
 #endif

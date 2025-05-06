@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 04:03:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/17 17:52:01 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/05/06 16:55:53 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/05/06 16:55:53 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ class  Bureaucrat {
 		class GradeTooLowException : public std::exception {
 			const char* what() const throw();
 		};
-
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);

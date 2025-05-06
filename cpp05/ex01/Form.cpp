@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 18:04:08 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/04/30 16:11:56 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:06:04 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 	Form::Form(const std::string& name, int  grade_signe, int grade_exec): _name(name)
 																			, grade_to_signe(grade_signe)
-																			, grade_to_exec(grade_exec){
+																			, grade_to_exec(grade_exec)
+	{
 		if (grade_signe < 1 || grade_exec < 1)
 			throw Form::GradeTooHighException();
 		if (grade_signe > 150 || grade_exec > 150)

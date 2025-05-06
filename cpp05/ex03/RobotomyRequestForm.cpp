@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 17:02:20 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/03 13:20:56 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:29:25 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@
 RobotomyRequestForm::RobotomyRequestForm(std::string target) :
     AForm("RobotomyRequestForm", 72, 45, target){
     setTarget(target);
-    std::cout << "----------------------------------------\n";
-    std::cout << "RobotomyRequestForm constructor called\n";
-    std::cout << "Target: " << getTarget() << "\n";
-    std::cout << "----------------------------------------\n";
 }
-
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &cpy) :
     AForm(cpy){

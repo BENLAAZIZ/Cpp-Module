@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:39:20 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/03 12:14:51 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:25:43 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ class Intern {
 
 		AForm* makeForm(const std::string& formName, const std::string& target) const;
 };
-
 
 #endif

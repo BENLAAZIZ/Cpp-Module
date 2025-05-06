@@ -6,13 +6,12 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 17:01:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/04/30 20:19:56 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:52:49 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
-
 
 #include "AForm.hpp" 
 #include "Bureaucrat.hpp"
@@ -29,6 +28,5 @@ class RobotomyRequestForm : public AForm
 
         void execute(Bureaucrat const &executor) const;
 };
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 17:02:48 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/04/30 20:20:03 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:54:47 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-
 
 class Bureaucrat;
 
@@ -29,6 +28,5 @@ class PresidentialPardonForm : public AForm
 
         void execute(Bureaucrat const &executor) const;
 };
-
 
 #endif

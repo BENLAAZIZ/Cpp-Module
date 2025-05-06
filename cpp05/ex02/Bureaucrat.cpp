@@ -35,7 +35,6 @@ Bureaucrat::~Bureaucrat()
 {	
 }
 
-
 std::string Bureaucrat::getName() const
 {
 	return this->name;
@@ -97,7 +96,6 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return "Grade is too high!";
 }
-
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj)
 {

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 04:03:41 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/01/17 17:52:15 by hben-laz         ###   ########.fr       */
+/*   Created: 2025/05/06 16:54:49 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/05/06 16:54:49 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name), grade(_grade)
 {
-	if (grade < 1)
+	if (_grade < 1)
 		throw  GradeTooHighException();
-	else if (grade > 150)
+	else if (_grade > 150)
 		throw  GradeTooLowException();
 }
 
@@ -34,7 +34,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
 Bureaucrat::~Bureaucrat()
 {	
 }
-
 
 std::string Bureaucrat::getName() const
 {
