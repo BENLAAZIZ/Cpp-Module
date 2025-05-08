@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 12:56:52 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/05 15:30:55 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/08 18:12:06 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ static bool check_is_Int(const std::string& str) {
 static bool check_is_Float(const std::string& str) {
     if (str == "-inff" || str == "+inff" || str == "nanf")
         return true;
-    std::istringstream iss(str);
-    float f;
-    char c;
-    iss >> f >> c;
-    return !iss.fail() && c == 'f' && iss.eof();
+    size_t dpos = str.find('.');
+    size_t fpos = str.find('f');
+    if (dpos == std::string::npos || fpos == std::string::npos || dpos > fpos)
+        return false;
+    if (fpos != str.length() - 1)
+        return false;
+    return true;
 }
 
 static bool check_is_Double(const std::string& str) {
@@ -75,10 +77,10 @@ void ScalarConverter::convert(const std::string& literal) {
         std::cout << "double: impossible" << std::endl;
         return;
     }
-    
 
+    
     std::cout << "char: ";
-    if (value < 0 || value > 127 || std::isnan(value))
+    if (value < 0 || value > 127 || value != value)
         std::cout << "impossible" << std::endl;
     else if (!std::isprint(static_cast<char>(value)))
         std::cout << "Non displayable" << std::endl;
@@ -86,8 +88,10 @@ void ScalarConverter::convert(const std::string& literal) {
         std::cout << "'" << static_cast<char>(value) << "'" << std::endl;
 
     std::cout << "int: ";
-    if (value < INT_MIN || value > INT_MAX || std::isnan(value))
+    if (value < INT_MIN || value > INT_MAX || value != value)
+    {
         std::cout << "impossible" << std::endl;
+    }
     else
         std::cout << static_cast<int>(value) << std::endl;
 
