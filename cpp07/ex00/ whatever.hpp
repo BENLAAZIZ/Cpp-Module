@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:53:22 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/06 19:05:12 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/09 22:34:53 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,11 @@ T min(T a, T b)
 }
 
 template <typename T>
-
 T max(T a, T b)
 {
     if (a > b)
         return a;
     return b;
 }
-
 
 #endif

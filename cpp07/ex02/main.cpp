@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:40:03 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/06 19:47:05 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/09 23:13:47 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,21 @@ int main()
     // catch (std::exception &e) {
     //     std::cerr << "Caught exception: " << e.what() << std::endl;
     // }
+    
 
-            Array<char> a;
+        Array<char> a;
         std::cout << "Size of a: " << a.size() << std::endl;
 
-        // Array of 5 integers
         Array<char> b(5);
         for (unsigned int i = 0; i < b.size(); ++i)
             b[i] = i + 65;
-
-        // Copy constructor
+            
         Array<char> c(b);
         c[2] = 'Z';
 
-        // Assignment operator
         Array<char> d;
         d = c;
 
-        // Print
         std::cout << "Array b: ";
         for (unsigned int i = 0; i < b.size(); ++i)
             std::cout << b[i] << " ";
@@ -82,7 +79,6 @@ int main()
             std::cout << d[i] << " ";
         std::cout << std::endl;
 
-        // Out of bounds
         std::cout << "Trying out-of-bounds access...\n";
         std::cout << b[8];
     }

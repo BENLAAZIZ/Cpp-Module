@@ -6,12 +6,11 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:12:13 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/06 19:17:57 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/09 22:53:13 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
-
 
 int main()
 {
@@ -19,17 +18,14 @@ int main()
     std::string strArr[] = {"Hello", "World", "!"};
     double arrD[] = {1.1, 2.2, 3.3, 4.4, 5.5};
 
-    std::cout << "Integer array:" << std::endl;
+    std::cout << "------- Integer array:" << std::endl;
     iter(arr, 5, print);
 
-    std::cout << "String array:" << std::endl;
+    std::cout << "------- String array:" << std::endl;
     iter(strArr, 3, print);
 
-    std::cout << "Double array:" << std::endl;
+    std::cout << "------- Double array:" << std::endl;
     iter(arrD, 5, print);
-
-    
- 
 
     return 0;
 }
