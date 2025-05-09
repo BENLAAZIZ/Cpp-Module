@@ -28,7 +28,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CPP) $(FLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp 
+%.o: %.cpp  easyfind.hpp
 	$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
