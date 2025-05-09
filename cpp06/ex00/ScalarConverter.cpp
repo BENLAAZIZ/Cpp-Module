@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 12:56:52 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/08 18:12:06 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:45:08 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ static bool check_is_Int(const std::string& str) {
 static bool check_is_Float(const std::string& str) {
     if (str == "-inff" || str == "+inff" || str == "nanf")
         return true;
-    size_t dpos = str.find('.');
     size_t fpos = str.find('f');
-    if (dpos == std::string::npos || fpos == std::string::npos || dpos > fpos)
-        return false;
     if (fpos != str.length() - 1)
         return false;
     return true;
