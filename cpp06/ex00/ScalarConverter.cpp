@@ -6,11 +6,12 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 12:56:52 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/09 16:45:08 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/11 13:21:38 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <cstdlib> 
 
 ScalarConverter::ScalarConverter() {}
 ScalarConverter::ScalarConverter(const ScalarConverter& other) {
@@ -36,21 +37,23 @@ static bool check_is_Int(const std::string& str) {
 static bool check_is_Float(const std::string& str) {
     if (str == "-inff" || str == "+inff" || str == "nanf")
         return true;
-    size_t fpos = str.find('f');
-    if (fpos != str.length() - 1)
-        return false;
-    return true;
+    if (str[str.length() - 1] != 'f')
+        return false; 
+    std::string floatCore = str.substr(0, str.length() - 1);  // remove 'f'
+    const char* s = floatCore.c_str();
+    char* end;
+    std::strtod(s, &end);
+    return (*end == '\0');
 }
 
 static bool check_is_Double(const std::string& str) {
     if (str == "-inf" || str == "+inf" || str == "nan")
         return true;
-    std::istringstream iss(str);
-    double d;
-    iss >> std::noskipws >> d;
-    return iss.eof() && !iss.fail();
+    const char* s = str.c_str();
+    char* end;
+    std::strtod(s, &end);
+    return (*end == '\0');
 }
-
 
 void ScalarConverter::convert(const std::string& literal) {
     double value;
