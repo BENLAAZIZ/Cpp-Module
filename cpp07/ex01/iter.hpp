@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:11:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/06 19:19:35 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/12 16:25:15 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void iter(T* array, int len, void (*func)(T&))
     {
         func(array[i]);
     }
-    std::cout << std::endl;
 }
 
 #endif

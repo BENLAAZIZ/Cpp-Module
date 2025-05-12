@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:12:13 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/09 22:53:13 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/12 16:32:08 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ int main()
 
     std::cout << "------- Integer array:" << std::endl;
     iter(arr, 5, print);
-
+    std::cout << std::endl;
+    
     std::cout << "------- String array:" << std::endl;
     iter(strArr, 3, print);
+    std::cout << std::endl;
 
     std::cout << "------- Double array:" << std::endl;
     iter(arrD, 5, print);
 
     return 0;
 }
+

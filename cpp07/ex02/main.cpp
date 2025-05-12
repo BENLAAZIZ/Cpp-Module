@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:40:03 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/09 23:16:50 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/12 16:34:56 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 int main()
 {
-
-
     std::cout << "------- integer array:" << std::endl;
     try {
         Array<int> a;
