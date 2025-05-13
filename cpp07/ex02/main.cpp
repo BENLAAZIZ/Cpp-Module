@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:40:03 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/12 16:34:56 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:02:24 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main()
         std::cout << b[8];
     }
     catch (std::exception &e) {
-        std::cerr << "Caught exception: " << e.what() << std::endl;
+        std::cerr << "find exception: " << e.what() << std::endl;
     }
     
 std::cout << "------- char array:" << std::endl;
@@ -85,7 +85,7 @@ std::cout << "------- char array:" << std::endl;
         std::cout << b[8];
     }
     catch (std::exception &e) {
-        std::cerr << "Caught exception: " << e.what() << std::endl;
+        std::cerr << "find exception: " << e.what() << std::endl;
     }
 
     return 0;
