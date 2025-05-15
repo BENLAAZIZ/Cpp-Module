@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:11:49 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/13 22:45:23 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/15 15:11:04 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include <iostream>
 
 template <typename T>
-void print(T& elem)
+void print(const T& elem)
 {
-    std::cout << elem << " ";
+    std::cout << elem << std::endl;;
 }
 
 template <typename T>
