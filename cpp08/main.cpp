@@ -4,6 +4,9 @@
 #include <deque>
 #include <list>
 #include <set>
+#include <map>
+#include <utility>
+
 
 int main() {
 //     std::vector<int>vec(5);
@@ -112,5 +115,21 @@ for(; it != end; ++it)
 std::cout << s.count(30) << std::endl;
 std::cout << s.count(100) << std::endl;
 
+std::map<int, std::string> m;
+
+m[1] = "hazma";
+m[4] = "444444";
+m[3] = "333333";
+m[5] = "555555";
+m[2] = "ffffff";
+m[9] = "666666";
+m.insert(std::pair<int, std::string>(7, "mmmmm"));
+// std::map<int, std::string>::iterator end = m.end();
+
+// for (std::map<int, std::string>::iterator it = m.begin(); it != end; ++it)
+    
+int i;
+for (i = 0 ; i < m.size(); i++)
+    std::cout << m[i] << " "  << std::endl;
     return 0;
 }
