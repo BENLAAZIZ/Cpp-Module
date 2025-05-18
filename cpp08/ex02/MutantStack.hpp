@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 16:22:03 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/18 18:41:09 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/18 20:31:28 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,28 @@
 template <typename T>
 class MutantStack : public std::stack<T>
 {
-	public:
-		MutantStack() : std::stack<T>() {}
-		MutantStack(const MutantStack &obj) : std::stack<T>(obj) {}
-		MutantStack &operator=(const MutantStack &obj)
-		{
-			if (this != &obj)
-				std::stack<T>::operator=(obj);
-			return *this;
-		}
-		~MutantStack() {}
+    public:
+        MutantStack() : std::stack<T>() {}
+        MutantStack(const MutantStack &obj) : std::stack<T>(obj) {}
+        MutantStack &operator=(const MutantStack &obj)
+        {
+            if (this != &obj)
+                std::stack<T>::operator=(obj);
+            return *this;
+        }
+        ~MutantStack() {}
 
-		typedef typename std::stack<T>::container_type::iterator iterator;
+        typedef typename std::stack<T>::container_type::iterator iterator;
 
-		iterator begin()
-		{
-			return this->c.begin();
-		}
+        iterator begin()
+        {
+            return this->c.begin();
+        }
 
-		iterator end()
-		{
-			return this->c.end();
-		}
+        iterator end()
+        {
+            return this->c.end();
+        }
 };
 
 #endif
