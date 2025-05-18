@@ -55,17 +55,17 @@ int main() {
     //    std::cout << * it<< " ";
 
 
-    // std::list<int> l(5);
-    // l.push_back(60);
-    // l.push_back(5);
-    // l.push_back(100);
-    // l.push_back(5);
-    // l.push_back(5);
-    // l.push_back(5);
+    std::list<int> l(5);
+    l.push_back(60);
+    l.push_back(5);
+    l.push_back(100);
+    l.push_back(5);
+    l.push_back(5);
+    l.push_back(5);
 
-    // l.push_back(-3);
+    l.push_back(-3);
 
-    // l.push_back(1);
+    l.push_back(1);
 
 
     // for(int i = 0; i < 5; ++i) {
@@ -80,9 +80,9 @@ int main() {
     // l.remove(5);
 //     l.sort();
 
-//    for (std::list<int>::iterator it = l.begin(); it != l.end(); ++it) {
-//         std::cout << *it << " ";
-//     }
+   for (std::list<int>::iterator it = l.begin(); it != l.end(); ++it) {
+        std::cout << *it << " ";
+    }
 
 // std::pair<std::string, int> p1("hamza", 20);
 
@@ -91,45 +91,45 @@ int main() {
 
 
 
-std::set <int> s;
+// std::set <int> s;
 
-s.insert(10);
-s.insert(10);
-s.insert(10);
-s.insert(20);
-s.insert(30);
-s.insert(-40);
-s.insert(50);
+// s.insert(10);
+// s.insert(10);
+// s.insert(10);
+// s.insert(20);
+// s.insert(30);
+// s.insert(-40);
+// s.insert(50);
 
-std::set<int>::iterator it = s.begin();
+// std::set<int>::iterator it = s.begin();
 
-std::set<int>::iterator end = s.end();
-for(; it != end; ++it)
-    std::cout << *it << " ";
+// std::set<int>::iterator end = s.end();
+// for(; it != end; ++it)
+//     std::cout << *it << " ";
 
-it = s.find(30);
-std::cout << "\n-------------\n ";
-for(; it != end; ++it)
-    std::cout << *it << " ";
+// it = s.find(30);
+// std::cout << "\n-------------\n ";
+// for(; it != end; ++it)
+//     std::cout << *it << " ";
 
-std::cout << s.count(30) << std::endl;
-std::cout << s.count(100) << std::endl;
+// std::cout << s.count(30) << std::endl;
+// std::cout << s.count(100) << std::endl;
 
-std::map<int, std::string> m;
+// std::map<int, std::string> m;
 
-m[1] = "hazma";
-m[4] = "444444";
-m[3] = "333333";
-m[5] = "555555";
-m[2] = "ffffff";
-m[9] = "666666";
-m.insert(std::pair<int, std::string>(7, "mmmmm"));
+// m[1] = "hazma";
+// m[4] = "444444";
+// m[3] = "333333";
+// m[5] = "555555";
+// m[2] = "ffffff";
+// m[9] = "666666";
+// m.insert(std::pair<int, std::string>(7, "mmmmm"));
 // std::map<int, std::string>::iterator end = m.end();
 
 // for (std::map<int, std::string>::iterator it = m.begin(); it != end; ++it)
     
-int i;
-for (i = 0 ; i < m.size(); i++)
-    std::cout << m[i] << " "  << std::endl;
+// int i;
+// for (i = 0 ; i < m.size(); i++)
+//     std::cout << m[i] << " "  << std::endl;
     return 0;
 }

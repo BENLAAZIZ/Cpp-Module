@@ -1,8 +1,0 @@
-
-
-
-
-========================== Templates in c++ ==========================
-
-Templates are a powerful feature of C++ that allow you to write generic and reusable 
-code. They enable you to create functions and classes that can work with any data type, without the need for code duplication.
