@@ -1,7 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/19 13:05:33 by hben-laz          #+#    #+#             */
+/*   Updated: 2025/05/19 13:05:36 by hben-laz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
 # include <iostream>
+# include <algorithm>
+# include <stdexcept>
 # include <vector>
 
 class Span

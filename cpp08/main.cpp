@@ -84,52 +84,6 @@ int main() {
         std::cout << *it << " ";
     }
 
-// std::pair<std::string, int> p1("hamza", 20);
 
-// std::cin >> p1.first >> p1.second ;
-// std::cout << p1.first << " " << p1.second << std::endl;
-
-
-
-// std::set <int> s;
-
-// s.insert(10);
-// s.insert(10);
-// s.insert(10);
-// s.insert(20);
-// s.insert(30);
-// s.insert(-40);
-// s.insert(50);
-
-// std::set<int>::iterator it = s.begin();
-
-// std::set<int>::iterator end = s.end();
-// for(; it != end; ++it)
-//     std::cout << *it << " ";
-
-// it = s.find(30);
-// std::cout << "\n-------------\n ";
-// for(; it != end; ++it)
-//     std::cout << *it << " ";
-
-// std::cout << s.count(30) << std::endl;
-// std::cout << s.count(100) << std::endl;
-
-// std::map<int, std::string> m;
-
-// m[1] = "hazma";
-// m[4] = "444444";
-// m[3] = "333333";
-// m[5] = "555555";
-// m[2] = "ffffff";
-// m[9] = "666666";
-// m.insert(std::pair<int, std::string>(7, "mmmmm"));
-// std::map<int, std::string>::iterator end = m.end();
-
-// for (std::map<int, std::string>::iterator it = m.begin(); it != end; ++it)
-    
-// int i;
-// for (i = 0 ; i < m.size(); i++)
-//     std::cout << m[i] << " "  << std::endl;
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 20:18:12 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/17 15:51:30 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:57:49 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ int Span::longestSpan()
         throw std::runtime_error("Not enough numbers to find a span");
     int max = *std::max_element(numbers.begin(), numbers.end());
     int min = *std::min_element(numbers.begin(), numbers.end());
-    return max - min;
+    return (max - min);
 }

@@ -6,14 +6,12 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 18:16:43 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/18 19:39:27 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:18:21 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 #include <list>
-#include <list>
-
 
 int main()
 {
@@ -66,9 +64,6 @@ int main()
 	std::cout << *itl << std::endl;
 	++itl;
 	}
-	
-
-	
 	
 	return 0;
 }
