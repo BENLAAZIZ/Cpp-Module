@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:07:25 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/20 20:14:59 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:33:33 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ class BitcoinExchange
         std::string date;
         std::string value;
         std::string line;
-        std::ifstream file;
-        std::ifstream dataFile;
 
         BitcoinExchange();
         BitcoinExchange(const BitcoinExchange &src);

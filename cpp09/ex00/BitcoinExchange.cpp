@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:58:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/20 20:22:07 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:29:31 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void BitcoinExchange::parse_line(const std::string &line)
     if (date.empty() || value.empty())
         throw std::runtime_error("Error: could not parse line.");
     data[date] = value;
-    // date.clear();
-    // value.clear();
+    date.clear();
+    value.clear();
 }
 
