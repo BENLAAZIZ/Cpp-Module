@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:07:25 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/20 20:33:33 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/20 22:43:55 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,20 @@
 
 class BitcoinExchange
 {
-    public:
         std::map<std::string, std::string> data;
         std::string date;
         std::string value;
-        std::string line;
-
+        
+    public:
+ 
         BitcoinExchange();
         BitcoinExchange(const BitcoinExchange &src);
         ~BitcoinExchange();
         BitcoinExchange &operator=(const BitcoinExchange &rhs);
 
         void parse_line(const std::string &line);
+        std::string	getHeader(const std::string& key) const;
+        void setHeader(const std::string& key, const std::string& value);
         // void processFile(const std::string &filename);
         // void processLine(const std::string &line);
         // void validateDate(const std::string &date);
