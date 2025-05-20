@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 20:25:07 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/19 13:15:01 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:32:56 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int main()
 		std::cerr << "exception : " << e.what() << std::endl;
 	}
 	
-
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 	

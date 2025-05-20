@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 18:16:43 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/19 13:18:21 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:30:45 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int main()
 
 	std::cout << "================ use list =========================" << std::endl;
 
-
 	std::list<int> l;
 	l.push_back(5);
 	l.push_back(17);
@@ -54,15 +53,14 @@ int main()
 
 
 	l.push_back(0);
-	std::cout << "--------------------------" << std::endl;
 	std::list<int>::iterator  itl = l.begin();
 	std::list<int>::iterator itel = l.end();
 	++itl;
 	--itl;
 	while (itl != itel)
 	{
-	std::cout << *itl << std::endl;
-	++itl;
+		std::cout << *itl << std::endl;
+		++itl;
 	}
 	
 	return 0;

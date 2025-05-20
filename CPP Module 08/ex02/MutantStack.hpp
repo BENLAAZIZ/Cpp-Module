@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 16:22:03 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/19 13:15:25 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:31:25 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #define MUTANTSTACK_HPP
 
 #include <iostream>
-#include <algorithm>
-#include <stdexcept>
 #include <stack>
 
 template <typename T>
