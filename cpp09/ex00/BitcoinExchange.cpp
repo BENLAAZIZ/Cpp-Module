@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:58:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/21 11:45:16 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:05:52 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,9 +216,15 @@ void BitcoinExchange::print_data_line(const std::string &line)
 		std::cerr << "Error: bad input => " << line << std::endl;
 		return;
 	}
-
+	if(_date != get_value(_date))
+	{
+		// find the closest date
+		std::map<std::string, std::string>::iterator it = data.lower_bound(_date);
+		if (it != data.begin())
+			it--;
+		_date = it->first;	
+	}
 	float result  = atof(_value.c_str()) * atof(get_value(_date).c_str());
-
 	std::cout << _date << " => " << _value << " = " << result << std::endl;
 }
 
