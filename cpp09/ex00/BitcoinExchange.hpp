@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:07:25 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/20 22:43:55 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/21 10:01:01 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <istream>
 #include <map>
 
 class BitcoinExchange
@@ -32,9 +33,12 @@ class BitcoinExchange
         ~BitcoinExchange();
         BitcoinExchange &operator=(const BitcoinExchange &rhs);
 
-        void parse_line(const std::string &line);
-        std::string	getHeader(const std::string& key) const;
-        void setHeader(const std::string& key, const std::string& value);
+        void process_database();
+        std::string	get_value(const std::string& key) const;
+        void set_map(const std::string& key, const std::string& value);
+        void process_file(const std::string &file);
+        bool parse_line(const std::string &line);
+        bool check_date(const std::string &date);
         // void processFile(const std::string &filename);
         // void processLine(const std::string &line);
         // void validateDate(const std::string &date);
