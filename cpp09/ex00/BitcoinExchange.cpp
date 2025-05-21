@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:58:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/21 12:05:52 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:32:43 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,27 @@ static int check_white_space(const std::string& str, int *white_space)
 bool BitcoinExchange::check_value(const std::string &value)
 {
 	
-	// if (value.find('.') != std::string::npos)
-	// {
-	// 	if (value.find('.') == 0 || value.find('.') == value.size() - 1)
-	// 	{
-	// 		std::cerr << "Error: bad input" << std::endl;
-	// 		return (false);
-	// 	}
-	// }
+	if (value.find('.') != std::string::npos)
+	{
+		if (value.find('.') == 0 || value.find('.') == value.size() - 1)
+		{
+			std::cerr << "Error: bad input" << std::endl;
+			return (false);
+		}
+	}
+	for(size_t i = 0; i < value.size(); i++)
+	{
+		if (value[i] == '.' && value[i + 1] == '.')
+		{
+			std::cerr << "Error: bad input" << std::endl;
+			return (false);
+		}
+		if (!isdigit(value[i]) && value[i] != '.' && value[i] != '-')
+		{
+			std::cerr << "Error: bad input" << std::endl;
+			return (false);
+		}
+	}
 	if (atof(value.c_str()) < 0)
 	{
 		std::cerr << "Error: not a positive number." << std::endl;
