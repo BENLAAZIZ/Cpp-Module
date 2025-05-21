@@ -6,44 +6,35 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:58:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/21 10:03:11 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:45:16 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange()
-{
-    
-}
+BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &src)
 {
-    if (this == &src)
-        return;
-    this->data = src.data;
-    this->date = src.date;
-    this->value = src.value;
+	if (this == &src)
+		return;
+	this->data = src.data;
+	this->date = src.date;
+	this->value = src.value;
 }
-
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs)
 {
-    // Assignment operator
-    if (this != &rhs)
-    {
-        this->data = rhs.data;
-        this->date = rhs.date;
-        this->value = rhs.value;
-    }
-    return *this; 
+	if (this != &rhs)
+	{
+		this->data = rhs.data;
+		this->date = rhs.date;
+		this->value = rhs.value;
+	}
+	return *this; 
 }
 
-BitcoinExchange::~BitcoinExchange()
-{
-    
-}
-
+BitcoinExchange::~BitcoinExchange() {}
 
 std::string BitcoinExchange::get_value(const std::string& key) const
 {
@@ -51,45 +42,30 @@ std::string BitcoinExchange::get_value(const std::string& key) const
 	return (it != data.end()) ? it->second : "";
 }
 
-void BitcoinExchange::set_map(const std::string& key, const std::string& value) {
-    data[key] = value;
+void BitcoinExchange::set_map(const std::string& key, const std::string& value) 
+{
+	data[key] = value;
 }
-
-//------------------------
-
-
 
 void BitcoinExchange::process_database()
 {
-    // std::cout << "Parsing line: " << line << std::endl;
-
-    // store the data data.csv in a map
-		std::ifstream data_file("data.csv");
-		if (!data_file.is_open())
-			throw std::runtime_error("Error: could not open data.csv.");
-		std::string line;
-		while (std::getline(data_file, line))
-        {
-             std::size_t pos = line.find(',');
-            if (pos == std::string::npos)
-                throw std::runtime_error("Error: could not parse line.");
-            date = line.substr(0, pos);
-            value = line.substr(pos + 1);
-            if (date.empty() || value.empty())
-                throw std::runtime_error("Error: could not parse line.");
-            set_map(this->date, this->value);
-            date.clear();
-            value.clear();
-        }
-			// bit.parse_line(line);
-		std::cout << "Data loaded successfully." << std::endl;
-		// map with iterator
-
-    	// for (std::map<std::string, std::string>::iterator it = data.begin(); it != data.end(); ++it)
-		// {
-
-		// 	std::cout << it->first << " => " << it->second << std::endl;
-		// }
+	std::ifstream data_file("data.csv");
+	if (!data_file.is_open())
+		throw std::runtime_error("Error: could not open data.csv.");
+	std::string line;
+	while (std::getline(data_file, line))
+	{
+			std::size_t pos = line.find(',');
+		if (pos == std::string::npos)
+			throw std::runtime_error("Error: could not parse line.");
+		date = line.substr(0, pos);
+		value = line.substr(pos + 1);
+		if (date.empty() || value.empty())
+			throw std::runtime_error("Error: could not parse line.");
+		set_map(this->date, this->value);
+		date.clear();
+		value.clear();
+	}
 }
 
 static int check_white_space(const std::string& str, int *white_space)
@@ -108,83 +84,156 @@ static int check_white_space(const std::string& str, int *white_space)
 	return space;
 }
 
+bool BitcoinExchange::check_value(const std::string &value)
+{
+	
+	// if (value.find('.') != std::string::npos)
+	// {
+	// 	if (value.find('.') == 0 || value.find('.') == value.size() - 1)
+	// 	{
+	// 		std::cerr << "Error: bad input" << std::endl;
+	// 		return (false);
+	// 	}
+	// }
+	if (atof(value.c_str()) < 0)
+	{
+		std::cerr << "Error: not a positive number." << std::endl;
+		return (false);
+	}
+	if (atof(value.c_str()) > 1000)
+	{
+		std::cerr << "Error: too large a number." << std::endl;
+		return (false);
+	}
+	return true;
+}
+
 bool BitcoinExchange::parse_line(const std::string &line)
 {
-    int white_space = 0;
+	int white_space = 0;
 	if (check_white_space(line, &white_space) == 2)
 	{
 		if (white_space != 0)
 			return (false);
 	}
 	else
+	{
+		std::cerr << "Error: bad input => " << line << std::endl;
 		return (false);
-    std::istringstream iss(line);
-    std::string _date, pipe, _value;
+	}
+	std::istringstream iss(line);
+	std::string _date, pipe, _value;
 	if (!(iss >> _date >> pipe >> _value))
-        return (false);
-    if (pipe != "|")
-        return (false);
-    if (_date.empty() || _value.empty())
-        return (false);
-    std::cout << _date << " => " << _value << std::endl;
-    if(check_date(_date) == false)
-        return (false);
-    return true;
-        
-    
+	{
+		std::cerr << "Error: bad input => " << line << std::endl;
+		return (false);
+	}
+	if (pipe != "|")
+	{
+		std::cerr << "Error: bad input => " << pipe << std::endl;
+		return (false);
+	}
+	if (_date.empty() || _value.empty())
+	{
+		std::cerr << "Error: bad input => " << line << std::endl;
+		return (false);
+	}
+	if(check_date(_date) == false)
+	{
+		std::cerr << "Error: bad input => " << _date << std::endl;
+		return (false);
+	}
+	if (check_value(_value) == false)
+		return (false);
+	return true; 
 }
 
- bool BitcoinExchange::check_date(const std::string &date)
- {
-    //Y-M-D   
-    if(date.size() != 10)
-    {
-        std::cerr << "Error: bad date format." << std::endl;
-        return (false);
-    }
-    if(date[4] != '-' || date[7] != '-')
-    {
-        std::cerr << "Error: bad date format." << std::endl;
-        return (false);
-    }
-    for (size_t i = 0; i < date.size(); ++i)
-    {
-        if (i == 4 || i == 7)
-            continue;
-        if (!isdigit(date[i]))
-        {
-            std::cerr << "Error: bad date format." << std::endl;
-            return (false);
-        }
-    }
-    
- }
+static bool check_day(int years, int month, int day)
+{
+	if (month == 2)
+	{
+		if ((years % 4 == 0 && years % 100 != 0 ) || years % 400 == 0)
+		{
+			if (day < 1 || day > 29)
+				return (false);
+		}
+		else
+		{
+			if (day < 1 || day > 28)
+				return (false);
+		}
+	}
+	if (month == 4 || month == 6 || month == 9 || month == 11)
+	{
+		if (day < 1 || day > 30)
+			return (false);
+	}
+	else
+	{
+		if (day < 1 || day > 31)
+			return (false);
+	}
+	return (true);
+}
+
+bool BitcoinExchange::check_date(const std::string &date)
+{  
+	if(date.size() != 10)
+	{
+		std::cerr << "Error: bad input => " << date << std::endl;
+		return (false);
+	}
+	if(date[4] != '-' || date[7] != '-')
+	{
+		std::cerr << "Error: bad input => " << date << std::endl;
+		return (false);
+	}
+	for (size_t i = 0; i < date.size(); ++i)
+	{
+		if (i == 4 || i == 7)
+			continue;
+		if (!isdigit(date[i]))
+			return (false);
+	}
+	std::string year = date.substr(0, 4);
+	std::string month = date.substr(5, 2);
+	std::string day = date.substr(8, 2);
+	if(atoi(year.c_str()) < 2009 || atoi(year.c_str()) > 2025)
+		return (false);
+	if (atoi(month.c_str()) < 1 || atoi(month.c_str()) > 12)
+		return (false);
+	if(check_day(atoi(year.c_str()), atoi(month.c_str()), atoi(day.c_str())) == false)
+		return (false);
+	return (true);
+}
+
+void BitcoinExchange::print_data_line(const std::string &line)
+{
+	std::istringstream iss(line);
+	std::string _date, pipe, _value;
+	if (!(iss >> _date >> pipe >> _value))
+	{
+		std::cerr << "Error: bad input => " << line << std::endl;
+		return;
+	}
+
+	float result  = atof(_value.c_str()) * atof(get_value(_date).c_str());
+
+	std::cout << _date << " => " << _value << " = " << result << std::endl;
+}
 
 void BitcoinExchange::process_file(const std::string &filename)
 {
 
-        std::ifstream file(filename);
-		if (!file.is_open())
-			throw std::runtime_error("Error: could not open file.");
-    	std::string line;
-		while (std::getline(file, line))
-		{
-			// Process each line
-            if(parse_line(line) == false)
-            {
-                std::cerr << "Error: could not parse line." << std::endl;
-                continue;
-            }
-			// std::cout << line << std::endl;
-		}
-	
+	std::ifstream file(filename);
+	if (!file.is_open())
+		throw std::runtime_error("Error: could not open file.");
+	std::string line;
+	std::getline(file, line);
+	while (std::getline(file, line))
+	{
+		if(parse_line(line) == false)
+			continue;
+		print_data_line(line);
+	}
 }
-
-
-
-
-
-
-
-	
-
