@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:57:08 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/22 12:28:45 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:27:59 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ class RPN
 		std::stack<int> stack;
 	public:
 		RPN();
-		RPN(RPN const& obj);
+		RPN(const RPN& obj);
 		RPN& operator=(const RPN& obj);
 		~RPN();
 
-		bool pars_line(char **str);
-		int calculator_process(char **str);
+		int get_result() const;
+		char whech_op(char **str);
+		void calculator_process(char **str);
 		
 };
