@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:07:55 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/21 12:33:20 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:58:30 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int ac, char **av)
 	try
 	{
 		if (ac != 2)
-			throw std::runtime_error(" 777777 Error: could not open file.");
+			throw std::runtime_error("Error: could not open file.");
 		bit.process_database();
 		bit.process_file(av[1]);
 	}

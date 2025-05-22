@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:56:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/22 15:14:11 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:00:40 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,14 @@ void RPN::calculator_process(std::string line)
 		if (isdigit(line[i]))
 		{
 			this->stack.push((line[i] - '0'));
+			if(line[i + 1] != ' ')
+				throw std::runtime_error("Error: invalid number.");
 			car++;
 		}
 		else if (line[i] == '+' || line[i] == '-' || line[i] == '*' || line[i] == '/')
 		{
-			if (this->stack.size() != 2)
-				throw std::runtime_error("Error: invalid operation.");
+			if (this->stack.size() < 2)
+				throw std::runtime_error("Error: not enough operands.");
 			int b = this->stack.top();
 			this->stack.pop();
 			int a = this->stack.top();
@@ -97,6 +99,7 @@ void RPN::calculator_process(std::string line)
 	}
 	if (count_op != car - 1)
 		throw std::runtime_error("Error: invalid operation.");
+	if (this->stack.size() == 1)
+		this->result = this->stack.top();
+	this->stack.pop();
 }
-
-
