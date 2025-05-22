@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:56:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/22 13:36:23 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/22 15:14:11 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,43 @@ int RPN::get_result() const
 	return this->result;
 }
 
-
-void RPN::calculator_process(char **str)
+int use_operator(int a, int b, char op)
 {
-	while (*str)
+	switch (op)
 	{
-		if (isdigit(**str))
+		case '+':
+			return (a + b);
+		case '-':
+			return (a - b);
+		case '*':
+			return (a * b);
+		case '/':
+			return (a / b);
+		default:
+			throw std::runtime_error("Error: invalid operator.");
+	}
+}
+
+void RPN::calculator_process(std::string line)
+{
+	int i = 0;
+	int count_op = 0;
+	int car = 0;
+	while (line[i])
+	{
+		if (line[i] == ' ')
 		{
-			this->stack.push(atoi(*str));
+			i++;
+			if(line[i] == ' ')
+				throw std::runtime_error("Error: invalid input.");
+			continue;
 		}
-		else if (**str == '+' || **str == '-' || **str == '*' || **str == '/')
+		if (isdigit(line[i]))
+		{
+			this->stack.push((line[i] - '0'));
+			car++;
+		}
+		else if (line[i] == '+' || line[i] == '-' || line[i] == '*' || line[i] == '/')
 		{
 			if (this->stack.size() != 2)
 				throw std::runtime_error("Error: invalid operation.");
@@ -58,15 +85,18 @@ void RPN::calculator_process(char **str)
 			this->stack.pop();
 			int a = this->stack.top();
 			this->stack.pop();
-			if (**str == '/' and b == 0)
+			if (line[i] == '/' and b == 0)
 				throw std::runtime_error("Error: division by zero.");
-			// operation
+			this->result = use_operator(a, b, line[i]);
 			this->stack.push(this->result);
+			count_op++;
 		}
 		else
 			throw std::runtime_error("Error: invalid character.");
-		str++;
+		i++;
 	}
+	if (count_op != car - 1)
+		throw std::runtime_error("Error: invalid operation.");
 }
 
 
