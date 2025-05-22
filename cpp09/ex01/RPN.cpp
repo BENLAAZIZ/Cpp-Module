@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:56:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/22 16:00:40 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:24:58 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ void RPN::calculator_process(std::string line)
 		if (isdigit(line[i]))
 		{
 			this->stack.push((line[i] - '0'));
-			if(line[i + 1] != ' ')
+			if (line[i + 1] == '\0')
+				break;
+			if (line[i + 1] != ' ')
 				throw std::runtime_error("Error: invalid number.");
 			car++;
 		}
@@ -97,9 +99,13 @@ void RPN::calculator_process(std::string line)
 			throw std::runtime_error("Error: invalid character.");
 		i++;
 	}
+	if (this->stack.size() == 1)
+	{
+		this->result = this->stack.top();
+		this->stack.pop();
+		return ;
+	}
 	if (count_op != car - 1)
 		throw std::runtime_error("Error: invalid operation.");
-	if (this->stack.size() == 1)
-		this->result = this->stack.top();
 	this->stack.pop();
 }
