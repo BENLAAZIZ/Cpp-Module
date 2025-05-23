@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:56:23 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/22 17:46:34 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:51:44 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,12 @@ void RPN::calculator_process(std::string line)
 	int i = 0;
 	int count_op = 0;
 	int car = 0;
+		std::cout << line << std::endl;
 	while (line[i])
 	{
 		if (line[i] == ' ')
 		{
 			i++;
-			if(line[i] == ' ')
-				throw std::runtime_error("Error: invalid input.");
 			continue;
 		}
 		if (isdigit(line[i]))

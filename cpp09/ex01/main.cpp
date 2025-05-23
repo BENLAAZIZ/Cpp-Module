@@ -6,7 +6,7 @@
 /*   By: hben-laz <hben-laz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 11:53:53 by hben-laz          #+#    #+#             */
-/*   Updated: 2025/05/22 16:01:06 by hben-laz         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:49:57 by hben-laz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int main(int ac, char **av)
 		{
 			std::string arg;
 			arg = *av;
+			if(arg.size() == 1)
+			arg = arg + " ";
 			line += arg;
 			++av;
 		}
