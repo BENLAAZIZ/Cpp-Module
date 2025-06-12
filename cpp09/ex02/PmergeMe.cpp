@@ -51,53 +51,54 @@ void PmergeMe::get_elements(char **av)
 	while(av[i])
 	{
 		vec.push_back(atoi(av[i]));
-		i++;
-	}
-
-	i = 1;
-	while(av[i])
-	{
 		deq.push_back(atoi(av[i]));
 		i++;
 	}
+
+	// i = 1;
+	// while(av[i])
+	// {
+	// 	deq.push_back(atoi(av[i]));
+	// 	i++;
+	// }
 }
 
 
 //---------------------------------------------
 
 
-void merge(std::vector<int>& vec, int left, int mid, int right) {
-    std::vector<int> temp;
-    int i = left;
-    int j = mid + 1;
+void mergeVector(std::vector<int>& vec, int left, int mid, int right) {
+	std::vector<int> temp;
+	int i = left;
+	int j = mid + 1;
 
-    while (i <= mid && j <= right) {
-        if (vec[i] < vec[j])
-            temp.push_back(vec[i++]);
-        else
-            temp.push_back(vec[j++]);
-    }
+	while (i <= mid && j <= right) {
+		if (vec[i] < vec[j])
+			temp.push_back(vec[i++]);
+		else
+			temp.push_back(vec[j++]);
+	}
 
-    while (i <= mid)
-        temp.push_back(vec[i++]);
+	while (i <= mid)
+		temp.push_back(vec[i++]);
 
-    while (j <= right)
-        temp.push_back(vec[j++]);
+	while (j <= right)
+		temp.push_back(vec[j++]);
 
-    for (size_t k = 0; k < temp.size(); ++k)
-        vec[left + k] = temp[k];
+	for (size_t k = 0; k < temp.size(); ++k)
+		vec[left + k] = temp[k];
 }
 
 
 
-void mergeSort(std::vector<int>& vec, int left, int right) {
-    if (left >= right)
-        return;
+void mergeSort_vector(std::vector<int>& vec, int left, int right) {
+	if (left >= right)
+		return;
 
-    int mid = (left + right) / 2;
-    mergeSort(vec, left, mid);
-    mergeSort(vec, mid + 1, right);
-    merge(vec, left, mid, right);
+	int mid = (left + right) / 2;
+	mergeSort_vector(vec, left, mid);
+	mergeSort_vector(vec, mid + 1, right);
+	mergeVector(vec, left, mid, right);
 }
 
 
@@ -113,52 +114,53 @@ void PmergeMe::process_sort_vector()
 {
 
 	 if (vec.size() % 2 == 1)
-		{
-			save_last = vec.back();
-			vec.pop_back();
-			has_pair = true;
-		}
-		// if (has_pair)
-		//     std::cout << "save_las: " << save_last << std::endl;
-		std::vector<std::pair<int, int> > pair_vec;
-		for (size_t i = 0; i < vec.size(); i += 2)
-		{
-			int first = vec[i];
-			int second = vec[i + 1];
-			if (first > second)
-				std::swap(first, second);
-			pair_vec.push_back(std::make_pair(first, second));
-		}
+	{
+		save_last = vec.back();
+		vec.pop_back();
+		has_pair = true;
+	}
 
-		std::vector<int> mainChain;
-		std::vector<int> pending;
+	std::vector<std::pair<int, int> > pair_vec;
+	for (size_t i = 0; i < vec.size(); i += 2)
+	{
+		int first = vec[i];
+		int second = vec[i + 1];
+		if (first > second)
+			std::swap(first, second);
+		pair_vec.push_back(std::make_pair(first, second));
+	}
 
-		for (size_t i = 0; i < pair_vec.size(); ++i)
-		{
-			mainChain.push_back(pair_vec[i].first);  // min
-			pending.push_back(pair_vec[i].second);   // max
-		}
+	std::vector<int> mainChain;
+	std::vector<int> pending;
+
+	for (size_t i = 0; i < pair_vec.size(); ++i)
+	{
+		mainChain.push_back(pair_vec[i].first);  // min
+		pending.push_back(pair_vec[i].second);   // max
+	}
 	// ----------------------
-		mergeSort(mainChain, 0, static_cast<int>(mainChain.size()) - 1);
+
+	mergeSort_vector(mainChain, 0, static_cast<int>(mainChain.size()) - 1);
+
+	for (size_t i = 0; i < pending.size(); ++i)
+	{
+		std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), pending[i]);
+		mainChain.insert(pos, pending[i]);
+	}
+	
+	if (has_pair)
+	{
+		std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), save_last);
+		mainChain.insert(pos, save_last);
+	}
+		
+	vec = mainChain;
+	
+	std::cout << "Sorted vector: ";
+	for (size_t i = 0; i < vec.size(); ++i)
+	std::cout << vec[i] << " ";
+	std::cout << std::endl;
 	// ----------------------
-		    for (size_t i = 0; i < pending.size(); ++i)
-    {
-        std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), pending[i]);
-        mainChain.insert(pos, pending[i]);
-    }
-
-    if (has_pair)
-    {
-        std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), save_last);
-        mainChain.insert(pos, save_last);
-    }
-
-    vec = mainChain;
-
-    std::cout << "Sorted vector: ";
-    for (size_t i = 0; i < vec.size(); ++i)
-        std::cout << vec[i] << " ";
-    std::cout << std::endl;
 }
 
 
