@@ -62,6 +62,53 @@ void PmergeMe::get_elements(char **av)
 	}
 }
 
+
+//---------------------------------------------
+
+
+void merge(std::vector<int>& vec, int left, int mid, int right) {
+    std::vector<int> temp;
+    int i = left;
+    int j = mid + 1;
+
+    while (i <= mid && j <= right) {
+        if (vec[i] < vec[j])
+            temp.push_back(vec[i++]);
+        else
+            temp.push_back(vec[j++]);
+    }
+
+    while (i <= mid)
+        temp.push_back(vec[i++]);
+
+    while (j <= right)
+        temp.push_back(vec[j++]);
+
+    for (size_t k = 0; k < temp.size(); ++k)
+        vec[left + k] = temp[k];
+}
+
+
+
+void mergeSort(std::vector<int>& vec, int left, int right) {
+    if (left >= right)
+        return;
+
+    int mid = (left + right) / 2;
+    mergeSort(vec, left, mid);
+    mergeSort(vec, mid + 1, right);
+    merge(vec, left, mid, right);
+}
+
+
+
+//-----------------------------------------------
+
+
+
+
+
+
 void PmergeMe::process_sort_vector()
 {
 
@@ -91,8 +138,27 @@ void PmergeMe::process_sort_vector()
 			mainChain.push_back(pair_vec[i].first);  // min
 			pending.push_back(pair_vec[i].second);   // max
 		}
+	// ----------------------
+		mergeSort(mainChain, 0, static_cast<int>(mainChain.size()) - 1);
+	// ----------------------
+		    for (size_t i = 0; i < pending.size(); ++i)
+    {
+        std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), pending[i]);
+        mainChain.insert(pos, pending[i]);
+    }
 
+    if (has_pair)
+    {
+        std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), save_last);
+        mainChain.insert(pos, save_last);
+    }
 
+    vec = mainChain;
+
+    std::cout << "Sorted vector: ";
+    for (size_t i = 0; i < vec.size(); ++i)
+        std::cout << vec[i] << " ";
+    std::cout << std::endl;
 }
 
 

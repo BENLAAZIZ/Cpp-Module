@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #pragma once
-
+#include <cstdlib>
 #include <iostream>
 #include <vector>
 #include <deque>
@@ -32,6 +32,7 @@ class PmergeMe
 
         void get_elements(char **av);
         void process_sort_vector();
+
 };
 
 void check_parse(char **av);
