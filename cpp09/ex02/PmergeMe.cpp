@@ -148,8 +148,8 @@ void PmergeMe::process_sort_vector()
 	std::vector<int> pending;
 	for (size_t i = 0; i < pair_vec.size(); ++i)
 	{
-		mainChain.push_back(pair_vec[i].first);  // min
-		pending.push_back(pair_vec[i].second);   // max
+		mainChain.push_back(pair_vec[i].first);
+		pending.push_back(pair_vec[i].second);
 	}
 	mergeSort_vector(mainChain, 0, static_cast<int>(mainChain.size()) - 1);
 	for (size_t i = 0; i < pending.size(); ++i)
@@ -165,14 +165,12 @@ void PmergeMe::process_sort_vector()
 		
 	vec = mainChain;
 	
-	gettimeofday(&end, NULL); // Stop timer
+	gettimeofday(&end, NULL);
     
     long seconds = end.tv_sec - start.tv_sec;
     long microseconds = end.tv_usec - start.tv_usec;
     this->vec_time = seconds * 1000000.0 + microseconds;
 }
-
-//====================== deque
 
 void mergeDeque(std::deque<int>& mainChain, int left, int mid, int right) {
 	std::deque<int> temp;
@@ -254,9 +252,6 @@ void PmergeMe::process_sort_deque()
     long microseconds = end.tv_usec - start.tv_usec;
     this->deq_time = seconds * 1000000.0 + microseconds;
 }
-
-//=======================================
-
 
 void PmergeMe::print_sorted_numer(std::string str)
 {
