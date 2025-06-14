@@ -39,7 +39,7 @@ class PmergeMe
         void process_sort_vector();
         void process_sort_deque();
 
-        void print_nbr(std::string str);
+        void print_sorted_numer(std::string str);
         void print_time_to_process(std::string str);
 
 
