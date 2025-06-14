@@ -108,12 +108,12 @@ bool BitcoinExchange::check_value(const std::string &value)
 			return (false);
 		}
 	}
-	if (atof(value.c_str()) < 0)
+	if (std::atof(value.c_str()) < 0)
 	{
 		std::cerr << "Error: not a positive number." << std::endl;
 		return (false);
 	}
-	if (atof(value.c_str()) > 1000)
+	if (std::atof(value.c_str()) > 1000)
 	{
 		std::cerr << "Error: too large a number." << std::endl;
 		return (false);
@@ -161,7 +161,7 @@ bool BitcoinExchange::parse_line(const std::string &line)
 	return true; 
 }
 
-static bool check_day(int years, int month, int day)
+bool check_day(int years, int month, int day)
 {
 	if (month == 2)
 	{
@@ -211,11 +211,11 @@ bool BitcoinExchange::check_date(const std::string &date)
 	std::string year = date.substr(0, 4);
 	std::string month = date.substr(5, 2);
 	std::string day = date.substr(8, 2);
-	if(atoi(year.c_str()) < 2009 || atoi(year.c_str()) > 2025)
+	if(std::atoi(year.c_str()) < 2009 || std::atoi(year.c_str()) > 2025)
 		return (false);
-	if (atoi(month.c_str()) < 1 || atoi(month.c_str()) > 12)
+	if (std::atoi(month.c_str()) < 1 || std::atoi(month.c_str()) > 12)
 		return (false);
-	if(check_day(atoi(year.c_str()), atoi(month.c_str()), atoi(day.c_str())) == false)
+	if(check_day(std::atoi(year.c_str()), std::atoi(month.c_str()), std::atoi(day.c_str())) == false)
 		return (false);
 	return (true);
 }
@@ -237,18 +237,21 @@ void BitcoinExchange::print_data_line(const std::string &line)
 			it--;
 		_date = it->first;	
 	}
-	float result  = atof(_value.c_str()) * atof(get_value(_date).c_str());
+	float result  = std::atof(_value.c_str()) * std::atof(get_value(_date).c_str());
 	std::cout << _date << " => " << _value << " = " << result << std::endl;
 }
 
 void BitcoinExchange::process_file(const std::string &filename)
 {
 
-	std::ifstream file(filename);
+	// std::ifstream file(filename);
+	std::ifstream file(filename.c_str());
 	if (!file.is_open())
 		throw std::runtime_error("Error: could not open file.");
 	std::string line;
 	std::getline(file, line);
+	// if (line != "date | value")
+		// throw std::runtime_error("Error: could not open file.");
 	while (std::getline(file, line))
 	{
 		if(parse_line(line) == false)
