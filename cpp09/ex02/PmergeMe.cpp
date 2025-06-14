@@ -91,36 +91,36 @@ void PmergeMe::get_elements(char **av)
 	}
 }
 
-void mergeVector(std::vector<int>& vec, int left, int mid, int right) {
+void mergeVector(std::vector<int>& mainChain, int left, int mid, int right) {
 	std::vector<int> temp;
 	int i = left;
 	int j = mid + 1;
 
 	while (i <= mid && j <= right) {
-		if (vec[i] < vec[j])
-			temp.push_back(vec[i++]);
+		if (mainChain[i] < mainChain[j])
+			temp.push_back(mainChain[i++]);
 		else
-			temp.push_back(vec[j++]);
+			temp.push_back(mainChain[j++]);
 	}
 
 	while (i <= mid)
-		temp.push_back(vec[i++]);
+		temp.push_back(mainChain[i++]);
 
 	while (j <= right)
-		temp.push_back(vec[j++]);
+		temp.push_back(mainChain[j++]);
 
 	for (size_t k = 0; k < temp.size(); ++k)
-		vec[left + k] = temp[k];
+		mainChain[left + k] = temp[k];
 }
 
-void mergeSort_vector(std::vector<int>& vec, int left, int right) {
+void mergeSort_vector(std::vector<int>& mainChain, int left, int right) {
 	if (left >= right)
 		return;
 
 	int mid = (left + right) / 2;
-	mergeSort_vector(vec, left, mid);
-	mergeSort_vector(vec, mid + 1, right);
-	mergeVector(vec, left, mid, right);
+	mergeSort_vector(mainChain, left, mid);
+	mergeSort_vector(mainChain, mid + 1, right);
+	mergeVector(mainChain, left, mid, right);
 }
 
 void PmergeMe::process_sort_vector()
@@ -174,36 +174,36 @@ void PmergeMe::process_sort_vector()
 
 //====================== deque
 
-void mergeDeque(std::deque<int>& deq, int left, int mid, int right) {
+void mergeDeque(std::deque<int>& mainChain, int left, int mid, int right) {
 	std::deque<int> temp;
 	int i = left;
 	int j = mid + 1;
 
 	while (i <= mid && j <= right) {
-		if (deq[i] < deq[j])
-			temp.push_back(deq[i++]);
+		if (mainChain[i] < mainChain[j])
+			temp.push_back(mainChain[i++]);
 		else
-			temp.push_back(deq[j++]);
+			temp.push_back(mainChain[j++]);
 	}
 
 	while (i <= mid)
-		temp.push_back(deq[i++]);
+		temp.push_back(mainChain[i++]);
 
 	while (j <= right)
-		temp.push_back(deq[j++]);
+		temp.push_back(mainChain[j++]);
 
 	for (size_t k = 0; k < temp.size(); ++k)
-		deq[left + k] = temp[k];
+		mainChain[left + k] = temp[k];
 }
 
-void mergeSort_deque(std::deque<int>& deq, int left, int right) {
+void mergeSort_deque(std::deque<int>& mainChain, int left, int right) {
 	if (left >= right)
 		return;
 
 	int mid = (left + right) / 2;
-	mergeSort_deque(deq, left, mid);
-	mergeSort_deque(deq, mid + 1, right);
-	mergeDeque(deq, left, mid, right);
+	mergeSort_deque(mainChain, left, mid);
+	mergeSort_deque(mainChain, mid + 1, right);
+	mergeDeque(mainChain, left, mid, right);
 }
 
 void PmergeMe::process_sort_deque()
