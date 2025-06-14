@@ -15,12 +15,16 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+#include <sys/time.h>
+#include <iomanip>
 
 class PmergeMe
 {
     public :
         std::vector<int> vec;
         std::deque<int> deq;
+        double vec_time;
+        double deq_time;
         int save_last;
         bool has_pair;
         
@@ -31,7 +35,13 @@ class PmergeMe
         ~PmergeMe();
 
         void get_elements(char **av);
+        void process_sort();
         void process_sort_vector();
+        void process_sort_deque();
+
+        void print_nbr(std::string str);
+        void print_time_to_process(std::string str);
+
 
 };
 

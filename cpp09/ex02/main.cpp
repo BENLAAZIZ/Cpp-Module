@@ -22,7 +22,7 @@ int main(int ac, char **av)
         check_parse(av);
         PmergeMe mer(av);
         // handle vector
-        mer.process_sort_vector();
+        mer.process_sort();
 	}
 	catch(const std::exception& e)
 	{
