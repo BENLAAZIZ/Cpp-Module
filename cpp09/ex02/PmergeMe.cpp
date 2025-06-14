@@ -54,18 +54,7 @@ void PmergeMe::get_elements(char **av)
 		deq.push_back(atoi(av[i]));
 		i++;
 	}
-
-	// i = 1;
-	// while(av[i])
-	// {
-	// 	deq.push_back(atoi(av[i]));
-	// 	i++;
-	// }
 }
-
-
-//---------------------------------------------
-
 
 void mergeVector(std::vector<int>& vec, int left, int mid, int right) {
 	std::vector<int> temp;
@@ -88,8 +77,6 @@ void mergeVector(std::vector<int>& vec, int left, int mid, int right) {
 	for (size_t k = 0; k < temp.size(); ++k)
 		vec[left + k] = temp[k];
 }
-
-
 
 void mergeSort_vector(std::vector<int>& vec, int left, int right) {
 	if (left >= right)
@@ -150,7 +137,6 @@ void PmergeMe::process_sort_vector()
     this->vec_time = seconds * 1000000.0 + microseconds;
 }
 
-
 //======================= deque
 
 void mergeDeque(std::deque<int>& deq, int left, int mid, int right) {
@@ -175,8 +161,6 @@ void mergeDeque(std::deque<int>& deq, int left, int mid, int right) {
 		deq[left + k] = temp[k];
 }
 
-
-
 void mergeSort_deque(std::deque<int>& deq, int left, int right) {
 	if (left >= right)
 		return;
@@ -190,7 +174,7 @@ void mergeSort_deque(std::deque<int>& deq, int left, int right) {
 void PmergeMe::process_sort_deque()
 {
 	struct timeval start, end;
-    gettimeofday(&start, NULL); // Start timer 
+    gettimeofday(&start, NULL);
 	has_pair = false;
 	if (deq.size() % 2 == 1)
 	{
@@ -229,22 +213,12 @@ void PmergeMe::process_sort_deque()
 		
 	deq = mainChain;
 	
-	gettimeofday(&end, NULL); // Stop timer
+	gettimeofday(&end, NULL);
     
     long seconds = end.tv_sec - start.tv_sec;
     long microseconds = end.tv_usec - start.tv_usec;
     this->deq_time = seconds * 1000000.0 + microseconds;
 }
-
-
-
-
-
-
-
-
-
-
 
 //=======================================
 
