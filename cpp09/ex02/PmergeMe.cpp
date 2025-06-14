@@ -126,7 +126,7 @@ void mergeSort_vector(std::vector<int>& mainChain, int left, int right) {
 void PmergeMe::process_sort_vector()
 {
 	struct timeval start, end;
-    gettimeofday(&start, NULL); // Start timer 
+    gettimeofday(&start, NULL);
 
 	if (vec.size() % 2 == 1)
 	{
