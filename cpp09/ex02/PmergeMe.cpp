@@ -71,7 +71,7 @@ void check_parse(char **av)
 				j++;
 			}
 			if (!isdigit(av[i][j]))
-				 throw std::runtime_error("Error: invalid character!");
+				throw std::runtime_error("Error: invalid character!");
 			j++;
 		}
 		if (atol(av[i]) > 2147483647)
@@ -89,6 +89,7 @@ void PmergeMe::get_elements(char **av)
 		deq.push_back(atoi(av[i]));
 		i++;
 	}
+	this->nbr_elements = static_cast<int>(vec.size());
 }
 
 void mergeVector(std::vector<int>& mainChain, int left, int mid, int right) {
@@ -123,7 +124,7 @@ void mergeSort_vector(std::vector<int>& mainChain, int left, int right) {
 	mergeVector(mainChain, left, mid, right);
 }
 
-void PmergeMe::process_sort_vector()
+void PmergeMe::sort_vector()
 {
 	struct timeval start, end;
     gettimeofday(&start, NULL);
@@ -204,7 +205,7 @@ void mergeSort_deque(std::deque<int>& mainChain, int left, int right) {
 	mergeDeque(mainChain, left, mid, right);
 }
 
-void PmergeMe::process_sort_deque()
+void PmergeMe::sort_deque()
 {
 	struct timeval start, end;
     gettimeofday(&start, NULL);
@@ -263,20 +264,12 @@ void PmergeMe::print_sorted_numer(std::string str)
 
 void PmergeMe::print_time_to_process(std::string str)
 {
-	int n;
 	double time;
 	if(str == "vector")
-	{
-		n = static_cast<int>(vec.size());
 		time = this->vec_time;
-	}
 	else
-	{
-		n = static_cast<int>(deq.size());
 		time = this->deq_time;
-	}
-
-	std::cout << "Time to process a range of " << n 
+	std::cout << "Time to process a range of " << this->nbr_elements 
 		 << " elements with std::[" << str << "] : " 
 		 << std::fixed << std::setprecision(5) 
 		 << time << " us" << std::endl;
@@ -286,8 +279,8 @@ void PmergeMe::process_sort()
 {
 	print_sorted_numer("Before: ");
 
-	process_sort_vector();
-	process_sort_deque();
+	sort_vector();
+	sort_deque();
 
 	print_sorted_numer("After:  ");
 
