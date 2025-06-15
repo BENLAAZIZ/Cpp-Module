@@ -18,25 +18,17 @@ int main(int ac, char **av)
 	try
 	{
 		std::string line;
-		if (ac < 2)
+		if (ac != 2)
 			throw std::runtime_error("Error: invalide numbers of arguments.");
 		av = av + 1;
-		while (*av)
-		{
-			std::string arg;
-			arg = *av;
-			if(arg.size() == 1)
-			arg = arg + " ";
-			line += arg;
-			++av;
-		}
+		line = *av;
 		rpn.calculator_process(line);
 		std::cout << rpn.get_result() << std::endl;
-		
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 		return 1;
 	}
+	return 0;
 }

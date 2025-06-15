@@ -21,7 +21,6 @@ RPN::RPN(const RPN& obj)
 		this->result = obj.result;
 		this->stack = obj.stack;
 	}
-	
 }
 
 RPN& RPN::operator=(const RPN& obj)
@@ -62,8 +61,7 @@ void RPN::calculator_process(std::string line)
 {
 	int i = 0;
 	int count_op = 0;
-	int car = 0;
-		std::cout << line << std::endl;
+	int nbr = 0;
 	while (line[i])
 	{
 		if (line[i] == ' ')
@@ -73,15 +71,17 @@ void RPN::calculator_process(std::string line)
 		}
 		if (isdigit(line[i]))
 		{
+			if (line[i + 1] != ' ')
+				throw std::runtime_error("Error: invalid number.");
 			this->stack.push((line[i] - '0'));
 			if (line[i + 1] == '\0')
 				break;
-			if (line[i + 1] != ' ')
-				throw std::runtime_error("Error: invalid number.");
-			car++;
+			nbr++;
 		}
 		else if (line[i] == '+' || line[i] == '-' || line[i] == '*' || line[i] == '/')
 		{
+			if (line[i + 1] != ' ' && line[i + 1] != '\0')
+				throw std::runtime_error("Error: invalid input.");
 			if (this->stack.size() < 2)
 				throw std::runtime_error("Error: not enough operands.");
 			int b = this->stack.top();
@@ -98,7 +98,7 @@ void RPN::calculator_process(std::string line)
 			throw std::runtime_error("Error: invalid character.");
 		i++;
 	}
-	if (count_op != car - 1)
+	if (count_op != nbr - 1)
 		throw std::runtime_error("Error: invalid operation.");
 	this->stack.pop();
 }
