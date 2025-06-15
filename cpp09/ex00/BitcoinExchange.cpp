@@ -86,6 +86,7 @@ static int check_white_space(const std::string& str, int *white_space)
 
 bool BitcoinExchange::check_value(const std::string &value)
 {
+	int p = 0;
 	
 	if (value.find('.') != std::string::npos)
 	{
@@ -97,11 +98,20 @@ bool BitcoinExchange::check_value(const std::string &value)
 	}
 	for(size_t i = 0; i < value.size(); i++)
 	{
-		if (value[i] == '.' && value[i + 1] == '.')
+		if (value[i] == '.')
 		{
-			std::cerr << "Error: bad input" << std::endl;
+			p++;
+			if (p > 1)
+			{
+				std::cerr << "Error: bad input" << std::endl;
 			return (false);
+			}
 		}
+		// if (value[i] == '.' && value[i + 1] == '.')
+		// {
+		// 	std::cerr << "Error: bad input" << std::endl;
+		// 	return (false);
+		// }
 		if (!isdigit(value[i]) && value[i] != '.' && value[i] != '-')
 		{
 			std::cerr << "Error: bad input" << std::endl;
@@ -127,7 +137,10 @@ bool BitcoinExchange::parse_line(const std::string &line)
 	if (check_white_space(line, &white_space) == 2)
 	{
 		if (white_space != 0)
+		{
+			std::cerr << "Error: bad input => " << line << std::endl;
 			return (false);
+		}
 	}
 	else
 	{
@@ -250,8 +263,8 @@ void BitcoinExchange::process_file(const std::string &filename)
 		throw std::runtime_error("Error: could not open file.");
 	std::string line;
 	std::getline(file, line);
-	// if (line != "date | value")
-		// throw std::runtime_error("Error: could not open file.");
+	if (line != "date | value")
+		throw std::runtime_error("Error: first line should be 'date | value'.");
 	while (std::getline(file, line))
 	{
 		if(parse_line(line) == false)
