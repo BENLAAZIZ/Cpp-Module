@@ -39,7 +39,10 @@ BitcoinExchange::~BitcoinExchange() {}
 std::string BitcoinExchange::get_value(const std::string& key) const
 {
 	std::map<std::string, std::string>::const_iterator it = data.find(key);
-	return (it != data.end()) ? it->second : "";
+	if (it != data.end())
+    	return it->second;
+	else
+    	return "";
 }
 
 void BitcoinExchange::set_map(const std::string& key, const std::string& value) 
@@ -55,7 +58,7 @@ void BitcoinExchange::process_database()
 	std::string line;
 	while (std::getline(data_file, line))
 	{
-			std::size_t pos = line.find(',');
+		std::size_t pos = line.find(',');
 		if (pos == std::string::npos)
 			throw std::runtime_error("Error: could not parse line.");
 		date = line.substr(0, pos);
@@ -87,7 +90,6 @@ static int check_white_space(const std::string& str, int *white_space)
 bool BitcoinExchange::check_value(const std::string &value)
 {
 	int p = 0;
-	
 	if (value.find('.') != std::string::npos)
 	{
 		if (value.find('.') == 0 || value.find('.') == value.size() - 1)
@@ -107,11 +109,6 @@ bool BitcoinExchange::check_value(const std::string &value)
 			return (false);
 			}
 		}
-		// if (value[i] == '.' && value[i + 1] == '.')
-		// {
-		// 	std::cerr << "Error: bad input" << std::endl;
-		// 	return (false);
-		// }
 		if (!isdigit(value[i]) && value[i] != '.' && value[i] != '-')
 		{
 			std::cerr << "Error: bad input" << std::endl;
@@ -129,6 +126,59 @@ bool BitcoinExchange::check_value(const std::string &value)
 		return (false);
 	}
 	return true;
+}
+
+bool check_day(int years, int month, int day)
+{
+	if (month == 2)
+	{
+		if ((years % 4 == 0 && years % 100 != 0 ) || years % 400 == 0)
+		{
+			if (day < 1 || day > 29)
+				return (false);
+		}
+		else
+		{
+			if (day < 1 || day > 28)
+				return (false);
+		}
+	}
+	if (month == 4 || month == 6 || month == 9 || month == 11)
+	{
+		if (day < 1 || day > 30)
+			return (false);
+	}
+	else
+	{
+		if (day < 1 || day > 31)
+			return (false);
+	}
+	return (true);
+}
+
+bool BitcoinExchange::check_date(const std::string &date)
+{  
+	if(date.size() != 10)
+		return (false);
+	if(date[4] != '-' || date[7] != '-')
+		return (false);
+	for (size_t i = 0; i < date.size(); ++i)
+	{
+		if (i == 4 || i == 7)
+			continue;
+		if (!isdigit(date[i]))
+			return (false);
+	}
+	std::string year = date.substr(0, 4);
+	std::string month = date.substr(5, 2);
+	std::string day = date.substr(8, 2);
+	if(std::atoi(year.c_str()) < 2009 || std::atoi(year.c_str()) > 2025)
+		return (false);
+	if (std::atoi(month.c_str()) < 1 || std::atoi(month.c_str()) > 12)
+		return (false);
+	if(check_day(std::atoi(year.c_str()), std::atoi(month.c_str()), std::atoi(day.c_str())) == false)
+		return (false);
+	return (true);
 }
 
 bool BitcoinExchange::parse_line(const std::string &line)
@@ -174,65 +224,6 @@ bool BitcoinExchange::parse_line(const std::string &line)
 	return true; 
 }
 
-bool check_day(int years, int month, int day)
-{
-	if (month == 2)
-	{
-		if ((years % 4 == 0 && years % 100 != 0 ) || years % 400 == 0)
-		{
-			if (day < 1 || day > 29)
-				return (false);
-		}
-		else
-		{
-			if (day < 1 || day > 28)
-				return (false);
-		}
-	}
-	if (month == 4 || month == 6 || month == 9 || month == 11)
-	{
-		if (day < 1 || day > 30)
-			return (false);
-	}
-	else
-	{
-		if (day < 1 || day > 31)
-			return (false);
-	}
-	return (true);
-}
-
-bool BitcoinExchange::check_date(const std::string &date)
-{  
-	if(date.size() != 10)
-	{
-		std::cerr << "Error: bad input => " << date << std::endl;
-		return (false);
-	}
-	if(date[4] != '-' || date[7] != '-')
-	{
-		std::cerr << "Error: bad input => " << date << std::endl;
-		return (false);
-	}
-	for (size_t i = 0; i < date.size(); ++i)
-	{
-		if (i == 4 || i == 7)
-			continue;
-		if (!isdigit(date[i]))
-			return (false);
-	}
-	std::string year = date.substr(0, 4);
-	std::string month = date.substr(5, 2);
-	std::string day = date.substr(8, 2);
-	if(std::atoi(year.c_str()) < 2009 || std::atoi(year.c_str()) > 2025)
-		return (false);
-	if (std::atoi(month.c_str()) < 1 || std::atoi(month.c_str()) > 12)
-		return (false);
-	if(check_day(std::atoi(year.c_str()), std::atoi(month.c_str()), std::atoi(day.c_str())) == false)
-		return (false);
-	return (true);
-}
-
 void BitcoinExchange::print_data_line(const std::string &line)
 {
 	std::istringstream iss(line);
@@ -244,7 +235,6 @@ void BitcoinExchange::print_data_line(const std::string &line)
 	}
 	if(_date != get_value(_date))
 	{
-		// find the closest date
 		std::map<std::string, std::string>::iterator it = data.lower_bound(_date);
 		if (it != data.begin())
 			it--;
@@ -256,8 +246,6 @@ void BitcoinExchange::print_data_line(const std::string &line)
 
 void BitcoinExchange::process_file(const std::string &filename)
 {
-
-	// std::ifstream file(filename);
 	std::ifstream file(filename.c_str());
 	if (!file.is_open())
 		throw std::runtime_error("Error: could not open file.");
