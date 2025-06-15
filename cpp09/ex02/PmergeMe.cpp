@@ -27,8 +27,8 @@ PmergeMe::PmergeMe(const PmergeMe& obj)
 		this->deq = obj.deq;
 		this->save_last = obj.save_last;
 		this->vec_time = obj.vec_time;
-        this->deq_time = obj.deq_time;
-        this->has_pair = obj.has_pair;
+		this->deq_time = obj.deq_time;
+		this->has_pair = obj.has_pair;
 	}
 }
 
@@ -40,8 +40,8 @@ PmergeMe&  PmergeMe::operator=(const PmergeMe& obj)
 		this->deq = obj.deq;
 		this->save_last = obj.save_last;
 		this->vec_time = obj.vec_time;
-        this->deq_time = obj.deq_time;
-        this->has_pair = obj.has_pair;
+		this->deq_time = obj.deq_time;
+		this->has_pair = obj.has_pair;
 	}
 	return *this;
 }
@@ -51,12 +51,23 @@ PmergeMe::~PmergeMe()
 	
 }
 
+void PmergeMe::get_elements(char **av)
+{
+	int i = 1;
+	while(av[i])
+	{
+		vec.push_back(std::atoi(av[i]));
+		deq.push_back(std::atoi(av[i]));
+		i++;
+	}
+	this->nbr_elements = static_cast<int>(vec.size());
+}
+
 void check_parse(char **av)
 {
 	int i = 1;
 	while(av[i])
 	{
-		
 		int j = 0;
 		if (av[i][j] == '\0')
 			throw std::runtime_error("Error: impty argument!");
@@ -74,60 +85,52 @@ void check_parse(char **av)
 				throw std::runtime_error("Error: invalid character!");
 			j++;
 		}
-		if (atol(av[i]) > 2147483647)
+		if (std::atol(av[i]) > 2147483647)
 			 throw std::runtime_error("Error: number too large!");
 		i++;
 	}
 }
 
-void PmergeMe::get_elements(char **av)
-{
-	int i = 1;
-	while(av[i])
-	{
-		vec.push_back(atoi(av[i]));
-		deq.push_back(atoi(av[i]));
-		i++;
-	}
-	this->nbr_elements = static_cast<int>(vec.size());
-}
+// process of sort vector
 
-void mergeVector(std::vector<int>& mainChain, int left, int mid, int right) {
+void mergeVector(std::vector<int>& base_sequence, int left, int mid, int right) 
+{
 	std::vector<int> temp;
 	int i = left;
 	int j = mid + 1;
 
-	while (i <= mid && j <= right) {
-		if (mainChain[i] < mainChain[j])
-			temp.push_back(mainChain[i++]);
+	while (i <= mid && j <= right)
+	{
+		if (base_sequence[i] < base_sequence[j])
+			temp.push_back(base_sequence[i++]);
 		else
-			temp.push_back(mainChain[j++]);
+			temp.push_back(base_sequence[j++]);
 	}
 
 	while (i <= mid)
-		temp.push_back(mainChain[i++]);
+		temp.push_back(base_sequence[i++]);
 
 	while (j <= right)
-		temp.push_back(mainChain[j++]);
+		temp.push_back(base_sequence[j++]);
 
 	for (size_t k = 0; k < temp.size(); ++k)
-		mainChain[left + k] = temp[k];
+		base_sequence[left + k] = temp[k];
 }
 
-void mergeSort_vector(std::vector<int>& mainChain, int left, int right) {
+void mergeSort_vector(std::vector<int>& base_sequence, int left, int right) 
+{
 	if (left >= right)
 		return;
-
 	int mid = (left + right) / 2;
-	mergeSort_vector(mainChain, left, mid);
-	mergeSort_vector(mainChain, mid + 1, right);
-	mergeVector(mainChain, left, mid, right);
+	mergeSort_vector(base_sequence, left, mid);
+	mergeSort_vector(base_sequence, mid + 1, right);
+	mergeVector(base_sequence, left, mid, right);
 }
 
 void PmergeMe::sort_vector()
 {
 	struct timeval start, end;
-    gettimeofday(&start, NULL);
+	gettimeofday(&start, NULL);
 
 	if (vec.size() % 2 == 1)
 	{
@@ -135,7 +138,6 @@ void PmergeMe::sort_vector()
 		vec.pop_back();
 		has_pair = true;
 	}
-
 	std::vector<std::pair<int, int> > pair_vec;
 	for (size_t i = 0; i < vec.size(); i += 2)
 	{
@@ -145,70 +147,74 @@ void PmergeMe::sort_vector()
 			std::swap(first, second);
 		pair_vec.push_back(std::make_pair(first, second));
 	}
-	std::vector<int> mainChain;
-	std::vector<int> pending;
+	std::vector<int> base_sequence;
+	std::vector<int> to_insert;
 	for (size_t i = 0; i < pair_vec.size(); ++i)
 	{
-		mainChain.push_back(pair_vec[i].first);
-		pending.push_back(pair_vec[i].second);
+		base_sequence.push_back(pair_vec[i].first);
+		to_insert.push_back(pair_vec[i].second);
 	}
-	mergeSort_vector(mainChain, 0, static_cast<int>(mainChain.size()) - 1);
-	for (size_t i = 0; i < pending.size(); ++i)
+	mergeSort_vector(base_sequence, 0, static_cast<int>(base_sequence.size()) - 1);
+	for (size_t i = 0; i < to_insert.size(); ++i)
 	{
-		std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), pending[i]);
-		mainChain.insert(pos, pending[i]);
+		std::vector<int>::iterator pos = std::lower_bound(base_sequence.begin(), base_sequence.end(), to_insert[i]);
+		base_sequence.insert(pos, to_insert[i]);
 	}
 	if (has_pair)
 	{
-		std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), save_last);
-		mainChain.insert(pos, save_last);
+		std::vector<int>::iterator pos = std::lower_bound(base_sequence.begin(), base_sequence.end(), save_last);
+		base_sequence.insert(pos, save_last);
 	}
 		
-	vec = mainChain;
+	vec = base_sequence;
 	
 	gettimeofday(&end, NULL);
-    
-    long seconds = end.tv_sec - start.tv_sec;
-    long microseconds = end.tv_usec - start.tv_usec;
-    this->vec_time = seconds * 1000000.0 + microseconds;
+	
+	long seconds = end.tv_sec - start.tv_sec;
+	long microseconds = end.tv_usec - start.tv_usec;
+	this->vec_time = seconds * 1000000.0 + microseconds;
 }
 
-void mergeDeque(std::deque<int>& mainChain, int left, int mid, int right) {
+// process of sort deque
+
+void mergeDeque(std::deque<int>& base_sequence, int left, int mid, int right) 
+{
 	std::deque<int> temp;
 	int i = left;
 	int j = mid + 1;
 
-	while (i <= mid && j <= right) {
-		if (mainChain[i] < mainChain[j])
-			temp.push_back(mainChain[i++]);
+	while (i <= mid && j <= right) 
+	{
+		if (base_sequence[i] < base_sequence[j])
+			temp.push_back(base_sequence[i++]);
 		else
-			temp.push_back(mainChain[j++]);
+			temp.push_back(base_sequence[j++]);
 	}
 
 	while (i <= mid)
-		temp.push_back(mainChain[i++]);
+		temp.push_back(base_sequence[i++]);
 
 	while (j <= right)
-		temp.push_back(mainChain[j++]);
+		temp.push_back(base_sequence[j++]);
 
 	for (size_t k = 0; k < temp.size(); ++k)
-		mainChain[left + k] = temp[k];
+		base_sequence[left + k] = temp[k];
 }
 
-void mergeSort_deque(std::deque<int>& mainChain, int left, int right) {
+void mergeSort_deque(std::deque<int>& base_sequence, int left, int right) 
+{
 	if (left >= right)
 		return;
-
 	int mid = (left + right) / 2;
-	mergeSort_deque(mainChain, left, mid);
-	mergeSort_deque(mainChain, mid + 1, right);
-	mergeDeque(mainChain, left, mid, right);
+	mergeSort_deque(base_sequence, left, mid);
+	mergeSort_deque(base_sequence, mid + 1, right);
+	mergeDeque(base_sequence, left, mid, right);
 }
 
 void PmergeMe::sort_deque()
 {
 	struct timeval start, end;
-    gettimeofday(&start, NULL);
+	gettimeofday(&start, NULL);
 	has_pair = false;
 	if (deq.size() % 2 == 1)
 	{
@@ -226,32 +232,32 @@ void PmergeMe::sort_deque()
 			std::swap(first, second);
 		pair_deq.push_back(std::make_pair(first, second));
 	}
-	std::deque<int> mainChain;
-	std::deque<int> pending;
+	std::deque<int> base_sequence;
+	std::deque<int> to_insert;
 	for (size_t i = 0; i < pair_deq.size(); ++i)
 	{
-		mainChain.push_back(pair_deq[i].first);  // min
-		pending.push_back(pair_deq[i].second);   // max
+		base_sequence.push_back(pair_deq[i].first);
+		to_insert.push_back(pair_deq[i].second);
 	}
-	mergeSort_deque(mainChain, 0, static_cast<int>(mainChain.size()) - 1);
-	for (size_t i = 0; i < pending.size(); ++i)
+	mergeSort_deque(base_sequence, 0, static_cast<int>(base_sequence.size()) - 1);
+	for (size_t i = 0; i < to_insert.size(); ++i)
 	{
-		std::deque<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), pending[i]);
-		mainChain.insert(pos, pending[i]);
+		std::deque<int>::iterator pos = std::lower_bound(base_sequence.begin(), base_sequence.end(), to_insert[i]);
+		base_sequence.insert(pos, to_insert[i]);
 	}
 	if (has_pair)
 	{
-		std::deque<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), save_last);
-		mainChain.insert(pos, save_last);
+		std::deque<int>::iterator pos = std::lower_bound(base_sequence.begin(), base_sequence.end(), save_last);
+		base_sequence.insert(pos, save_last);
 	}
 		
-	deq = mainChain;
+	deq = base_sequence;
 	
 	gettimeofday(&end, NULL);
-    
-    long seconds = end.tv_sec - start.tv_sec;
-    long microseconds = end.tv_usec - start.tv_usec;
-    this->deq_time = seconds * 1000000.0 + microseconds;
+	
+	long seconds = end.tv_sec - start.tv_sec;
+	long microseconds = end.tv_usec - start.tv_usec;
+	this->deq_time = seconds * 1000000.0 + microseconds;
 }
 
 void PmergeMe::print_sorted_numer(std::string str)
