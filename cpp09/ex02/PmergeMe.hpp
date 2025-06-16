@@ -21,7 +21,7 @@
 
 class PmergeMe
 {
-	public :
+	private :
 		std::vector<int> vec;
 		std::deque<int> deq;
 		double	vec_time;

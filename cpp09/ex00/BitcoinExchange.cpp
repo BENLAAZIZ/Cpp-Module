@@ -60,15 +60,22 @@ void BitcoinExchange::process_database()
 	{
 		std::size_t pos = line.find(',');
 		if (pos == std::string::npos)
+		{
+			data_file.close();
 			throw std::runtime_error("Error: could not parse line.");
+		}
 		date = line.substr(0, pos);
 		value = line.substr(pos + 1);
 		if (date.empty() || value.empty())
+		{
+			data_file.close();
 			throw std::runtime_error("Error: could not parse line.");
+		}
 		set_map(this->date, this->value);
 		date.clear();
 		value.clear();
 	}
+	data_file.close();
 }
 
 static int check_white_space(const std::string& str, int *white_space)
@@ -90,6 +97,7 @@ static int check_white_space(const std::string& str, int *white_space)
 bool BitcoinExchange::check_value(const std::string &value)
 {
 	int p = 0;
+	int flag = 0;
 	if (value.find('.') != std::string::npos)
 	{
 		if (value.find('.') == 0 || value.find('.') == value.size() - 1)
@@ -100,6 +108,20 @@ bool BitcoinExchange::check_value(const std::string &value)
 	}
 	for(size_t i = 0; i < value.size(); i++)
 	{
+		if (value[0] == '-')
+		{
+			std::cerr << "Error: not a positive number." << std::endl;
+			return (false);
+		}
+		if(flag == 0)
+		{
+			if (value[0] == '+')
+			{
+				i++;
+				flag++;
+				continue;
+			}
+		}
 		if (value[i] == '.')
 		{
 			p++;
@@ -111,7 +133,7 @@ bool BitcoinExchange::check_value(const std::string &value)
 		}
 		if (!isdigit(value[i]) && value[i] != '.' && value[i] != '-')
 		{
-			std::cerr << "Error: bad input" << std::endl;
+			std::cerr << "Error: bad input => " << value << std::endl;
 			return (false);
 		}
 	}
@@ -132,7 +154,7 @@ bool check_day(int years, int month, int day)
 {
 	if (month == 2)
 	{
-		if ((years % 4 == 0 && years % 100 != 0 ) || years % 400 == 0)
+		if ((years % 4 == 0 && years % 100 != 0) || years % 400 == 0)
 		{
 			if (day < 1 || day > 29)
 				return (false);
@@ -143,7 +165,7 @@ bool check_day(int years, int month, int day)
 				return (false);
 		}
 	}
-	if (month == 4 || month == 6 || month == 9 || month == 11)
+	else if (month == 4 || month == 6 || month == 9 || month == 11)
 	{
 		if (day < 1 || day > 30)
 			return (false);
