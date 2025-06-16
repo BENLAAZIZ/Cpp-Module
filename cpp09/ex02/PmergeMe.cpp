@@ -138,22 +138,21 @@ void PmergeMe::sort_vector()
 		vec.pop_back();
 		has_pair = true;
 	}
-	std::vector<int> base_sequence;
-	std::vector<int> to_insert;
+	std::vector<std::pair<int, int> > pair_vec;
 	for (size_t i = 0; i < vec.size(); i += 2)
 	{
 		int first = vec[i];
 		int second = vec[i + 1];
-		if (first < second)
-		{
-			base_sequence.push_back(first);
-			to_insert.push_back(second);
-		}
-		else
-		{
-			base_sequence.push_back(second);
-			to_insert.push_back(first);
-		}
+		if (first > second)
+			std::swap(first, second);
+		pair_vec.push_back(std::make_pair(first, second));
+	}
+	std::vector<int> base_sequence;
+	std::vector<int> to_insert;
+	for (size_t i = 0; i < pair_vec.size(); ++i)
+	{
+		base_sequence.push_back(pair_vec[i].first);
+		to_insert.push_back(pair_vec[i].second);
 	}
 	mergeSort_vector(base_sequence, 0, static_cast<int>(base_sequence.size()) - 1);
 	for (size_t i = 0; i < to_insert.size(); ++i)
@@ -223,22 +222,21 @@ void PmergeMe::sort_deque()
 		deq.pop_back();
 		has_pair = true;
 	}
-	std::deque<int> base_sequence;
-	std::deque<int> to_insert;
+	std::deque<std::pair<int, int> > pair_deq;
 	for (size_t i = 0; i < deq.size(); i += 2)
 	{
 		int first = deq[i];
 		int second = deq[i + 1];
-		if (first < second)
-		{
-			base_sequence.push_back(first);
-			to_insert.push_back(second);
-		}
-		else
-		{
-			base_sequence.push_back(second);
-			to_insert.push_back(first);
-		}
+		if (first > second)
+			std::swap(first, second);
+		pair_deq.push_back(std::make_pair(first, second));
+	}
+	std::deque<int> base_sequence;
+	std::deque<int> to_insert;
+	for (size_t i = 0; i < pair_deq.size(); ++i)
+	{
+		base_sequence.push_back(pair_deq[i].first);
+		to_insert.push_back(pair_deq[i].second);
 	}
 	mergeSort_deque(base_sequence, 0, static_cast<int>(base_sequence.size()) - 1);
 	for (size_t i = 0; i < to_insert.size(); ++i)
@@ -251,11 +249,9 @@ void PmergeMe::sort_deque()
 		std::deque<int>::iterator pos = std::lower_bound(base_sequence.begin(), base_sequence.end(), save_last);
 		base_sequence.insert(pos, save_last);
 	}
-		
 	deq = base_sequence;
-	
-	gettimeofday(&end, NULL);
-	
+
+	gettimeofday(&end, NULL);	
 	long seconds = end.tv_sec - start.tv_sec;
 	long microseconds = end.tv_usec - start.tv_usec;
 	this->deq_time = seconds * 1000000.0 + microseconds;
