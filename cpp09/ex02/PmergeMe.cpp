@@ -95,26 +95,26 @@ void check_parse(char **av)
 
 void mergeVector(std::vector<int>& base_sequence, int left, int mid, int right) 
 {
-	std::vector<int> temp;
+	std::vector<int> tmp;
 	int i = left;
 	int j = mid + 1;
 
 	while (i <= mid && j <= right)
 	{
 		if (base_sequence[i] < base_sequence[j])
-			temp.push_back(base_sequence[i++]);
+			tmp.push_back(base_sequence[i++]);
 		else
-			temp.push_back(base_sequence[j++]);
+			tmp.push_back(base_sequence[j++]);
 	}
 
 	while (i <= mid)
-		temp.push_back(base_sequence[i++]);
+		tmp.push_back(base_sequence[i++]);
 
 	while (j <= right)
-		temp.push_back(base_sequence[j++]);
+		tmp.push_back(base_sequence[j++]);
 
-	for (size_t k = 0; k < temp.size(); ++k)
-		base_sequence[left + k] = temp[k];
+	for (size_t k = 0; k < tmp.size(); ++k)
+		base_sequence[left + k] = tmp[k];
 }
 
 void mergeSort_vector(std::vector<int>& base_sequence, int left, int right) 
@@ -138,21 +138,22 @@ void PmergeMe::sort_vector()
 		vec.pop_back();
 		has_pair = true;
 	}
-	std::vector<std::pair<int, int> > pair_vec;
+	std::vector<int> base_sequence;
+	std::vector<int> to_insert;
 	for (size_t i = 0; i < vec.size(); i += 2)
 	{
 		int first = vec[i];
 		int second = vec[i + 1];
-		if (first > second)
-			std::swap(first, second);
-		pair_vec.push_back(std::make_pair(first, second));
-	}
-	std::vector<int> base_sequence;
-	std::vector<int> to_insert;
-	for (size_t i = 0; i < pair_vec.size(); ++i)
-	{
-		base_sequence.push_back(pair_vec[i].first);
-		to_insert.push_back(pair_vec[i].second);
+		if (first < second)
+		{
+			base_sequence.push_back(first);
+			to_insert.push_back(second);
+		}
+		else
+		{
+			base_sequence.push_back(second);
+			to_insert.push_back(first);
+		}
 	}
 	mergeSort_vector(base_sequence, 0, static_cast<int>(base_sequence.size()) - 1);
 	for (size_t i = 0; i < to_insert.size(); ++i)
@@ -179,26 +180,26 @@ void PmergeMe::sort_vector()
 
 void mergeDeque(std::deque<int>& base_sequence, int left, int mid, int right) 
 {
-	std::deque<int> temp;
+	std::deque<int> tmp;
 	int i = left;
 	int j = mid + 1;
 
 	while (i <= mid && j <= right) 
 	{
 		if (base_sequence[i] < base_sequence[j])
-			temp.push_back(base_sequence[i++]);
+			tmp.push_back(base_sequence[i++]);
 		else
-			temp.push_back(base_sequence[j++]);
+			tmp.push_back(base_sequence[j++]);
 	}
 
 	while (i <= mid)
-		temp.push_back(base_sequence[i++]);
+		tmp.push_back(base_sequence[i++]);
 
 	while (j <= right)
-		temp.push_back(base_sequence[j++]);
+		tmp.push_back(base_sequence[j++]);
 
-	for (size_t k = 0; k < temp.size(); ++k)
-		base_sequence[left + k] = temp[k];
+	for (size_t k = 0; k < tmp.size(); ++k)
+		base_sequence[left + k] = tmp[k];
 }
 
 void mergeSort_deque(std::deque<int>& base_sequence, int left, int right) 
@@ -222,22 +223,22 @@ void PmergeMe::sort_deque()
 		deq.pop_back();
 		has_pair = true;
 	}
-
-	std::deque<std::pair<int, int> > pair_deq;
-	for (size_t i = 0; i < vec.size(); i += 2)
-	{
-		int first = vec[i];
-		int second = vec[i + 1];
-		if (first > second)
-			std::swap(first, second);
-		pair_deq.push_back(std::make_pair(first, second));
-	}
 	std::deque<int> base_sequence;
 	std::deque<int> to_insert;
-	for (size_t i = 0; i < pair_deq.size(); ++i)
+	for (size_t i = 0; i < deq.size(); i += 2)
 	{
-		base_sequence.push_back(pair_deq[i].first);
-		to_insert.push_back(pair_deq[i].second);
+		int first = deq[i];
+		int second = deq[i + 1];
+		if (first < second)
+		{
+			base_sequence.push_back(first);
+			to_insert.push_back(second);
+		}
+		else
+		{
+			base_sequence.push_back(second);
+			to_insert.push_back(first);
+		}
 	}
 	mergeSort_deque(base_sequence, 0, static_cast<int>(base_sequence.size()) - 1);
 	for (size_t i = 0; i < to_insert.size(); ++i)
@@ -263,7 +264,7 @@ void PmergeMe::sort_deque()
 void PmergeMe::print_sorted_numer(std::string str)
 {
 	std::cout << str;
-	for (size_t i = 0; i < vec.size(); ++i)
+	for (int i = 0; i < this->nbr_elements; ++i)
 	std::cout << vec[i] << " ";
 	std::cout << std::endl;
 }
