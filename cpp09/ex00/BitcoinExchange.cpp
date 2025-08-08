@@ -131,7 +131,7 @@ bool BitcoinExchange::check_value(const std::string &value)
 			return (false);
 			}
 		}
-		if (!isdigit(value[i]) && value[i] != '.' && value[i] != '-')
+		if (!isdigit(value[i]) && value[i] != '.')
 		{
 			std::cerr << "Error: bad input => " << value << std::endl;
 			return (false);

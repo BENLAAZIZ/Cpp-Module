@@ -25,7 +25,6 @@ class BitcoinExchange
         std::string date;
         std::string value;
     public:
- 
         BitcoinExchange();
         BitcoinExchange(const BitcoinExchange &src);
         ~BitcoinExchange();
