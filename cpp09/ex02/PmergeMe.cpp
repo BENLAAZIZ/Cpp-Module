@@ -130,18 +130,17 @@ void mergeSort_vector(std::vector<int>& base_sequence, int left, int right)
 std::vector<size_t> jacobsthal_order_vec(size_t n) {
     std::vector<size_t> jacobsthal_order;
     std::vector<bool> added(n, false);
-    // 1. Generate Jacobsthal numbers and add them if < n
-    size_t j1 = 0, j2 = 1;
-    while (j2 < n) {
-        if (!added[j2]) {
-            jacobsthal_order.push_back(j2);
-            added[j2] = true;
+    size_t j_1 = 0, j_2 = 1;
+
+    while (j_2 < n) {
+        if (!added[j_2]) {
+            jacobsthal_order.push_back(j_2);
+            added[j_2] = true;
         }
-        size_t next = j2 + 2 * j1;
-        j1 = j2;
-        j2 = next;
+        size_t next = j_2 + 2 * j_1;
+        j_1 = j_2;
+        j_2 = next;
     }
-    // 2. Add remaining indices that weren't added yet
     for (size_t i = 0; i < n; ++i) {
         if (!added[i]) {
             jacobsthal_order.push_back(i);
@@ -203,11 +202,6 @@ void PmergeMe::sort_vector()
 }
 
 
-//================================================================
-//================================================================
-//================================================================
-//================================================================
-
 // process of sort deque
 
 void mergeDeque(std::deque<int>& base_sequence, int left, int mid, int right) 
@@ -247,7 +241,6 @@ void mergeSort_deque(std::deque<int>& base_sequence, int left, int right)
 std::deque<size_t> jacobsthal_order_deq(size_t n) {
     std::deque<size_t> jacobsthal_order;
     std::deque<bool> added(n, false);
-    // 1. Generate Jacobsthal numbers and add them if < n
     size_t j1 = 0, j2 = 1;
     while (j2 < n) {
         if (!added[j2]) {
@@ -258,7 +251,6 @@ std::deque<size_t> jacobsthal_order_deq(size_t n) {
         j1 = j2;
         j2 = next;
     }
-    // 2. Add remaining indices that weren't added yet
     for (size_t i = 0; i < n; ++i) {
         if (!added[i]) {
             jacobsthal_order.push_back(i);
@@ -295,11 +287,6 @@ void PmergeMe::sort_deque()
 		to_insert.push_back(pair_deq[i].second);
 	}
 	mergeSort_deque(base_sequence, 0, static_cast<int>(base_sequence.size()) - 1);
-	// for (size_t i = 0; i < to_insert.size(); ++i)
-	// {
-	// 	std::deque<int>::iterator pos = std::lower_bound(base_sequence.begin(), base_sequence.end(), to_insert[i]);
-	// 	base_sequence.insert(pos, to_insert[i]);
-	// }
 
 	std::deque<size_t> insertion_order;
 	insertion_order = jacobsthal_order_deq(to_insert.size());
