@@ -12,7 +12,6 @@
 
 #pragma once
 
-# include <cstdlib>
 # include <iostream>
 # include <vector>
 # include <deque>
@@ -41,7 +40,7 @@ class PmergeMe
 		void	sort_vector();
 		void	sort_deque();
 
-		void	print_sorted_numer(std::string str);
+		void	print_sorted_number(std::string str);
 		void	print_time_to_process(std::string str);
 };
 

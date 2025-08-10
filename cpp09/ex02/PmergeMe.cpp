@@ -29,27 +29,18 @@ PmergeMe::PmergeMe(const PmergeMe& obj)
 		this->vec_time = obj.vec_time;
 		this->deq_time = obj.deq_time;
 		this->has_pair = obj.has_pair;
+		this->nbr_elements = obj.nbr_elements;
 	}
 }
 
 PmergeMe&  PmergeMe::operator=(const PmergeMe& obj)
 {
 	 if(this != &obj)
-	{
-		this->vec = obj.vec;
-		this->deq = obj.deq;
-		this->save_last = obj.save_last;
-		this->vec_time = obj.vec_time;
-		this->deq_time = obj.deq_time;
-		this->has_pair = obj.has_pair;
-	}
+		*this = obj;
 	return *this;
 }
 
-PmergeMe::~PmergeMe()
-{
-	
-}
+PmergeMe::~PmergeMe(){}
 
 void PmergeMe::get_elements(char **av)
 {
@@ -91,8 +82,6 @@ void check_parse(char **av)
 	}
 }
 
-// process of sort vector
-
 void mergeVector(std::vector<int>& base_sequence, int left, int mid, int right) 
 {
 	std::vector<int> tmp;
@@ -127,26 +116,28 @@ void mergeSort_vector(std::vector<int>& base_sequence, int left, int right)
 	mergeVector(base_sequence, left, mid, right);
 }
 
-std::vector<size_t> jacobsthal_order_vec(size_t n) {
-    std::vector<size_t> jacobsthal_order;
-    std::vector<bool> added(n, false);
-    size_t j_1 = 0, j_2 = 1;
+std::vector<size_t> jacobsthal_order_vec(size_t n) 
+{
+	std::vector<size_t> jacobsthal_order;
+	std::vector<bool> added(n, false);
+	size_t j_1 = 0, j_2 = 1;
 
-    while (j_2 < n) {
-        if (!added[j_2]) {
-            jacobsthal_order.push_back(j_2);
-            added[j_2] = true;
-        }
-        size_t next = j_2 + 2 * j_1;
-        j_1 = j_2;
-        j_2 = next;
-    }
-    for (size_t i = 0; i < n; ++i) {
-        if (!added[i]) {
-            jacobsthal_order.push_back(i);
-        }
-    }
-    return jacobsthal_order;
+	while (j_2 < n) 
+	{
+		if (!added[j_2]) {
+			jacobsthal_order.push_back(j_2);
+			added[j_2] = true;
+		}
+		size_t next = j_2 + 2 * j_1;
+		j_1 = j_2;
+		j_2 = next;
+	}
+	for (size_t i = 0; i < n; ++i) 
+	{
+		if (!added[i]) 
+			jacobsthal_order.push_back(i);
+	}
+	return jacobsthal_order;
 }
 
 void PmergeMe::sort_vector()
@@ -202,7 +193,8 @@ void PmergeMe::sort_vector()
 }
 
 
-// process of sort deque
+
+
 
 void mergeDeque(std::deque<int>& base_sequence, int left, int mid, int right) 
 {
@@ -238,25 +230,28 @@ void mergeSort_deque(std::deque<int>& base_sequence, int left, int right)
 	mergeDeque(base_sequence, left, mid, right);
 }
 
-std::deque<size_t> jacobsthal_order_deq(size_t n) {
-    std::deque<size_t> jacobsthal_order;
-    std::deque<bool> added(n, false);
-    size_t j1 = 0, j2 = 1;
-    while (j2 < n) {
-        if (!added[j2]) {
-            jacobsthal_order.push_back(j2);
-            added[j2] = true;
-        }
-        size_t next = j2 + 2 * j1;
-        j1 = j2;
-        j2 = next;
-    }
-    for (size_t i = 0; i < n; ++i) {
-        if (!added[i]) {
-            jacobsthal_order.push_back(i);
-        }
-    }
-    return jacobsthal_order;
+std::deque<size_t> jacobsthal_order_deq(size_t n)
+{
+	std::deque<size_t> jacobsthal_order;
+	std::deque<bool> added(n, false);
+	size_t j1 = 0, j2 = 1;
+	while (j2 < n) 
+	{
+		if (!added[j2]) 
+		{
+			jacobsthal_order.push_back(j2);
+			added[j2] = true;
+		}
+		size_t next = j2 + 2 * j1;
+		j1 = j2;
+		j2 = next;
+	}
+	for (size_t i = 0; i < n; ++i) 
+	{
+		if (!added[i])
+			jacobsthal_order.push_back(i);
+	}
+	return jacobsthal_order;
 }
 
 void PmergeMe::sort_deque()
@@ -311,7 +306,7 @@ void PmergeMe::sort_deque()
 	this->deq_time = seconds * 1000000.0 + microseconds;
 }
 
-void PmergeMe::print_sorted_numer(std::string str)
+void PmergeMe::print_sorted_number(std::string str)
 {
 	std::cout << str;
 	for (int i = 0; i < this->nbr_elements; ++i)
@@ -334,12 +329,12 @@ void PmergeMe::print_time_to_process(std::string str)
 
 void PmergeMe::process_sort()
 {
-	print_sorted_numer("Before: ");
+	print_sorted_number("Before: ");
 
 	sort_vector();
 	sort_deque();
 
-	print_sorted_numer("After:  ");
+	print_sorted_number("After:  ");
 
 	print_time_to_process("vector");
 	print_time_to_process("deque");

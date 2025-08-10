@@ -17,14 +17,14 @@
 
 class RPN
 {
-		int result;
-		std::stack<int> stack;
+		float result;
+		std::stack<float> stack;
 	public:
 		RPN();
 		RPN(const RPN& obj);
 		RPN& operator=(const RPN& obj);
 		~RPN();
 
-		int get_result() const;
+		float get_result() const;
 		void calculator_process(std::string line);
 };

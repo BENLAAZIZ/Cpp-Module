@@ -36,6 +36,15 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs)
 
 BitcoinExchange::~BitcoinExchange() {}
 
+std::string BitcoinExchange::get_date(const std::string& key) const
+{
+	std::map<std::string, std::string>::const_iterator it = data.find(key);
+	if (it != data.end())
+    	return it->first;
+	else
+    	return "";
+}
+
 std::string BitcoinExchange::get_value(const std::string& key) const
 {
 	std::map<std::string, std::string>::const_iterator it = data.find(key);
@@ -128,7 +137,7 @@ bool BitcoinExchange::check_value(const std::string &value)
 			if (p > 1)
 			{
 				std::cerr << "Error: bad input" << std::endl;
-			return (false);
+				return (false);
 			}
 		}
 		if (!isdigit(value[i]) && value[i] != '.')
@@ -255,7 +264,7 @@ void BitcoinExchange::print_data_line(const std::string &line)
 		std::cerr << "Error: bad input => " << line << std::endl;
 		return;
 	}
-	if(_date != get_value(_date))
+	if(_date != get_date(_date))
 	{
 		std::map<std::string, std::string>::iterator it = data.lower_bound(_date);
 		if (it != data.begin())
@@ -271,6 +280,10 @@ void BitcoinExchange::process_file(const std::string &filename)
 	std::ifstream file(filename.c_str());
 	if (!file.is_open())
 		throw std::runtime_error("Error: could not open file.");
+	file.seekg(0, std::ios::end);
+	if (file.tellg() == 0)
+   		throw std::runtime_error("Error: empty file.");
+	file.seekg(0, std::ios::beg);
 	std::string line;
 	std::getline(file, line);
 	if (line != "date | value")

@@ -35,12 +35,12 @@ RPN& RPN::operator=(const RPN& obj)
 
 RPN::~RPN() {}
 
-int RPN::get_result() const
+float RPN::get_result() const
 {
 	return this->result;
 }
 
-int use_operator(int a, int b, char op)
+float use_operator(float a, float b, char op)
 {
 	switch (op)
 	{
@@ -74,8 +74,6 @@ void RPN::calculator_process(std::string line)
 			if (line[i + 1] != ' ')
 				throw std::runtime_error("Error: invalid number.");
 			this->stack.push((line[i] - '0'));
-			if (line[i + 1] == '\0')
-				break;
 			nbr++;
 		}
 		else if (line[i] == '+' || line[i] == '-' || line[i] == '*' || line[i] == '/')
@@ -84,9 +82,9 @@ void RPN::calculator_process(std::string line)
 				throw std::runtime_error("Error: invalid input.");
 			if (this->stack.size() < 2)
 				throw std::runtime_error("Error: not enough operands.");
-			int b = this->stack.top();
+			float b = this->stack.top();
 			this->stack.pop();
-			int a = this->stack.top();
+			float a = this->stack.top();
 			this->stack.pop();
 			if (line[i] == '/' and b == 0)
 				throw std::runtime_error("Error: division by zero.");

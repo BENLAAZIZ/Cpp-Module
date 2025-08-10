@@ -16,28 +16,28 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <cstdlib>
 #include <map>
 
 class BitcoinExchange
 {
-        std::map<std::string, std::string> data;
-        std::string date;
-        std::string value;
-    public:
-        BitcoinExchange();
-        BitcoinExchange(const BitcoinExchange &src);
-        ~BitcoinExchange();
-        BitcoinExchange &operator=(const BitcoinExchange &rhs);
+		std::map<std::string, std::string> data;
+		std::string date;
+		std::string value;
+	public:
+		BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange &src);
+		~BitcoinExchange();
+		BitcoinExchange &operator=(const BitcoinExchange &rhs);
 
-        void process_database();
-        std::string	get_value(const std::string& key) const;
-        void set_map(const std::string& key, const std::string& value);
-        void process_file(const std::string &file);
-        bool parse_line(const std::string &line);
-        bool check_date(const std::string &date);
-        bool check_value(const std::string &value);
-        void print_data_line(const std::string &line); 
+		void process_database();
+		std::string	get_value(const std::string& key) const;
+		std::string get_date(const std::string& key) const;
+		void set_map(const std::string& key, const std::string& value);
+		void process_file(const std::string &file);
+		bool parse_line(const std::string &line);
+		bool check_date(const std::string &date);
+		bool check_value(const std::string &value);
+		void print_data_line(const std::string &line); 
 };
 
 #endif
