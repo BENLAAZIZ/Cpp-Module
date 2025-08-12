@@ -156,7 +156,7 @@ void PmergeMe::sort_vector()
 	{
 		int first = vec[i];
 		int second = vec[i + 1];
-		if (first > second)
+		if (first < second)
 			std::swap(first, second);
 		pair_vec.push_back(std::make_pair(first, second));
 	}
@@ -167,6 +167,7 @@ void PmergeMe::sort_vector()
 		base_sequence.push_back(pair_vec[i].first);
 		to_insert.push_back(pair_vec[i].second);
 	}
+	
 	mergeSort_vector(base_sequence, 0, static_cast<int>(base_sequence.size()) - 1);
 
 	std::vector<size_t> insertion_order;
