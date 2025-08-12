@@ -259,6 +259,9 @@ void BitcoinExchange::print_data_line(const std::string &line)
 {
 	std::istringstream iss(line);
 	std::string _date, pipe, _value;
+	std::string date;
+	bool found = false;
+	float exchange_rate;
 	if (!(iss >> _date >> pipe >> _value))
 	{
 		std::cerr << "Error: bad input => " << line << std::endl;
@@ -269,9 +272,14 @@ void BitcoinExchange::print_data_line(const std::string &line)
 		std::map<std::string, std::string>::iterator it = data.lower_bound(_date);
 		if (it != data.begin())
 			it--;
-		_date = it->first;	
+		date = it->first;	
+		found = true;
 	}
-	float result  = std::atof(_value.c_str()) * std::atof(get_value(_date).c_str());
+	if (found)
+		exchange_rate = std::atof(get_value(date).c_str());
+	else
+		exchange_rate = std::atof(get_value(_date).c_str());
+	float result  = std::atof(_value.c_str()) * exchange_rate;
 	std::cout << _date << " => " << _value << " = " << result << std::endl;
 }
 
