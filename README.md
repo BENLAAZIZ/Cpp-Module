@@ -1,3 +1,8 @@
+# C++ Learning & Simulation Projects  
+
+This repository documents my learning journey through various C++ modules at 1337 / 42 Network, covering core programming concepts, advanced object-oriented programming, exception handling, and performance optimization.
+Each section contains explanations, screenshots, and simulations of real project exercises.
+
 # Object-Oriented Programming (OOP) in C++
 
 <img width="985" alt="Screen Shot 2025-01-10 at 3 43 04 AM" src="https://github.com/user-attachments/assets/523627b4-1ef1-45c9-882d-122e6c289710" />
@@ -25,5 +30,6 @@
 
 <img width="703" height="626" alt="Screen Shot 2025-08-15 at 3 15 24 PM" src="https://github.com/user-attachments/assets/913350c9-b97a-4b17-aebe-b5dce0031501" />
 <img width="1645" height="1108" alt="Screen Shot 2025-08-15 at 3 16 26 PM" src="https://github.com/user-attachments/assets/baae3b42-29c4-48a9-a7b4-afaa0cef977d" />
+
 
 
