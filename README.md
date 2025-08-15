@@ -18,3 +18,11 @@
 <img width="1774" alt="Screen Shot 2025-05-18 at 6 28 03 PM" src="https://github.com/user-attachments/assets/4e0c66d6-4e3c-441c-a5d2-3a5069807937" />
 <img width="1753" alt="Screen Shot 2025-05-18 at 6 28 52 PM" src="https://github.com/user-attachments/assets/46bfcea2-8191-4c89-8bcb-0cb8d295e551" />
 
+# Containers
+<img width="1403" height="1032" alt="Screen Shot 2025-08-15 at 3 22 29 PM" src="https://github.com/user-attachments/assets/9ef7617f-7b01-4c37-8361-f6e14cda1756" />
+
+
+# sumulation of module 09
+
+<img width="703" height="626" alt="Screen Shot 2025-08-15 at 3 15 24 PM" src="https://github.com/user-attachments/assets/913350c9-b97a-4b17-aebe-b5dce0031501" />
+<img width="1645" height="1108" alt="Screen Shot 2025-08-15 at 3 16 26 PM" src="https://github.com/user-attachments/assets/baae3b42-29c4-48a9-a7b4-afaa0cef977d" />
