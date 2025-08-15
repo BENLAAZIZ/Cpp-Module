@@ -271,7 +271,7 @@ void PmergeMe::sort_deque()
 	{
 		int first = deq[i];
 		int second = deq[i + 1];
-		if (first > second)
+		if (first < second)
 			std::swap(first, second);
 		pair_deq.push_back(std::make_pair(first, second));
 	}
